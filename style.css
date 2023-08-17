@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.logo img {
+    width: 110px;
+    height: 110px;
+}
+
+header .menu{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+    position: relative;
+}
+
+nav ul li a {
+    color: black;
+    font-size: 17px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover .active{
+    color: #dfd51a;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #dfd51a;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul li a:hover::before {
+    transform: scaleX(1);
+}
+
+.consulta {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.banner {
+    text-align: center;
+    background-color: transparent;
+    padding: 50px;
+    z-index: 1;
+    margin-top: 200px; /* Ajuste a margem conforme necessário */
+}
+
+.banner h1 {
+    margin-bottom: 10px;
+    font-size: 36px;
+    color: #fff;
+}
+
+.banner h2 {
+    font-size: 24px;
+    color: #666;
+}
+
+.banner ul {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.banner ul li {
+    margin: 10px 0;
+}
+
+.banner ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.banner ul li a:hover {
+    color: #dfd51a;
+}
+
+footer {
+    margin-top: 100px;
+    text-align: justify;
+    border-top: 2px solid #dfd51a;
+    padding: 20px;
+    background-color: #f2f2f2;
+    color: #333;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
