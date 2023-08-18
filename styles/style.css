@@ -19,10 +19,10 @@ header {
     padding: 10px 20px;
 }
 
-.logo img {
+.logo img, .logo {
     width: 110px;
-    height: 110px;
 }
+
 
 header .menu{
     display: flex;
@@ -47,8 +47,9 @@ nav ul li a {
     transition: color 0.3s;
 }
 
-nav ul li a:hover .active{
+nav ul li a:hover, .active{
     color: #dfd51a;
+    text-decoration: dashed;
 }
 
 nav ul li a::before {
@@ -68,7 +69,7 @@ nav ul li a:hover::before {
     transform: scaleX(1);
 }
 
-.consulta {
+.img-fundo{
     position: absolute;
     z-index: -1;
     width: 100vw;
@@ -76,16 +77,30 @@ nav ul li a:hover::before {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
+.img-fundo{
+    height: 100vh;
+    width: 100vw;
+}
+
+.img-fundo::after{
+    content: "";
+    background-color: #dfd51a;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.904) 0%, rgba(37, 37, 37, 0.493) 50%, rgba(0, 0, 0, 0.89) 100%);
+}
 
 .banner {
     text-align: center;
     background-color: transparent;
     padding: 50px;
     z-index: 1;
-    margin-top: 200px; /* Ajuste a margem conforme necessário */
+    margin-top: 200px; 
 }
 
 .banner h1 {
@@ -127,4 +142,9 @@ footer {
     background-color: #f2f2f2;
     color: #333;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer > p{
+    display: flex;
+
 }
