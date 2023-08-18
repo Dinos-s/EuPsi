@@ -20,9 +20,8 @@ header {
 }
 
 .logo img, .logo {
-    width: 110px;
+    width: 100px;
 }
-
 
 header .menu{
     display: flex;
@@ -47,7 +46,8 @@ nav ul li a {
     transition: color 0.3s;
 }
 
-nav ul li a:hover, .active{
+nav ul li a.active,
+nav ul li a:hover {
     color: #dfd51a;
     text-decoration: dashed;
 }
@@ -146,5 +146,4 @@ footer {
 
 footer > p{
     display: flex;
-
 }
