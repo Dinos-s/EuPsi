@@ -17,7 +17,6 @@ fetch("dados.json").then((res) => {
             cardContainer.innerHTML += `
             <div class='card'>
                 <div class="background">
-                    <img src="${psi.background}" alt="background">
                 </div>
                 <div class="avatar">
                     <img src="${psi.profile}" alt="picture">
