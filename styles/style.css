@@ -111,27 +111,34 @@ nav ul li a:hover::before {
 
 .banner h2 {
     font-size: 24px;
-    color: #666;
+    color: #161515;
+    font-size: 45px;
 }
 
 .banner ul {
     margin-top: 20px;
     list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
 }
 
 .banner ul li {
     margin: 10px 0;
+    border-radius: 6px;
+    border: 3px solid #f8f8f5;
+    padding: 12px;
 }
 
 .banner ul li a {
-    color: #333;
+    color: #dfd51a;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color 0.3s; 
 }
 
-.banner ul li a:hover {
-    color: #dfd51a;
+.banner ul li:hover {
+  border-color: #fff42c;
 }
 
 footer {
