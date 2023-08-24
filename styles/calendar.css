@@ -1,0 +1,59 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    font-weight: 700;
+}
+
+header i {
+    padding: 16px;
+    border-radius: 50%;
+    color: #666;
+}
+
+header i:hover{
+    background-color: #ece0fd;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+main > div {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 82px;
+    height: 40px;
+   
+    color: #666;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+main > div:hover{
+    background-color: #ece0fd;
+    border-radius: 8px;
+}
+
+main > div.active{
+    background: #6200ee;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 700;
+
+    position: relative;
+}
+
+main > div.active::after{
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    bottom: 6px;
+}

@@ -31,3 +31,34 @@ fetch("dados.json").then((res) => {
         })
     })
 })
+
+// dias do calendario
+const prev = document.querySelector('.prev')
+const next = document.querySelector('.next')
+const currentYearElement = document.getElementById('currentYear')
+const mainContainer = document.querySelector('main')
+const months = ['Jan', 'Fev', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Ago', 'Sep', 'Out', 'Nov', 'Dez']
+
+function render() {
+    const thisMonth = new Date().getMonth();
+    let output = '';
+
+    for (let i = 0; i < months.length; i++) {
+        const active = i === thisMonth ? 'active' : '';
+        output += `<div class="${active}">${months[i]}</div>`
+    }
+
+    return output
+}
+
+function changeYear(yearChange) {
+    const currentYear = parseInt(currentYearElement.textContent) + yearChange
+    currentYearElement.textContent = currentYear
+}
+
+mainContainer.innerHTML = render()
+currentYearElement.textContent = new Date().getFullYear()
+
+
+
+

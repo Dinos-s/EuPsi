@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/cards.css">
-    <title>Procura Psicólogo - EuPSI(protótipo)</title>
+    <link rel="stylesheet" href="./styles/calendar.css">
+    <!-- incones -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <title>Agendamento</title>
 </head>
-
 <body>
     <header>
         <a href="index.html" class="logo">
@@ -24,26 +24,35 @@
         </nav>
     </header>
 
-    <div class="card-Container"></div>
-    <!-- <div class="card">
-        <div class="background">
-            <img src="./assets/paisagem.jpg" alt="background">
+    <div>
+        <div class="user">
+            <img id='avatar' src="./assets/images.jpg" alt="psicologo">
+            <div class="info">
+                <h2>Bruno Souza</h2>
+                <span>CRP: 12/345678 | Recife</span>
+                <p class="price">R$ 90 / 50 min</p>
+            </div>
         </div>
-        <div class="avatar">
-            <img src="./assets/images.jpg" alt="picture">
+        <div class="calendar">
+            <div class="header">
+                <h2>Agendamento</h2>
+            </div>
+            <div class="dates">
+                <header>
+                    <i class="ph-bold ph-caret-left prev" onclick="changeYear(-1)"></i>
+                    <span id="currentYear"></span>
+                    <i class="ph-bold ph-caret-right next" onclick="changeYear(1)"></i>
+                </header>
+                <main></main>
+            </div>
         </div>
-        <div class="content">
-            <h4 class="perfil">Gabriel de Matos Ramos</h4>
-            <p class="especialidade">Psícologo Infantil</p>
-            <p class="crp">23579 / CRP - 4° Região</p>
-            <p class="cidade">Recife - PE</p>
-        </div>
-    </div> -->
-
+    </div>
+    
     <footer>
         <img src="./assets/eupsi.png" alt="EuPSI" class="logo">
         <p>Eupsi é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários o melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo e profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida relacionada aos serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com as diversas áreas da psicologia, garantindo assim a melhor terapia para você.</p>
     </footer>
+    
     <script src="./js/script.js"></script>
 </body>
 </html>
