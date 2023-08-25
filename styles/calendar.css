@@ -1,18 +1,63 @@
-header{
+.agendamento {
+    display: flex;
+    margin-top: 28px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 65px;
+    gap: 25px;
+}
+
+.user {
+    display: flex;
+    gap: 15px;
+    margin-right: 25px;
+}
+
+.user > img.avatar{
+    border-radius: 15%;
+}
+
+.user > .info > h2, .crp{
+    margin-bottom: 16px;
+}
+
+.user > .info > .crp > span{
+    color: #d1ce34;
+}
+
+.price {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.calendar > .header > h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Codigo do calendario */
+.dates {
+    border: 2.5px solid #e9e50a;
+    border-radius: 15px;
+}
+
+.mouth{
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #333;
+    border-radius: 14px 14px 0 0;
     font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px 0px
 }
 
-header i {
+.mouth > i {
     padding: 16px;
     border-radius: 50%;
     color: #666;
 }
 
-header i:hover{
+.mouth > i:hover{
     background-color: #ece0fd;
 }
 
@@ -40,7 +85,7 @@ main > div:hover{
 }
 
 main > div.active{
-    background: #6200ee;
+    background: #e9e50a;
     color: #fff;
     border-radius: 8px;
     font-weight: 700;

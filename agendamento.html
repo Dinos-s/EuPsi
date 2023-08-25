@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,21 +24,22 @@
         </nav>
     </header>
 
-    <div>
+    <div class='agendamento'>
         <div class="user">
-            <img id='avatar' src="./assets/images.jpg" alt="psicologo">
-            <div class="info">
+            <img class='avatar' src="./assets/images.jpg" alt="psicologo">
+            <section class="info">
                 <h2>Bruno Souza</h2>
-                <span>CRP: 12/345678 | Recife</span>
-                <p class="price">R$ 90 / 50 min</p>
-            </div>
+                <p class="crp"><span>CRP: 12/345678</span> | Recife</p>
+                <p><span class="price">R$ 90</span>/ 50 min</p>
+            </section>
         </div>
+
         <div class="calendar">
             <div class="header">
                 <h2>Agendamento</h2>
             </div>
             <div class="dates">
-                <header>
+                <header class="mouth">
                     <i class="ph-bold ph-caret-left prev" onclick="changeYear(-1)"></i>
                     <span id="currentYear"></span>
                     <i class="ph-bold ph-caret-right next" onclick="changeYear(1)"></i>
@@ -47,6 +48,7 @@
             </div>
         </div>
     </div>
+    
     
     <footer>
         <img src="./assets/eupsi.png" alt="EuPSI" class="logo">
