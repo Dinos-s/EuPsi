@@ -15,22 +15,26 @@ fetch("dados.json").then((res) => {
     res.json().then((data) => {
         data.psicologos.forEach((psi) => { // extraindo os psicologos do json e os transformando em cards separados;
             cardContainer.innerHTML += `
-            <div class='card'>
-                <div class="background">
+            <a href="agendamento.html?psi=${encodeURIComponent(psi.nome)}" class="card-link">
+                <div class='card'>
+                        <div class="background"></div>
+                    <div class="avatar">
+                        <img src="${psi.profile}" alt="picture">
+                    </div>
+                    <div class="content">
+                        <h4 class="perfil">${psi.nome}</h4>
+                        <p class="especialidade">${psi.especialidade}</p>
+                        <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
+                        <p class="cidade">${psi.cidade}</p>
+                    </div>
                 </div>
-                <div class="avatar">
-                    <img src="${psi.profile}" alt="picture">
-                </div>
-                <div class="content">
-                    <h4 class="perfil">${psi.nome}</h4>
-                    <p class="especialidade">${psi.especialidade}</p>
-                    <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
-                    <p class="cidade">${psi.cidade}</p>
-                </div>
-            </div>`
+            </a>`
         })
     })
 })
+
+// modo dinamico do agendamento
+
 
 // dias do calendario
 const prev = document.querySelector('.prev')
@@ -58,7 +62,3 @@ function changeYear(yearChange) {
 
 mainContainer.innerHTML = render()
 currentYearElement.textContent = new Date().getFullYear()
-
-
-
-
