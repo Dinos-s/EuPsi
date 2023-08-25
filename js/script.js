@@ -31,7 +31,7 @@ fetch("dados.json").then((res) => {
             </a>`
         })
     })
-})
+}) 
 
 // modo dinamico do agendamento
 
