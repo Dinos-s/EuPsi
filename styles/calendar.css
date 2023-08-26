@@ -17,11 +17,11 @@
     border-radius: 15%;
 }
 
-.user > .info > h2, .crp{
+.user > .info > h2, p{
     margin-bottom: 16px;
 }
 
-.user > .info > .crp > span{
+.user > .info > p > span.crp {
     color: #d1ce34;
 }
 

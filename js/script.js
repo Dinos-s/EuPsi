@@ -31,10 +31,31 @@ fetch("dados.json").then((res) => {
             </a>`
         })
     })
-}) 
+})
 
 // modo dinamico do agendamento
+const paramURL = new URLSearchParams(window.location.search)
+const psiNome = paramURL.get('psi')
+fetch('dados.json').then(res => res.json())
+    .then(data => {
+       const doctor = data.psicologos.find(psi => psi.nome === psiNome) // aqui com para se o valor do psi.nome e o mesmo do psiNome;
+        if (psiNome) {
+            const avatar = document.querySelector('.avatar')
+            const infoUser = document.querySelector('.info h2')
+            const crp = document.querySelector('.crp')
+            const city = document.querySelector('.city')
+            const price = document.querySelector('.price')
 
+            // Pega os dados correspondents e o substitui pelos do json;
+            avatar.src = doctor.profile
+            infoUser.textContent = doctor.nome
+            crp.textContent = doctor.CRP
+            city.textContent = doctor.cidade
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
 
 // dias do calendario
 const prev = document.querySelector('.prev')
