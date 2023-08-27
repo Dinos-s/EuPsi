@@ -4,5 +4,3 @@ Projeto criado com a dintenção de reunir, pisicologo e paciente aproveitando t
 podendo realizar a consulta de onde quiserem no conforto de suas casa 🏡; 
 
 Gordinho veja se alterou alguma coisa?
-
-teste leo
