@@ -61,6 +61,7 @@ fetch('dados.json').then(res => res.json())
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
 const currentYearElement = document.getElementById('currentYear')
+const currentMonthElement = document.getElementById('currentMonth')
 const mainContainer = document.querySelector('main')
 const months = ['Jan', 'Fev', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Ago', 'Sep', 'Out', 'Nov', 'Dez']
 
@@ -83,3 +84,4 @@ function changeYear(yearChange) {
 
 mainContainer.innerHTML = render()
 currentYearElement.textContent = new Date().getFullYear()
+currentMonthElement.textContent = new Date().getMonth()

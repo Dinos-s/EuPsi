@@ -30,12 +30,12 @@
     font-weight: bold;
 }
 
+/* Codigo do calendario */
 .calendar > .header > h2{
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Codigo do calendario */
 .dates {
     border: 2.5px solid #e9e50a;
     border-radius: 15px;
@@ -59,6 +59,10 @@
 
 .mouth > i:hover{
     background-color: #ece0fd;
+}
+
+ul > #currentMonth{
+    font-size: 18;
 }
 
 main {
