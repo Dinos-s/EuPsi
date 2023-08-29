@@ -1,9 +1,9 @@
 .agendamento {
     display: flex;
-    margin-top: 28px;
+    margin-top: 40px;
     align-items: center;
-    justify-content: flex-start;
-    margin-left: 65px;
+    justify-content: center;
+    /* margin-left: 65px; */
     gap: 25px;
 }
 
@@ -31,7 +31,96 @@
 }
 
 /* Codigo do calendario */
-.calendar > .header > h2{
+.calendar {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 250px;
+}
+
+.calendar > .week {
+    display: flex;
+    gap: 5px;
+    height: 120px;
+    padding: 20px 40px;
+    background: #857d7d6b;
+    border-radius: 10px;
+    border: 1px #000 solid;
+}
+
+.week li {
+    list-style: none;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    color: #000;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 1.25em;
+}
+
+.week li.current {
+    position: relative;
+    background-color: #e9e50a;
+    height: 100px;
+    width: 100px;
+    font-size: 1.65em;
+    color: #000;
+    border: 6px solid #fff;
+    transform: translateY(-70px);
+    font-weight: 500;
+    cursor: pointer;
+}
+.week li.current::before {
+    content: '';
+    position: absolute;
+    top: 44px;
+    left: -36px;
+    width: 30px;
+    height: 30px;
+    background: #cacaca6b;
+    border-top-right-radius: 10px;
+    box-shadow: 6px -6px #fff;
+}
+
+.week li.current::after {
+    content: '';
+    position: absolute;
+    top: 44px;
+    right: -35px;
+    width: 30px;
+    height: 30px;
+    background: #cacaca6b;
+    border-top-left-radius: 10px;
+    box-shadow: -6px -6px #fff;
+}
+
+.week li.current h1 {
+    position: absolute;
+    transform: translateY(76px);
+    font-size: 1.6em;
+    color:#000;
+}
+
+.week li.current h3 {
+    position: absolute;
+    transform: translateY(-62px);
+    font-size: 0.85em;
+    color:#000;
+}
+
+.week li.current h5 {
+    position: absolute;
+    transform: translateY(102px);
+    font-size: 0.55em;
+    color: #000;
+    font-weight: 500;
+}
+
+/* .calendar > .header > h2{
     text-align: center;
     margin-bottom: 20px;
 }
@@ -105,4 +194,4 @@ main > div.active::after{
     background-color: white;
     position: absolute;
     bottom: 6px;
-}
+} */

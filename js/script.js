@@ -58,30 +58,49 @@ fetch('dados.json').then(res => res.json())
     });
 
 // dias do calendario
-const prev = document.querySelector('.prev')
-const next = document.querySelector('.next')
-const currentYearElement = document.getElementById('currentYear')
-const currentMonthElement = document.getElementById('currentMonth')
-const mainContainer = document.querySelector('main')
 const months = ['Jan', 'Fev', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Ago', 'Sep', 'Out', 'Nov', 'Dez']
+let date = new Date()
+let dayNum = date.getDay() // dia da semana
+let active = document.querySelector(".week li:nth-child("+dayNum+")")
+let day = date.getDate() // dia de hoje 1-30/31
+let month = months[date.getMonth()] //imprime o mes correspondente do array; 7 = Ago
+let year = date.getFullYear() //ano completo
+let h1 = document.createElement('h1') // cria um no elemento html
+let h3 = document.createElement('h3')
+let h5 = document.createElement('h5')
 
-function render() {
-    const thisMonth = new Date().getMonth();
-    let output = '';
+active.classList.add('current') //add class no html 
+h1.innerHTML = day
+h3.innerHTML = year
+h5.innerHTML = month
+active.appendChild(h1)
+active.appendChild(h3)
+active.appendChild(h5)
 
-    for (let i = 0; i < months.length; i++) {
-        const active = i === thisMonth ? 'active' : '';
-        output += `<div class="${active}">${months[i]}</div>`
-    }
+// const prev = document.querySelector('.prev')
+// const next = document.querySelector('.next')
+// const currentYearElement = document.getElementById('currentYear')
+// const currentMonthElement = document.getElementById('currentMonth')
+// const mainContainer = document.querySelector('main')
+// const months = ['Jan', 'Fev', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Ago', 'Sep', 'Out', 'Nov', 'Dez']
 
-    return output
-}
+// function render() {
+//     const thisMonth = new Date().getMonth();
+//     let output = '';
 
-function changeYear(yearChange) {
-    const currentYear = parseInt(currentYearElement.textContent) + yearChange
-    currentYearElement.textContent = currentYear
-}
+//     for (let i = 0; i < months.length; i++) {
+//         const active = i === thisMonth ? 'active' : '';
+//         output += `<div class="${active}">${months[i]}</div>`
+//     }
 
-mainContainer.innerHTML = render()
-currentYearElement.textContent = new Date().getFullYear()
-currentMonthElement.textContent = new Date().getMonth()
+//     return output
+// }
+
+// function changeYear(yearChange) {
+//     const currentYear = parseInt(currentYearElement.textContent) + yearChange
+//     currentYearElement.textContent = currentYear
+// }
+
+// mainContainer.innerHTML = render()
+// currentYearElement.textContent = new Date().getFullYear()
+// currentMonthElement.textContent = new Date().getMonth()
