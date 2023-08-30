@@ -1,5 +1,6 @@
 .agendamento {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 40px;
     align-items: center;
     justify-content: center;
@@ -33,11 +34,10 @@
 /* Codigo do calendario */
 .calendar {
     display: flex;
+    margin-top: 24px;
     padding: 20px;
     align-items: center;
     justify-content: center;
-    width: auto;
-    height: 250px;
 }
 
 .calendar > .week {
@@ -52,8 +52,8 @@
 
 .week li {
     list-style: none;
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 60px;
     display: flex;
     color: #000;
     justify-content: center;
@@ -65,8 +65,8 @@
 .week li.current {
     position: relative;
     background-color: #e9e50a;
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     font-size: 1.65em;
     color: #000;
     border: 6px solid #fff;
@@ -107,7 +107,7 @@
 
 .week li.current h3 {
     position: absolute;
-    transform: translateY(-62px);
+    transform: translateY(-52px);
     font-size: 0.85em;
     color:#000;
 }
