@@ -105,7 +105,7 @@ nav ul li a:hover::before {
     padding: 50px;
     z-index: 1;
     margin-top: 200px; 
-padding-bottom: 160px;
+    padding-bottom: 160px;
 }
 
 .banner h1 {
@@ -174,6 +174,7 @@ padding-bottom: 160px;
 
 /* FOOTER [rodapé] */
 footer {
+    display: flex;
     margin-top: 100px;
     text-align: justify;
     border-top: 2px solid #dfd51a;
@@ -183,6 +184,22 @@ footer {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-footer > p{
-    display: flex;
+footer > .f2{
+    /* margin: 100px; */
+    padding: 15px;
+    margin-right: 22px;
+    width: 1000px;
+}
+
+footer > .f3{
+  padding: 10px;
+  display: flex;
+  /* background-color: blue; */
+}
+
+footer > .f3 > .menuf{
+/* background-color: aqua; */
+font-size: 0.7rem;
+text-align: center;
+
 }
