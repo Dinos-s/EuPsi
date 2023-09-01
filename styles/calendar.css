@@ -12,6 +12,7 @@
     display: flex;
     gap: 15px;
     margin-right: 25px;
+    height: 20vh;
 }
 
 .user > img.avatar{
@@ -38,32 +39,31 @@
     padding: 20px;
     align-items: center;
     justify-content: center;
-    height: 200px;
-    width: 600px;
+    height: 37vh;
 }
 
 .wrapper {
     width: 450px;
-    background: #86847d;
+    background: #c7b341;
 }
 
-.wrapper header {
+.wrapper .cabecalho-calendar {
     display: flex;
     align-items: center;
     padding: 25px 30px 10px;
     justify-content: space-between;
 }
 
-header .current-date {
+.mes .current-date {
     font-size: 1.45rem;
     font-weight: 500;
 }
 
-header .icons {
+.cabecalho-calendar .icons {
     display: flex;
 }
 
-header .icons span {
+.cabecalho-calendar .icons span {
     height: 38px;
     width: 38px;
     text-align: center;
@@ -75,40 +75,40 @@ header .icons span {
     font-size: 1.9rem;
 }
 
-header .icons span:hover{
+.cabecalho-calendar .icons span:hover{
     background: #fff;
 }
 
-header .icons span:last-child {
+.cabecalho-calendar .icons span:last-child {
     margin-left: -10px;
 }
 
-.calendar {
+.mes {
     padding: 20px;
 }
 
-.calendar ul{
+.mes ul{
     display: flex;
     list-style: none;
     flex-wrap: wrap;
     text-align: center;
 }
 
-.calendar .days {
+.mes .days {
     margin-bottom: 20px;
 }
 
-.calendar .weeks li {
+.mes .weeks li {
     font-weight: 500;
 }
 
-.calendar ul li {
+.mes ul li {
     position: relative;
     width: calc(100% / 7);
     font-size: 1.07rem;
 }
 
-.calendar .days li {
+.mes .days li {
     z-index: -1;
     cursor: pointer;
     margin-top: 30px;
