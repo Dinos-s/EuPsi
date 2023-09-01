@@ -38,13 +38,15 @@
     padding: 20px;
     align-items: center;
     justify-content: center;
+    height: 200px;
+    width: 600px;
 }
 
 .calendar > .week {
     display: flex;
     gap: 5px;
     height: 120px;
-    padding: 20px 40px;
+    padding: 20px 10px;
     background: #857d7d6b;
     border-radius: 10px;
     border: 1px #000 solid;

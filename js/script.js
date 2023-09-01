@@ -62,7 +62,7 @@ const months = ['Jan', 'Fev', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Ago', 'Sep', '
 let date = new Date()
 let dayNum = date.getDay() // dia da semana
 let active = document.querySelector(".week li:nth-child("+dayNum+")")
-let day = date.getDate() // dia de hoje 1-30/31
+let day = date.getDate()  // dia de hoje 1-30/31
 let month = months[date.getMonth()] //imprime o mes correspondente do array; 7 = Ago
 let year = date.getFullYear() //ano completo
 let h1 = document.createElement('h1') // cria um no elemento html
