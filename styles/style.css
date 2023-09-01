@@ -69,8 +69,15 @@ nav ul li a:hover::before {
     transform: scaleX(1);
 }
 
+.acesso{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2rem;
+    text-align: center;
+}
 .icons_rede_sociais > a {
-    background-color: #dfd51a;
+    padding-top: 10px;
+    margin: 10px;
 }
 
 .img-fundo{
@@ -201,5 +208,6 @@ footer > .f3 > .menuf{
 /* background-color: aqua; */
 font-size: 0.7rem;
 text-align: center;
+line-height: 0.9rem;
 
 }
