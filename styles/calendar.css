@@ -35,8 +35,8 @@
 /* Codigo do calendario */
 .calendar {
     display: flex;
-    margin-top: 24px;
-    padding: 20px;
+    /* margin-top: 24px; */
+    padding: 0 10px;
     align-items: center;
     justify-content: center;
     height: 37vh;
@@ -45,6 +45,7 @@
 .wrapper {
     width: 450px;
     background: #c7b341;
+    border-radius: 10px;
 }
 
 .wrapper .cabecalho-calendar {
@@ -52,11 +53,6 @@
     align-items: center;
     padding: 25px 30px 10px;
     justify-content: space-between;
-}
-
-.mes .current-date {
-    font-size: 1.45rem;
-    font-weight: 500;
 }
 
 .cabecalho-calendar .icons {
@@ -71,16 +67,20 @@
     line-height: 38px;
     cursor: pointer;
     border-radius: 50%;
-    background: #86847d;
     font-size: 1.9rem;
 }
 
 .cabecalho-calendar .icons span:hover{
-    background: #fff;
+    background: #d2e04d;
 }
 
 .cabecalho-calendar .icons span:last-child {
-    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.mes .current-date {
+    font-size: 1.45rem;
+    font-weight: 500;
 }
 
 .mes {
@@ -100,6 +100,7 @@
 
 .mes .weeks li {
     font-weight: 500;
+    cursor: default;
 }
 
 .mes ul li {
@@ -109,8 +110,9 @@
 }
 
 .mes .days li {
-    z-index: -1;
+    z-index: 1;
     cursor: pointer;
+    position: relative;
     margin-top: 30px;
 }
 
@@ -119,7 +121,7 @@
 }
 
 .days li.ativo {
-    background: #0b84ad;
+    color: #0b84ad;
 }
 
 .days li::before {
@@ -131,14 +133,14 @@
     left: 50%;
     z-index: -1;
     border-radius: 50%;
-    transform: -5;
-    background: #124d;
+    transform: translate(-50%, -50%);
+    background: rgba(179, 182, 29, 0.867);
 }
 
 .days li:hover::before {
-    background: #d6d5d1;
+    background: #daa711;
 }
 
 .days li.ativo::before {
-    background: #0b84ad;
+    background: #eedf09;
 }

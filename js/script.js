@@ -38,7 +38,7 @@ const paramURL = new URLSearchParams(window.location.search)
 const psiNome = paramURL.get('psi')
 fetch('dados.json').then(res => res.json())
     .then(data => {
-       const doctor = data.psicologos.find(psi => psi.nome === psiNome) // aqui com para se o valor do psi.nome e o mesmo do psiNome;
+        const doctor = data.psicologos.find(psi => psi.nome === psiNome) // aqui com para se o valor do psi.nome e o mesmo do psiNome;
         if (psiNome) {
             const avatar = document.querySelector('.avatar')
             const infoUser = document.querySelector('.info h2')
@@ -59,9 +59,11 @@ fetch('dados.json').then(res => res.json())
 
 // dias do calendario
 const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
 let date = new Date();
 let currentYear = date.getFullYear()
 let currentMonth = date.getMonth()
+
 const currentDate = document.querySelector('.current-date')
 const days = document.querySelector('.days');
 let monthName = months[date.getMonth()];
@@ -74,18 +76,24 @@ const render = () => {
     let lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate()
     let day = ''
 
-    for(let i = fisrtDateMonth; i > 0; i--){
+    for (let i = fisrtDateMonth; i > 0; i--) {
         day += `<li class='inativo'>${lastDateOfLastMonth - i + 1}</li>`
     }
 
     for (let s = 1; s <= lastDateMonth; s++) {
-        let isToday = s === date.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear() ?
-            'ativo' : ''
+        let isToday = '';
+
+        if (s === date.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
+            isToday = 'ativo';
+        } else {
+            isToday = '';
+        }
+        
         day += `<li class='${isToday}'>${s}</li>`
     }
 
-    for (let i = 0; i < 6; i++) {
-        day += `<li>${i - lastDateOfLastMonth + 1}</li>`
+    for (let i = lastDayOfMonth; i < 6; i++) {
+        day += `<li class="inativo">${i - lastDayOfMonth + 1}</li>`
     }
 
     currentDate.innerText = `${months[currentMonth]} ${currentYear}`
@@ -96,6 +104,14 @@ render()
 prevNextIcon.forEach(icon => {
     icon.addEventListener('click', () => {
         currentMonth = icon.id === 'prev' ? currentMonth - 1 : currentMonth + 1
+
+        if (currentMonth < 0 || currentMonth > 11) {
+            date = new Date(currentYear, currentMonth, new Date().getDate())
+            currentYear = date.getFullYear()
+            currentMonth = date.getMonth()
+        } else {
+            date = new Date();
+        }
         render()
     })
 })
