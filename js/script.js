@@ -58,7 +58,7 @@ fetch('dados.json').then(res => res.json())
     });
 
 // dias do calendario
-const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
 let date = new Date();
 let currentYear = date.getFullYear()

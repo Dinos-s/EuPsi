@@ -6,20 +6,22 @@
     justify-content: center;
     /* margin-left: 65px; */
     gap: 25px;
+    width: auto;
 }
 
 .user {
     display: flex;
     gap: 15px;
-    margin-right: 25px;
-    height: 20vh;
+    /* margin-right: 20px; */
+    /* top: 150px; */
+    width: 500px;
 }
 
 .user > img.avatar{
     border-radius: 15%;
 }
 
-.user > .info > h2, p{
+.user > .info > h2, p.crp{
     margin-bottom: 16px;
 }
 
@@ -39,19 +41,20 @@
     padding: 0 10px;
     align-items: center;
     justify-content: center;
-    height: 37vh;
+    /* height: 37vh; */
 }
 
 .wrapper {
-    width: 450px;
-    background: #c7b341;
+    /* height: 380px; */
+    width: 380px;
+    background: #dce30ba9;
     border-radius: 10px;
 }
 
 .wrapper .cabecalho-calendar {
     display: flex;
     align-items: center;
-    padding: 25px 30px 10px;
+    padding: 15px 30px 10px;
     justify-content: space-between;
 }
 
@@ -71,11 +74,15 @@
 }
 
 .cabecalho-calendar .icons span:hover{
-    background: #d2e04d;
+    background: #787977;
 }
 
 .cabecalho-calendar .icons span:last-child {
     margin-right: -10px;
+}
+
+.current-date{
+    font-size: 1.3rem;
 }
 
 .mes .current-date {
@@ -117,11 +124,11 @@
 }
 
 .days li.inativo {
-    color: #d6d5d1;
+    color: #e4e3de;
 }
 
 .days li.ativo {
-    color: #0b84ad;
+    color: #fff;
 }
 
 .days li::before {
@@ -134,13 +141,13 @@
     z-index: -1;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(179, 182, 29, 0.867);
+    background: rgba(196, 199, 15, 0.867);
 }
 
 .days li:hover::before {
-    background: #daa711;
+    background: #f8ff20;
 }
 
 .days li.ativo::before {
-    background: #eedf09;
+    background: #fdec02;
 }
