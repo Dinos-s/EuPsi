@@ -38,7 +38,7 @@ const paramURL = new URLSearchParams(window.location.search)
 const psiNome = paramURL.get('psi')
 fetch('dados.json').then(res => res.json())
     .then(data => {
-       const doctor = data.psicologos.find(psi => psi.nome === psiNome) // aqui com para se o valor do psi.nome e o mesmo do psiNome;
+        const doctor = data.psicologos.find(psi => psi.nome === psiNome) // aqui com para se o valor do psi.nome e o mesmo do psiNome;
         if (psiNome) {
             const avatar = document.querySelector('.avatar')
             const infoUser = document.querySelector('.info h2')
@@ -58,28 +58,60 @@ fetch('dados.json').then(res => res.json())
     });
 
 // dias do calendario
-const prev = document.querySelector('.prev')
-const next = document.querySelector('.next')
-const currentYearElement = document.getElementById('currentYear')
-const mainContainer = document.querySelector('main')
-const months = ['Jan', 'Fev', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Ago', 'Sep', 'Out', 'Nov', 'Dez']
+const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
-function render() {
-    const thisMonth = new Date().getMonth();
-    let output = '';
+let date = new Date();
+let currentYear = date.getFullYear()
+let currentMonth = date.getMonth()
 
-    for (let i = 0; i < months.length; i++) {
-        const active = i === thisMonth ? 'active' : '';
-        output += `<div class="${active}">${months[i]}</div>`
+const currentDate = document.querySelector('.current-date')
+const days = document.querySelector('.days');
+let monthName = months[date.getMonth()];
+const prevNextIcon = document.querySelectorAll('.icons span')
+
+const render = () => {
+    let fisrtDateMonth = new Date(currentYear, currentMonth, 1).getDay()
+    let lastDateMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
+    let lastDayOfMonth = new Date(currentYear, currentMonth, lastDateMonth).getDay()
+    let lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate()
+    let day = ''
+
+    for (let i = fisrtDateMonth; i > 0; i--) {
+        day += `<li class='inativo'>${lastDateOfLastMonth - i + 1}</li>`
     }
 
-    return output
-}
+    for (let s = 1; s <= lastDateMonth; s++) {
+        let isToday = '';
 
-function changeYear(yearChange) {
-    const currentYear = parseInt(currentYearElement.textContent) + yearChange
-    currentYearElement.textContent = currentYear
-}
+        if (s === date.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
+            isToday = 'ativo';
+        } else {
+            isToday = '';
+        }
+        
+        day += `<li class='${isToday}'>${s}</li>`
+    }
 
-mainContainer.innerHTML = render()
-currentYearElement.textContent = new Date().getFullYear()
+    for (let i = lastDayOfMonth; i < 6; i++) {
+        day += `<li class="inativo">${i - lastDayOfMonth + 1}</li>`
+    }
+
+    currentDate.innerText = `${months[currentMonth]} ${currentYear}`
+    days.innerHTML = day
+}
+render()
+
+prevNextIcon.forEach(icon => {
+    icon.addEventListener('click', () => {
+        currentMonth = icon.id === 'prev' ? currentMonth - 1 : currentMonth + 1
+
+        if (currentMonth < 0 || currentMonth > 11) {
+            date = new Date(currentYear, currentMonth, new Date().getDate())
+            currentYear = date.getFullYear()
+            currentMonth = date.getMonth()
+        } else {
+            date = new Date();
+        }
+        render()
+    })
+})

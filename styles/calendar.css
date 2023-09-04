@@ -1,23 +1,27 @@
 .agendamento {
     display: flex;
-    margin-top: 28px;
+    flex-wrap: wrap;
+    margin-top: 40px;
     align-items: center;
-    justify-content: flex-start;
-    margin-left: 65px;
+    justify-content: center;
+    /* margin-left: 65px; */
     gap: 25px;
+    width: auto;
 }
 
 .user {
     display: flex;
     gap: 15px;
-    margin-right: 25px;
+    /* margin-right: 20px; */
+    /* top: 150px; */
+    width: 500px;
 }
 
 .user > img.avatar{
     border-radius: 15%;
 }
 
-.user > .info > h2, p{
+.user > .info > h2, p.crp{
     margin-bottom: 16px;
 }
 
@@ -30,75 +34,120 @@
     font-weight: bold;
 }
 
-.calendar > .header > h2{
+/* Codigo do calendario */
+.calendar {
+    display: flex;
+    /* margin-top: 24px; */
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+    /* height: 37vh; */
+}
+
+.wrapper {
+    /* height: 380px; */
+    width: 380px;
+    background: #dce30ba9;
+    border-radius: 10px;
+}
+
+.wrapper .cabecalho-calendar {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px 10px;
+    justify-content: space-between;
+}
+
+.cabecalho-calendar .icons {
+    display: flex;
+}
+
+.cabecalho-calendar .icons span {
+    height: 38px;
+    width: 38px;
     text-align: center;
+    margin: 0 1px;
+    line-height: 38px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.9rem;
+}
+
+.cabecalho-calendar .icons span:hover{
+    background: #787977;
+}
+
+.cabecalho-calendar .icons span:last-child {
+    margin-right: -10px;
+}
+
+.current-date{
+    font-size: 1.3rem;
+}
+
+.mes .current-date {
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+
+.mes {
+    padding: 20px;
+}
+
+.mes ul{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.mes .days {
     margin-bottom: 20px;
 }
 
-/* Codigo do calendario */
-.dates {
-    border: 2.5px solid #e9e50a;
-    border-radius: 15px;
+.mes .weeks li {
+    font-weight: 500;
+    cursor: default;
 }
 
-.mouth{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #333;
-    border-radius: 14px 14px 0 0;
-    font-weight: 700;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px 0px
-}
-
-.mouth > i {
-    padding: 16px;
-    border-radius: 50%;
-    color: #666;
-}
-
-.mouth > i:hover{
-    background-color: #ece0fd;
-}
-
-main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
-
-main > div {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    width: 82px;
-    height: 40px;
-   
-    color: #666;
-    cursor: pointer;
-    transition: all 300ms;
-}
-
-main > div:hover{
-    background-color: #ece0fd;
-    border-radius: 8px;
-}
-
-main > div.active{
-    background: #e9e50a;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 700;
-
+.mes ul li {
     position: relative;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
 }
 
-main > div.active::after{
-    content: '';
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: white;
+.mes .days li {
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+}
+
+.days li.inativo {
+    color: #e4e3de;
+}
+
+.days li.ativo {
+    color: #fff;
+}
+
+.days li::before {
     position: absolute;
-    bottom: 6px;
+    content: '';
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(196, 199, 15, 0.867);
+}
+
+.days li:hover::before {
+    background: #f8ff20;
+}
+
+.days li.ativo::before {
+    background: #fdec02;
 }

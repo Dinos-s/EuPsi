@@ -72,16 +72,16 @@ nav ul li a:hover::before {
 .img-fundo{
     position: absolute;
     z-index: -1;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 600px;
     overflow: hidden;
     display: flex;
     justify-content: center;
 }
 
-.img-fundo{
+.img-fundo > .consulta{
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
 }
 
 .img-fundo::after{
