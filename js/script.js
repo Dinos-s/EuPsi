@@ -101,7 +101,7 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
 }
 
 function atualizarHorasTela() {
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
         const horaColumn = document.getElementById(`horaColumn${i}`);
         horaColumn.innerHTML = '';
 
@@ -109,7 +109,7 @@ function atualizarHorasTela() {
         let horaAtual = new Date();
         horaAtual.setMinutes(0); // Começa no minuto 0
 
-        for (let j = 0; j < 6; j++) {
+        for (let j = 0; j < 7; j++) { // esse gera a quantidade de horas do dia
             const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
             const celulaHora = document.createElement('div');
