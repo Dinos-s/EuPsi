@@ -72,6 +72,7 @@ function mudarSemana(semana) {
 const PrimeiroDiaSemana = new Date(dataAtual)
 PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
 atualizarDiasTela(PrimeiroDiaSemana)
+atualizarHorasTela()
 
 function atualizarDiasTela(PrimeiroDiaSemana) {
     const linhaDia = document.getElementById('dayRow')
@@ -99,6 +100,29 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
     }
 }
 
+function atualizarHorasTela() {
+    for (let i = 1; i <= 7; i++) {
+        const horaColumn = document.getElementById(`horaColumn${i}`);
+        horaColumn.innerHTML = '';
+
+        // Hora inicial
+        let horaAtual = new Date();
+        horaAtual.setMinutes(0); // Começa no minuto 0
+
+        for (let j = 0; j < 6; j++) {
+            const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+            const celulaHora = document.createElement('div');
+            celulaHora.textContent = horaFormatada;
+            celulaHora.className = 'hora';
+
+            horaColumn.appendChild(celulaHora);
+
+            // Avança 50 minutos
+            horaAtual.setMinutes(horaAtual.getMinutes() + 50);
+        }
+    }
+}
 
 // let date = new Date();
 // let currentYear = date.getFullYear()
