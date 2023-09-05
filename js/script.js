@@ -60,58 +60,98 @@ fetch('dados.json').then(res => res.json())
 // dias do calendario
 const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
-let date = new Date();
-let currentYear = date.getFullYear()
-let currentMonth = date.getMonth()
+let dataAtual = new Date()
 
-const currentDate = document.querySelector('.current-date')
-const days = document.querySelector('.days');
-let monthName = months[date.getMonth()];
-const prevNextIcon = document.querySelectorAll('.icons span')
-
-const render = () => {
-    let fisrtDateMonth = new Date(currentYear, currentMonth, 1).getDay()
-    let lastDateMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
-    let lastDayOfMonth = new Date(currentYear, currentMonth, lastDateMonth).getDay()
-    let lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate()
-    let day = ''
-
-    for (let i = fisrtDateMonth; i > 0; i--) {
-        day += `<li class='inativo'>${lastDateOfLastMonth - i + 1}</li>`
-    }
-
-    for (let s = 1; s <= lastDateMonth; s++) {
-        let isToday = '';
-
-        if (s === date.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
-            isToday = 'ativo';
-        } else {
-            isToday = '';
-        }
-        
-        day += `<li class='${isToday}'>${s}</li>`
-    }
-
-    for (let i = lastDayOfMonth; i < 6; i++) {
-        day += `<li class="inativo">${i - lastDayOfMonth + 1}</li>`
-    }
-
-    currentDate.innerText = `${months[currentMonth]} ${currentYear}`
-    days.innerHTML = day
+function mudarSemana(semana) {
+    dataAtual.setDate(dataAtual.getDate() + semana * 7)
+    const PrimeiroDiaSemana = new Date(dataAtual)
+    PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
+    atualizarDiasTela(PrimeiroDiaSemana)
 }
-render()
 
-prevNextIcon.forEach(icon => {
-    icon.addEventListener('click', () => {
-        currentMonth = icon.id === 'prev' ? currentMonth - 1 : currentMonth + 1
+const PrimeiroDiaSemana = new Date(dataAtual)
+PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
+atualizarDiasTela(PrimeiroDiaSemana)
 
-        if (currentMonth < 0 || currentMonth > 11) {
-            date = new Date(currentYear, currentMonth, new Date().getDate())
-            currentYear = date.getFullYear()
-            currentMonth = date.getMonth()
-        } else {
-            date = new Date();
-        }
-        render()
-    })
-})
+function atualizarDiasTela(PrimeiroDiaSemana) {
+    const linhaDia = document.getElementById('dayRow')
+    const linhaSemana = document.getElementById('dateRow')
+    linhaDia.innerHTML = ''
+    linhaSemana.innerHTML = ''
+
+    for (let i = 0; i < 7; i++) {
+        const dia = new Date(PrimeiroDiaSemana)
+        dia.setDate(PrimeiroDiaSemana.getDate() + i)
+        const diaSemana = dia.toLocaleDateString('pt-BR', { weekday: 'short' })
+        const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: "2-digit" })
+
+        const celulaDia = document.createElement('td')
+        const celulaData = document.createElement('td')
+
+        celulaDia.textContent = diaSemana
+        celulaData.textContent = data
+
+        celulaDia.className = 'dia'
+        celulaData.className = 'data'
+
+        linhaDia.appendChild(celulaDia)
+        linhaSemana.appendChild(celulaData)
+    }
+}
+
+
+// let date = new Date();
+// let currentYear = date.getFullYear()
+// let currentMonth = date.getMonth()
+
+// const currentDate = document.querySelector('.current-date')
+// const days = document.querySelector('.days');
+// let monthName = months[date.getMonth()];
+// const prevNextIcon = document.querySelectorAll('.icons span')
+
+// const render = () => {
+//     let fisrtDateMonth = new Date(currentYear, currentMonth, 1).getDay()
+//     let lastDateMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
+//     let lastDayOfMonth = new Date(currentYear, currentMonth, lastDateMonth).getDay()
+//     let lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate()
+//     let day = ''
+
+//     for (let i = fisrtDateMonth; i > 0; i--) {
+//         day += `<li class='inativo'>${lastDateOfLastMonth - i + 1}</li>`
+//     }
+
+//     for (let s = 1; s <= lastDateMonth; s++) {
+//         let isToday = '';
+
+//         if (s === date.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
+//             isToday = 'ativo';
+//         } else {
+//             isToday = '';
+//         }
+        
+//         day += `<li class='${isToday}'>${s}</li>`
+//     }
+
+//     for (let i = lastDayOfMonth; i < 6; i++) {
+//         day += `<li class="inativo">${i - lastDayOfMonth + 1}</li>`
+//     }
+
+//     currentDate.innerText = `${months[currentMonth]} ${currentYear}`
+//     days.innerHTML = day
+// }
+// render()
+
+// prevNextIcon.forEach(icon => {
+//     icon.addEventListener('click', () => {
+//         currentMonth = icon.id === 'prev' ? currentMonth - 1 : currentMonth + 1
+
+//         if (currentMonth < 0 || currentMonth > 11) {
+//             date = new Date(currentYear, currentMonth, new Date().getDate())
+//             currentYear = date.getFullYear()
+//             currentMonth = date.getMonth()
+//         } else {
+//             date = new Date();
+//         }
+//         render()
+//     })
+// })

@@ -41,24 +41,68 @@
     padding: 0 10px;
     align-items: center;
     justify-content: center;
-    /* height: 37vh; */
+    height: 250px;
+    /* width: 250px; */
 }
 
 .wrapper {
     /* height: 380px; */
-    width: 380px;
-    background: #dce30ba9;
+    width: 500px;
+    /* background: #dce30ba9; */
     border-radius: 10px;
 }
 
 .wrapper .cabecalho-calendar {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    padding: 15px 30px 10px;
-    justify-content: space-between;
 }
 
-.cabecalho-calendar .icons {
+.ph-bold {
+    height: 38px;
+    width: 38px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0 10px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ph-bold:hover{
+    color: #ffd700;
+    background: #787977;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #eee;
+}
+
+th{
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #eee;
+}
+
+td{
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #eee;
+}
+
+.dia{
+    background-color: #ffd700;
+}
+
+
+/* .cabecalho-calendar .icons {
     display: flex;
 }
 
@@ -150,4 +194,4 @@
 
 .days li.ativo::before {
     background: #fdec02;
-}
+} */
