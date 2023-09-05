@@ -40,25 +40,17 @@
         <div class="calendar">
             <div class="wrapper">
                 <header class="cabecalho-calendar">
-                    <p class="current-date">ANO</p>
-                    <div class="icons">
-                        <span id="prev" class="ph-bold ph-caret-left prev"></span>
-                        <span id="next" class="ph-bold ph-caret-right next"></span>
-                    </div>
+                    <span onclick="mudarSemana(-1)" class="ph-bold ph-caret-left prev"></span>
+                    <h2 class="today">hoje</h2>
+                    <span onclick="mudarSemana(1)" class="ph-bold ph-caret-right next"></span>
                 </header>
-        
-                <div class="mes">
-                    <ul class="weeks">
-                        <li>Dom</li>
-                        <li>Seg</li>
-                        <li>Ter</li>
-                        <li>Qua</li>
-                        <li>Qui</li>
-                        <li>Sex</li>
-                        <li>Sab</li>
-                    </ul>
-                    <ul class="days"></ul>
-                </div>
+                <table id="DiasSemana">
+                    <tr>
+                        <th colspan="7">Dias da Semana</th>
+                    </tr>
+                    <tr id="dayRow"></tr>
+                    <tr id="dateRow"></tr>
+                </table>
             </div>
         </div>
     </div>
