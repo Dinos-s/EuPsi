@@ -153,6 +153,87 @@ nav ul li a:hover::before {
   border-color: #fff42c;
 }
 
+/* Inicio janela MODAL */
+ .janela_modal{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(77, 77, 77, 0.7); 
+    transition: all 0.4s;
+
+    /* z-index: 9999999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(33,37,41,.66);
+    display: none;
+    position: fixed; */
+} 
+
+.janela_modal:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+.janela_modal_cliente{
+    display: flex;
+    width: 80%;
+    height: 70px;
+    mix-blend-mode: normal;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-top: 0;
+    margin-bottom: 7px;
+    padding-top: 0;
+    text-decoration: none;
+    /* display: block; */
+    position: relative;
+    top: 5%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    overflow: auto;
+    
+}
+
+.modal_conteiner {
+    border-radius: 4px;
+    position: relative;
+    width: 500px;
+    max-width: 90%;
+    background: #fff;
+    padding: 1em 2em;
+}
+
+.modal_footer {
+    text-align: right;
+    margin-top: 50px;
+}
+
+.modal_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #585858;
+    text-decoration: none;
+}
+
+.modal_footer_btn_close {
+    width: 150px;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #cfcca8;
+    color: #000000;
+    border-radius: 3px;
+}  
+/* Fim janela MODAL */
+
 /* SOBRE */ 
 .titulo_sobre{
     padding: 20px;
