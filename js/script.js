@@ -15,7 +15,6 @@ fetch("dados.json").then((res) => {
     res.json().then((data) => {
         data.psicologos.forEach((psi) => { // extraindo os psicologos do json e os transformando em cards separados;
             cardContainer.innerHTML += `
-            <a href="agendamento.html?psi=${encodeURIComponent(psi.nome)}" class="card-link">
                 <div class='card'>
                         <div class="background"></div>
                     <div class="avatar">
@@ -27,12 +26,23 @@ fetch("dados.json").then((res) => {
                         <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
                         <p class="cidade">${psi.cidade}</p>
                     </div>
-                </div>
-            </a>`
+
+                    <div class="calendar">
+                        <div class="wrapper">
+                            <table id="DiasSemana">
+                                <tr>
+                                    <th colspan="7">Dias da Semana</th>
+                                </tr>
+                                <tr id="dayRow"></tr>
+                                <tr id="dateRow"></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>`
         })
     })
 })
-
 // modo dinamico do agendamento
 const paramURL = new URLSearchParams(window.location.search)
 const psiNome = paramURL.get('psi')

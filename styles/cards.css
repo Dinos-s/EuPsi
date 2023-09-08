@@ -1,18 +1,19 @@
 .card-Container{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     padding: 25px 25px;
+    justify-content: center;
+    align-items: center;
 }
 
 .card {
     display: grid;
-    grid-template-rows: 10px 48px 48px 1fr;
-    grid-template-columns: 1fr;
+    grid-template-rows: 10px repeat(2, 48px) 1fr;
+    grid-template-columns: repeat(2, 1fr);
     border-radius: 20px 20px 16px 16px;
     background-color: white;
     cursor: pointer;
-    width: 300px;
+    width: 145vh;
     border: 1px solid black;
     margin: 25px 30px;
 }
@@ -51,7 +52,6 @@
 
 .especialidade {
     font-weight: bold;
-    margin: 16px;
 }
 
 .cidade {
@@ -70,6 +70,10 @@
     grid-row: 4 / 5;
     grid-column: 1 / 1;
     padding: 0px 24px 24px 24px;
+}
+
+.content > h4, p {
+    margin-bottom: 12px;
 }
 
 .card-Container > .card-link {
