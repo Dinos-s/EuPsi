@@ -58,6 +58,55 @@ fetch('dados.json').then((res) => {
             content.appendChild(profileCRP)
             content.appendChild(profileCidade)
 
+            //calendario dinamico
+            const calendarDiv = document.createElement('div')
+            calendarDiv.classList.add('calendar')
+
+            const calendarWrapper = document.createElement('div')
+            calendarWrapper.classList.add('wrapper')
+
+            const calendarTable = document.createElement('table')
+            calendarTable.id = 'DiasSemana';
+
+            // Estrutura do calendario
+            const headerRow = document.createElement('tr')
+            const linhaDia = document.createElement('tr')
+            const linhaData = document.createElement('tr')
+
+            const semana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
+
+            semana.forEach((dia) => {
+                const headerCell = document.createElement('th')
+                headerCell.textContent = dia
+                headerRow.appendChild(headerCell)
+            })
+
+            // Dias da semana
+            for (let i = 0; i < 7; i++) {
+                const dia = new Date();
+                dia.setDate(dia.getDate() + i);
+                const diaSemana = dia.toLocaleDateString('pt-BR', { weekday: 'short' });
+                const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+
+                const celulaDia = document.createElement('td');
+                celulaDia.textContent = diaSemana;
+                celulaDia.className = 'dia'
+                linhaDia.appendChild(celulaDia);
+
+                const celulaData = document.createElement('td');
+                celulaData.textContent = data;
+                celulaData.className = 'data'
+                linhaData.appendChild(celulaData);
+            }
+
+            calendarTable.appendChild(headerRow)
+            calendarTable.appendChild(linhaDia)
+            calendarTable.appendChild(linhaData)
+
+            calendarWrapper.appendChild(calendarTable)
+            calendarDiv.appendChild(calendarWrapper)
+            card.appendChild(calendarDiv)
+
             cardContainer.appendChild(card)
         })
     })
