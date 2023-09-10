@@ -10,39 +10,94 @@ navLinks.forEach(link => {
 });
 
 // pegando usuarios do json
+
 const cardContainer = document.querySelector('.card-Container')
-fetch("dados.json").then((res) => {
+fetch('dados.json').then((res) => {
     res.json().then((data) => {
-        data.psicologos.forEach((psi) => { // extraindo os psicologos do json e os transformando em cards separados;
-            cardContainer.innerHTML += `
-                <div class='card'>
-                        <div class="background"></div>
-                    <div class="avatar">
-                        <img src="${psi.profile}" alt="picture">
-                    </div>
-                    <div class="content">
-                        <h4 class="perfil">${psi.nome}</h4>
-                        <p class="especialidade">${psi.especialidade}</p>
-                        <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
-                        <p class="cidade">${psi.cidade}</p>
-                    </div>
+        data.psicologos.forEach((psi) => {
+            // aqui está criando os elementos e classes do interior do card 
+            const card = document.createElement('div')
+            card.classList.add('card')
 
-                    <div class="calendar">
-                        <div class="wrapper">
-                            <table id="DiasSemana">
-                                <tr>
-                                    <th colspan="7">Dias da Semana</th>
-                                </tr>
-                                <tr id="dayRow"></tr>
-                                <tr id="dateRow"></tr>
-                            </table>
-                        </div>
-                    </div>
+            const profileImage = document.createElement('div');
+            profileImage.classList.add('avatar')
 
-                </div>`
+            const background = document.createElement('div')
+            background.classList.add('background')
+
+            const img = document.createElement('img')
+            img.src = psi.profile;
+            img.alt = "picture";
+
+            const content = document.createElement('div')
+            content.classList.add('content')
+
+            const profileName = document.createElement('h4')
+            profileName.textContent = psi.nome
+            profileName.classList.add('perfil')
+
+            const profileEspecialidade = document.createElement('p');
+            profileEspecialidade.textContent = psi.especialidade;
+            profileEspecialidade.classList.add('especialidade');
+      
+            const profileCRP = document.createElement('p');
+            profileCRP.textContent = `${psi.CRP} | CRP - ${psi.regiao} Região`;
+            profileCRP.classList.add('crp');
+      
+            const profileCidade = document.createElement('p');
+            profileCidade.textContent = psi.cidade;
+            profileCidade.classList.add('cidade');
+            
+            // abaixo está listado os cards dos psicologos
+            card.appendChild(background)
+            card.appendChild(profileImage)
+            profileImage.appendChild(img)
+            card.appendChild(content)
+            content.appendChild(profileName)
+            content.appendChild(profileEspecialidade)
+            content.appendChild(profileCRP)
+            content.appendChild(profileCidade)
+
+            cardContainer.appendChild(card)
         })
     })
 })
+
+// const cardContainer = document.querySelector('.card-Container')
+// fetch("dados.json").then((res) => {
+//     res.json().then((data) => {
+//         data.psicologos.forEach((psi) => { // extraindo os psicologos do json e os transformando em cards separados;
+//             cardContainer.innerHTML += `
+//             <a href='agendamento.html?psi=${encodeURIComponent(psi.nome)}' class='card-link'>
+//                 <div class='card'>
+//                         <div class="background"></div>
+//                     <div class="avatar">
+//                         <img src="${psi.profile}" alt="picture">
+//                     </div>
+//                     <div class="content">
+//                         <h4 class="perfil">${psi.nome}</h4>
+//                         <p class="especialidade">${psi.especialidade}</p>
+//                         <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
+//                         <p class="cidade">${psi.cidade}</p>
+//                     </div>
+
+//                     <div class="calendar">
+//                         <div class="wrapper">
+//                             <table id="DiasSemana">
+//                                 <tr>
+//                                     <th colspan="7">Dias da Semana</th>
+//                                 </tr>
+//                                 <tr id="dayRow"></tr>
+//                                 <tr id="dateRow"></tr>
+//                             </table>
+//                         </div>
+//                     </div>
+
+//                 </div>
+//             </a>`   
+//         })
+//     })
+// })
 // modo dinamico do agendamento
 const paramURL = new URLSearchParams(window.location.search)
 const psiNome = paramURL.get('psi')
