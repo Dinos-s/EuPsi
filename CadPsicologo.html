@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./styles/contatos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <title>EuPSI - Cadastro Paciente</title>
+    <title>EuPSI - Cadastro Psicologo/title>
 </head>
 <body>
     <header>
@@ -46,33 +46,37 @@
         </div>
     </header>
 
-    <div class="cadastra_doutor">
-        <h1>EuPSI - Cadastro Paciente</h1>
+    <div class="cadastra_psicologo">
+        <h1>EuPSI - Cadastro Psicologo</h1>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" placeholder="Nos diga seu nome">
 
         <label for="crp">CRP:</label>
         <input type="text" id="crp" placeholder="Digite seu CRP">
 
-        <label for="valorhora">Valor por hora:</label>
+        <label for="valorhora">Valor da sessão:</label>
         <input type="number" id="valorhora" placeholder="Nos diga o valor de sua sessão">
+
+        <label for="valorhora">Tempo da sessão:</label>
+        <input type="number" id="valorhora" placeholder="Quanto tempo dura sua sessão (em minutos)">
 
         <label for="email">Email:</label>
         <input required type="email" id="email" placeholder="Informe se e-mail">
 
-        <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" cols="40" rows="8" placeholder="Deixe uma Mensagem"></textarea>
+        <label for="email">Localidade:</label>
+        <input required type="email" id="email" placeholder="Informe se e-mail">
 
-        <button type="submit">Enviar</button>
+
         
-        Valor / hora 
         Abordagem
         Localidade 
         Agenda semanal - de forma que ele mesmo altere sempre que quiser 
         Link para pagamento via cartão de crédito
         
+        <label for="mensagem">Abordagem:</label>
+        <textarea id="mensagem" cols="40" rows="8" placeholder="Falenos um pouco mais sobre você"></textarea>
 
-
+        <button type="submit">Enviar</button>
     </div>
 
     <footer>

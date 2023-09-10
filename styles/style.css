@@ -167,7 +167,7 @@ nav ul li a:hover::before {
     justify-content: center;
     background: rgba(77, 77, 77, 0.7); 
     transition: all 0.4s;
-    height: 1000px;
+    /* height: 1000px; */
 } 
 
 .janela_modal:target {
