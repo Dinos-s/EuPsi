@@ -6,58 +6,59 @@
     <link rel="icon" type="image/x-icon" href="./assets/eupsi.png">
     
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/contatos.css">
+    <link rel="stylesheet" href="./styles/CadPaciente.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <title>Contato - EuPSI</title>
+    <title>EuPSI - Cadastro Paciente</title>
 </head>
 <body>
     <header>
         <!-- LOGO -->
-                <a href="index.html" class="logo">
-                    <img src="./assets/eupsi.png" alt="teste">
-                </a>
-        
-                <!-- MENU -->
-                <nav>
-                    <ul class="menu">
-                        <li><a class="active" href="index.html">início</a></li>
-                        <li><a href="procuraPsi.html">procurar psicólogo</a></li>
-                        <li><a href="#">plano psicologo</a></li>
-                        <li><a href="contato.html">contato</a></li>
-                    </ul>
-                </nav>
-        
-                <div class="acesso">
-                    <li><a href="#">Entrar</a></li>
-                    <li><a href="#">Cadastro</a></li>
-                    
-                    <section class="icons_rede_sociais">
-                        <!-- LINK INSTA -->
-                        <a href="https://www.instagram.com/eupsi.insta/" target="_blank">
-                            <i class="fab fa-instagram"></i>					
-                        </a>
-        
-                        <!-- LINK WHATSAPP -->
-                        <a href="https://api.whatsapp.com/send?phone=5581982317474" target="_blank">
-                            <i class="fab fa-whatsapp"></i>					
-                        </a>
-                    </section>
-                </div>
-            </header>
+        <a href="index.html" class="logo">
+            <img src="./assets/eupsi.png" alt="teste">
+        </a>
 
-    <div class="contato">
-        <h1>Contato EuPSI</h1>
+        <!-- MENU -->
+        <nav>
+            <ul class="menu">
+                <li><a class="active" href="index.html">início</a></li>
+                <li><a href="procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="#">plano psicologo</a></li>
+                <li><a href="contato.html">contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="acesso">
+            <li><a href="#">Entrar</a></li>
+            <li><a href="#">Cadastro</a></li>
+            
+            <section class="icons_rede_sociais">
+                <!-- LINK INSTA -->
+                <a href="https://www.instagram.com/eupsi.insta/" target="_blank">
+                    <i class="fab fa-instagram"></i>					
+                </a>
+
+                <!-- LINK WHATSAPP -->
+                <a href="https://api.whatsapp.com/send?phone=5581982317474" target="_blank">
+                    <i class="fab fa-whatsapp"></i>					
+                </a>
+            </section>
+        </div>
+    </header>
+
+    <div class="cadastra_paciente">
+        <h1>EuPSI - Cadastro Paciente</h1>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" placeholder="Nos diga seu nome">
+
+        <label for="telefone">Telefone:</label>
+        <input required type="number" id="telefone" placeholder="Informe seu telefone">
 
         <label for="email">Email:</label>
         <input required type="email" id="email" placeholder="Informe se e-mail">
 
-        <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" cols="40" rows="8" placeholder="Deixe uma Mensagem"></textarea>
-
         <button type="submit">Enviar</button>
+        
     </div>
 
     <footer>
@@ -78,8 +79,7 @@
                <li><a href="contato.html">contato</a></li>
            </ul>
         </section>
-   </footer>
-   
-   <script src="./js/script.js"></script>
+    </footer>
+    <script src="./js/script.js"></script>
 </body>
 </html>

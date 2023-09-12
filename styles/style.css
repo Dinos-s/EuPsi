@@ -69,6 +69,17 @@ nav ul li a:hover::before {
     transform: scaleX(1);
 }
 
+.acesso{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2rem;
+    text-align: center;
+}
+.icons_rede_sociais > a {
+    padding-top: 10px;
+    margin: 10px;
+}
+
 .img-fundo{
     position: absolute;
     z-index: -1;
@@ -79,7 +90,11 @@ nav ul li a:hover::before {
     justify-content: center;
 }
 
+<<<<<<< HEAD
+.img-fundo .consulta{
+=======
 .img-fundo > .consulta{
+>>>>>>> c209851766b5fa492f6ab67e5443c9df08a74681
     height: 100vh;
     /* width: 100vw; */
 }
@@ -101,6 +116,7 @@ nav ul li a:hover::before {
     padding: 50px;
     z-index: 1;
     margin-top: 200px; 
+    padding-bottom: 160px;
 }
 
 .banner h1 {
@@ -141,7 +157,151 @@ nav ul li a:hover::before {
   border-color: #fff42c;
 }
 
+/* Inicio janela MODAL */
+.janela_modal{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(77, 77, 77, 0.7); 
+    transition: all 0.4s;
+    /* height: 1000px; */
+} 
+
+.janela_modal:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+.modal_conteiner > h3{
+    justify-content:  center;
+    display: flex;
+}
+
+.modal_conteiner > h5{
+    justify-content:  center;
+    display: flex;
+    color: #9ca3af;
+}
+
+.janela_modal_cliente{
+    width: 90%;
+    height: 70px;
+    mix-blend-mode: normal;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-bottom: 7px;
+    padding-top: 0;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    top: 5%;
+    bottom: 10%;
+    left: 5%;
+    right: 5%;
+    /* overflow: auto; */
+    /* background-color: red; */
+}
+
+.janela_modal_cliente_icons{
+    margin-top: 14px;
+    margin-left: 14px;
+    position: absolute;
+    top: 3%;
+}
+
+.janela_modal_cliente_titulo{
+    width: 100%;
+    color: #1f2937;
+    padding-top: 11px;
+    padding-left: 50px;
+    font-family: Source Sans Pro,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.janela_modal_cliente_frase{
+    width: 100%;
+    direction: ltr;
+    color: #9ca3af; 
+    text-transform: none;
+    padding-left: 50px;
+    font-family: Source Sans Pro,sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    overflow: visible;
+}
+
+.modal_conteiner {
+    border-radius: 15px;
+    position: relative;
+    width: 500px;
+    max-width: 90%;
+    background: #fff;
+    padding: 1em 2em;
+}
+
+.modal_footer {
+    text-align: right;
+    margin-top: 50px;
+}
+
+.modal_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #585858;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.modal_footer_btn_close {
+    width: 150px;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #cfcca8;
+    color: #000000;
+    border-radius: 3px;
+}  
+/* Fim janela MODAL */
+
+/* SOBRE */ 
+.titulo_sobre{
+    padding: 20px;
+    padding-bottom: 0px;
+    text-align: center;
+    /* background-color: #f8f7a9; */
+}
+
+.titulo_sobre > h2 {
+    /* background-color: #f8f7a9; */
+}
+
+.sobre{
+    /* ---Config margens--- */
+    padding: 10%;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* ---Informoções texto--- */
+    text-align: justify;
+    /* font-size:  1,5rem; */
+    line-height: 1.4rem;
+    /* background-color: #f8f7a9; */
+}
+
+/* FOOTER [rodapé] */
 footer {
+    display: flex;
     margin-top: 100px;
     text-align: justify;
     border-top: 2px solid #dfd51a;
@@ -151,6 +311,23 @@ footer {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-footer > p{
-    display: flex;
+footer > .f2{
+    /* margin: 100px; */
+    padding: 15px;
+    margin-right: 22px;
+    width: 1000px;
+}
+
+footer > .f3{
+  padding: 10px;
+  display: flex;
+  /* background-color: blue; */
+}
+
+footer > .f3 > .menuf{
+/* background-color: aqua; */
+font-size: 0.7rem;
+text-align: center;
+line-height: 0.9rem;
+
 }
