@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./assets/eupsi.png">
-    
+
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/calendar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -53,28 +54,32 @@
             <img class='avatar' src="./assets/images.jpg" alt="psicologo">
             <section class="info">
                 <h2>Bruno Souza</h2>
-                <p><span class="crp">CRP: 12/345678</span> | <span class="city">Recife</span></p>
+                <p class="crp"><span class="crp">CRP: 12/345678</span> | <span class="city">Recife</span></p>
                 <p><span class="price">R$ 90</span>/ 50 min</p>
             </section>
         </div>
 
         <div class="calendar">
-            <div class="header">
-                <h2>Agendamento</h2>
-            </div>
-            <div class="dates">
-                <header class="mouth">
-                    <i class="ph-bold ph-caret-left prev" onclick="changeYear(-1)"></i>
-                    <span id="currentYear"></span>
-                    <i class="ph-bold ph-caret-right next" onclick="changeYear(1)"></i>
+            <div class="wrapper">
+                <header class="cabecalho-calendar">
+                    <span onclick="mudarSemana(-1)" class="ph-bold ph-caret-left prev"></span>
+                    <h2 class="today">hoje</h2>
+                    <span onclick="mudarSemana(1)" class="ph-bold ph-caret-right next"></span>
                 </header>
-                <main></main>
+                <table id="DiasSemana">
+                    <tr>
+                        <th colspan="7">Dias da Semana</th>
+                    </tr>
+                    <tr id="dayRow"></tr>
+                    <tr id="dateRow"></tr>
+                </table>
             </div>
         </div>
     </div>
-    
-    
+
+
     <footer>
+<<<<<<< HEAD
         <section class="f1">
            <img src="./assets/eupsi.png" alt="EuPSI" class="logo">
         </section>   
@@ -94,6 +99,17 @@
         </section>
    </footer>
     
+=======
+        <img src="./assets/eupsi.png" alt="EuPSI" class="logo">
+        <p>Eupsi é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários o
+            melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo e
+            profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida relacionada aos
+            serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com as diversas áreas da
+            psicologia, garantindo assim a melhor terapia para você.</p>
+    </footer>
+
+>>>>>>> c209851766b5fa492f6ab67e5443c9df08a74681
     <script src="./js/script.js"></script>
 </body>
+
 </html>
