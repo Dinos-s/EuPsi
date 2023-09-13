@@ -25,6 +25,15 @@
             "regiao": "12°",
             "especialidade": "Psicanalista",
             "profile": "./assets/perfil-default.png"
+        },
+
+        {
+            "nome": "Jose da Silva",
+            "cidade": "Garanhuns - RJ",
+            "CRP": "25/156786",
+            "regiao": "15°",
+            "especialidade": "Psicoligia",
+            "profile": "./assets/perfil-default.png"
         }
     ]
 }
