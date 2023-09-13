@@ -90,11 +90,7 @@ nav ul li a:hover::before {
     justify-content: center;
 }
 
-<<<<<<< HEAD
-.img-fundo .consulta{
-=======
 .img-fundo > .consulta{
->>>>>>> c209851766b5fa492f6ab67e5443c9df08a74681
     height: 100vh;
     /* width: 100vw; */
 }
@@ -281,9 +277,9 @@ nav ul li a:hover::before {
     /* background-color: #f8f7a9; */
 }
 
-.titulo_sobre > h2 {
-    /* background-color: #f8f7a9; */
-}
+/* .titulo_sobre > h2 {
+    /* background-color: #f8f7a9; /
+} */
 
 .sobre{
     /* ---Config margens--- */
