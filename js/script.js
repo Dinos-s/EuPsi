@@ -71,7 +71,9 @@ fetch('dados.json').then((res) => {
             // Estrutura do calendario
             const headerRow = document.createElement('tr')
             const linhaDia = document.createElement('tr')
+            linhaDia.id = "dayRow"
             const linhaData = document.createElement('tr')
+            linhaData.id = "dateRow"
 
             const semana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
 
@@ -81,10 +83,15 @@ fetch('dados.json').then((res) => {
                 headerRow.appendChild(headerCell)
             })
 
+            // definindo as variaveis inicias do dia
+            let diaZero = new Date()
+            let inicioSemanal = new Date(diaZero)
+            inicioSemanal.setDate(diaZero.getDate() - diaZero.getDay())
+
             // Dias da semana
             for (let i = 0; i < 7; i++) {
-                const dia = new Date();
-                dia.setDate(dia.getDate() + i);
+                const dia = new Date(inicioSemanal);
+                dia.setDate(inicioSemanal.getDate() + i);
                 const diaSemana = dia.toLocaleDateString('pt-BR', { weekday: 'short' });
                 const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
 
@@ -176,12 +183,12 @@ const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Jul
 
 let dataAtual = new Date()
 
-function mudarSemana(semana) {
-    dataAtual.setDate(dataAtual.getDate() + semana * 7)
-    const PrimeiroDiaSemana = new Date(dataAtual)
-    PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
-    atualizarDiasTela(PrimeiroDiaSemana)
-}
+// function mudarSemana(semana) {
+//     dataAtual.setDate(dataAtual.getDate() + semana * 7)
+//     const PrimeiroDiaSemana = new Date(dataAtual)
+//     PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
+//     atualizarDiasTela(PrimeiroDiaSemana)
+// }
 
 const PrimeiroDiaSemana = new Date(dataAtual)
 PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
@@ -214,29 +221,29 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
     }
 }
 
-function atualizarHorasTela() {
-    for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
-        const horaColumn = document.getElementById(`horaColumn${i}`);
-        horaColumn.innerHTML = '';
+// function atualizarHorasTela() {
+//     for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
+//         const horaColumn = document.getElementById(`horaColumn${i}`);
+//         horaColumn.innerHTML = '';
 
-        // Hora inicial
-        let horaAtual = new Date();
-        horaAtual.setMinutes(0); // Começa no minuto 0
+//         // Hora inicial
+//         let horaAtual = new Date();
+//         horaAtual.setMinutes(0); // Começa no minuto 0
 
-        for (let j = 0; j < 7; j++) { // esse gera a quantidade de horas do dia
-            const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+//         for (let j = 0; j < 7; j++) { // esse gera a quantidade de horas do dia
+//             const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-            const celulaHora = document.createElement('div');
-            celulaHora.textContent = horaFormatada;
-            celulaHora.className = 'hora';
+//             const celulaHora = document.createElement('div');
+//             celulaHora.textContent = horaFormatada;
+//             celulaHora.className = 'hora';
 
-            horaColumn.appendChild(celulaHora);
+//             horaColumn.appendChild(celulaHora);
 
-            // Avança 50 minutos
-            horaAtual.setMinutes(horaAtual.getMinutes() + 50);
-        }
-    }
-}
+//             // Avança 50 minutos
+//             horaAtual.setMinutes(horaAtual.getMinutes() + 50);
+//         }
+//     }
+// }
 
 // let date = new Date();
 // let currentYear = date.getFullYear()
