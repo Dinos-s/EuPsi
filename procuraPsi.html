@@ -9,13 +9,27 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="./styles/cards.css">
-
+    <link rel="stylesheet" href="./styles/calendar.css">
     <title>Procura Psicólogo - EuPSI(protótipo)</title>
 
 </head>
 
 <body>
     <header>
+        <a href="index.html" class="logo">
+            <img src="./assets/eupsi.png" alt="teste">
+        </a>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">início</a></li>
+                <li><a class="active" href="procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="#">plano psicologo</a></li>
+                <li><a href="contato.html">contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="card-Container">
         <!-- LOGO -->
                 <a href="index.html" class="logo">
                     <img src="./assets/eupsi.png" alt="teste">
@@ -51,7 +65,7 @@
     <div class="card-Container"></div>
     <!-- <div class="card">
         <div class="background">
-            <img src="./assets/paisagem.jpg" alt="background">
+            <!- <img src="./assets/paisagem.jpg" alt="background"> ->
         </div>
         <div class="avatar">
             <img src="./assets/images.jpg" alt="picture">
@@ -62,7 +76,19 @@
             <p class="crp">23579 / CRP - 4° Região</p>
             <p class="cidade">Recife - PE</p>
         </div>
+        <div class="calendar">
+            <div class="wrapper">
+                <table id="DiasSemana">
+                    <tr>
+                        <th colspan="7">Dias da Semana</th>
+                    </tr>
+                    <tr id="dayRow"></tr>
+                    <tr id="dateRow"></tr>
+                    </table>
+            </div>
+        </div>
     </div> -->
+</div>
 
     <footer>
         <section class="f1">

@@ -39,7 +39,7 @@
     display: flex;
     /* margin-top: 24px; */
     padding: 0 10px;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     height: 250px;
     /* width: 250px; */
@@ -47,7 +47,7 @@
 
 .wrapper {
     /* height: 380px; */
-    width: 500px;
+    width: 480px;
     /* background: #dce30ba9; */
     border-radius: 10px;
 }
