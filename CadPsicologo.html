@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/eupsi.png">
+    
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/CadPsicologo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>EuPSI - Cadastro Psicologo</title>
+</head>
+<body>
+    <header>
+        <!-- LOGO -->
+        <a href="index.html" class="logo">
+            <img src="./assets/eupsi.png" alt="teste">
+        </a>
+
+        <!-- MENU -->
+        <nav>
+            <ul class="menu">
+                <li><a class="active" href="index.html">início</a></li>
+                <li><a href="procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="#">plano psicologo</a></li>
+                <li><a href="contato.html">contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="acesso">
+            <li><a href="#">Entrar</a></li>
+            <li><a href="#">Cadastro</a></li>
+            
+            <section class="icons_rede_sociais">
+                <!-- LINK INSTA -->
+                <a href="https://www.instagram.com/eupsi.insta/" target="_blank">
+                    <i class="fab fa-instagram"></i>					
+                </a>
+
+                <!-- LINK WHATSAPP -->
+                <a href="https://api.whatsapp.com/send?phone=5581982317474" target="_blank">
+                    <i class="fab fa-whatsapp"></i>					
+                </a>
+            </section>
+        </div>
+    </header>
+
+    <div class="cadastra_psicologo">
+        <h1>EuPSI - Cadastro Psicologo</h1>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" placeholder="Nos diga seu nome">
+
+        <label for="crp">CRP:</label>
+        <input type="text" id="crp" placeholder="Digite seu CRP">
+
+        <label for="valorsessao">Valor da sessão:</label>
+        <input type="number" id="valorsessao" placeholder="Nos diga o valor de sua sessão">
+
+        <label for="temposessao">Tempo da sessão:</label>
+        <input type="number" id="temposessao" placeholder="Quanto tempo dura sua sessão (em minutos)">
+
+        <label for="email">Email:</label>
+        <input required type="email" id="email" placeholder="Informe se e-mail">
+
+        <label for="Localidade">Localidade:</label>
+        <input required type="text" id="Localidade" placeholder="Informe se e-mail">
+        
+        <label for="mensagem">Abordagem:</label>
+        <textarea id="mensagem" cols="40" rows="8" placeholder="Falenos um pouco mais sobre você"></textarea>
+
+        <button type="submit">Enviar</button>
+    </div>
+
+    <footer>
+        <section class="f1">
+           <img src="./assets/eupsi.png" alt="EuPSI" class="logo">
+        </section>   
+
+        <section class="f2">
+           <p>Eupsi é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários o melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo e profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida relacionada aos serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com as diversas áreas da psicologia, garantindo assim a melhor terapia para você.</p>
+        </section>
+
+        <section class="f3">
+           <ul class="menuf">
+               <li>Menu</li>
+               <li><a href="index.html">início</a></li>
+               <li><a href="procuraPsi.html">procurar psicólogo</a></li>
+               <li><a href="#">plano psicologo</a></li>
+               <li><a href="contato.html">contato</a></li>
+           </ul>
+        </section>
+    </footer>
+    <script src="./js/script.js"></script>
+</body>
+</html>
