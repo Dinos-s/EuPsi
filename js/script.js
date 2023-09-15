@@ -10,29 +10,150 @@ navLinks.forEach(link => {
 });
 
 // pegando usuarios do json
+
 const cardContainer = document.querySelector('.card-Container')
-fetch("dados.json").then((res) => {
+fetch('dados.json').then((res) => {
     res.json().then((data) => {
-        data.psicologos.forEach((psi) => { // extraindo os psicologos do json e os transformando em cards separados;
-            cardContainer.innerHTML += `
-            <a href="agendamento.html?psi=${encodeURIComponent(psi.nome)}" class="card-link">
-                <div class='card'>
-                        <div class="background"></div>
-                    <div class="avatar">
-                        <img src="${psi.profile}" alt="picture">
-                    </div>
-                    <div class="content">
-                        <h4 class="perfil">${psi.nome}</h4>
-                        <p class="especialidade">${psi.especialidade}</p>
-                        <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
-                        <p class="cidade">${psi.cidade}</p>
-                    </div>
-                </div>
-            </a>`
+        data.psicologos.forEach((psi) => {
+            // aqui está criando os elementos e classes do interior do card 
+            const card = document.createElement('div')
+            card.classList.add('card')
+
+            const profileImage = document.createElement('div');
+            profileImage.classList.add('avatar')
+
+            const background = document.createElement('div')
+            background.classList.add('background')
+
+            const img = document.createElement('img')
+            img.src = psi.profile;
+            img.alt = "picture";
+
+            const content = document.createElement('div')
+            content.classList.add('content')
+
+            const profileName = document.createElement('h4')
+            profileName.textContent = psi.nome
+            profileName.classList.add('perfil')
+
+            const profileEspecialidade = document.createElement('p');
+            profileEspecialidade.textContent = psi.especialidade;
+            profileEspecialidade.classList.add('especialidade');
+      
+            const profileCRP = document.createElement('p');
+            profileCRP.textContent = `${psi.CRP} | CRP - ${psi.regiao} Região`;
+            profileCRP.classList.add('crp');
+      
+            const profileCidade = document.createElement('p');
+            profileCidade.textContent = psi.cidade;
+            profileCidade.classList.add('cidade');
+            
+            // abaixo está listado os cards dos psicologos
+            card.appendChild(background)
+            card.appendChild(profileImage)
+            profileImage.appendChild(img)
+            card.appendChild(content)
+            content.appendChild(profileName)
+            content.appendChild(profileEspecialidade)
+            content.appendChild(profileCRP)
+            content.appendChild(profileCidade)
+
+            //calendario dinamico
+            const calendarDiv = document.createElement('div')
+            calendarDiv.classList.add('calendar')
+
+            const calendarWrapper = document.createElement('div')
+            calendarWrapper.classList.add('wrapper')
+
+            const calendarTable = document.createElement('table')
+            calendarTable.id = 'DiasSemana';
+
+            // Estrutura do calendario
+            const headerRow = document.createElement('tr')
+            const linhaDia = document.createElement('tr')
+            linhaDia.id = "dayRow"
+            const linhaData = document.createElement('tr')
+            linhaData.id = "dateRow"
+
+            const semana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
+
+            semana.forEach((dia) => {
+                const headerCell = document.createElement('th')
+                headerCell.textContent = dia
+                headerRow.appendChild(headerCell)
+            })
+
+            // definindo as variaveis inicias do dia
+            let diaZero = new Date()
+            let inicioSemanal = new Date(diaZero)
+            inicioSemanal.setDate(diaZero.getDate() - diaZero.getDay())
+
+            // Dias da semana
+            for (let i = 0; i < 7; i++) {
+                const dia = new Date(inicioSemanal);
+                dia.setDate(inicioSemanal.getDate() + i);
+                const diaSemana = dia.toLocaleDateString('pt-BR', { weekday: 'short' });
+                const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+
+                const celulaDia = document.createElement('td');
+                celulaDia.textContent = diaSemana;
+                celulaDia.className = 'dia'
+                linhaDia.appendChild(celulaDia);
+
+                const celulaData = document.createElement('td');
+                celulaData.textContent = data;
+                celulaData.className = 'data'
+                linhaData.appendChild(celulaData);
+            }
+
+            calendarTable.appendChild(headerRow)
+            calendarTable.appendChild(linhaDia)
+            calendarTable.appendChild(linhaData)
+
+            calendarWrapper.appendChild(calendarTable)
+            calendarDiv.appendChild(calendarWrapper)
+            card.appendChild(calendarDiv)
+
+            cardContainer.appendChild(card)
         })
     })
 })
 
+// const cardContainer = document.querySelector('.card-Container')
+// fetch("dados.json").then((res) => {
+//     res.json().then((data) => {
+//         data.psicologos.forEach((psi) => { // extraindo os psicologos do json e os transformando em cards separados;
+//             cardContainer.innerHTML += `
+//             <a href='agendamento.html?psi=${encodeURIComponent(psi.nome)}' class='card-link'>
+//                 <div class='card'>
+//                         <div class="background"></div>
+//                     <div class="avatar">
+//                         <img src="${psi.profile}" alt="picture">
+//                     </div>
+//                     <div class="content">
+//                         <h4 class="perfil">${psi.nome}</h4>
+//                         <p class="especialidade">${psi.especialidade}</p>
+//                         <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
+//                         <p class="cidade">${psi.cidade}</p>
+//                     </div>
+
+//                     <div class="calendar">
+//                         <div class="wrapper">
+//                             <table id="DiasSemana">
+//                                 <tr>
+//                                     <th colspan="7">Dias da Semana</th>
+//                                 </tr>
+//                                 <tr id="dayRow"></tr>
+//                                 <tr id="dateRow"></tr>
+//                             </table>
+//                         </div>
+//                     </div>
+
+//                 </div>
+//             </a>`   
+//         })
+//     })
+// })
 // modo dinamico do agendamento
 const paramURL = new URLSearchParams(window.location.search)
 const psiNome = paramURL.get('psi')
@@ -62,16 +183,17 @@ const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Jul
 
 let dataAtual = new Date()
 
-function mudarSemana(semana) {
-    dataAtual.setDate(dataAtual.getDate() + semana * 7)
-    const PrimeiroDiaSemana = new Date(dataAtual)
-    PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
-    atualizarDiasTela(PrimeiroDiaSemana)
-}
+// function mudarSemana(semana) {
+//     dataAtual.setDate(dataAtual.getDate() + semana * 7)
+//     const PrimeiroDiaSemana = new Date(dataAtual)
+//     PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
+//     atualizarDiasTela(PrimeiroDiaSemana)
+// }
 
 const PrimeiroDiaSemana = new Date(dataAtual)
 PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
 atualizarDiasTela(PrimeiroDiaSemana)
+atualizarHorasTela()
 
 function atualizarDiasTela(PrimeiroDiaSemana) {
     const linhaDia = document.getElementById('dayRow')
@@ -99,6 +221,29 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
     }
 }
 
+// function atualizarHorasTela() {
+//     for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
+//         const horaColumn = document.getElementById(`horaColumn${i}`);
+//         horaColumn.innerHTML = '';
+
+//         // Hora inicial
+//         let horaAtual = new Date();
+//         horaAtual.setMinutes(0); // Começa no minuto 0
+
+//         for (let j = 0; j < 7; j++) { // esse gera a quantidade de horas do dia
+//             const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+//             const celulaHora = document.createElement('div');
+//             celulaHora.textContent = horaFormatada;
+//             celulaHora.className = 'hora';
+
+//             horaColumn.appendChild(celulaHora);
+
+//             // Avança 50 minutos
+//             horaAtual.setMinutes(horaAtual.getMinutes() + 50);
+//         }
+//     }
+// }
 
 // let date = new Date();
 // let currentYear = date.getFullYear()
