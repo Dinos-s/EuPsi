@@ -10,7 +10,6 @@ navLinks.forEach(link => {
 });
 
 // pegando usuarios do json
-
 const cardContainer = document.querySelector('.card-Container')
 fetch('dados.json').then((res) => {
     res.json().then((data) => {
@@ -69,19 +68,12 @@ fetch('dados.json').then((res) => {
             calendarTable.id = 'DiasSemana';
 
             // Estrutura do calendario
-            const headerRow = document.createElement('tr')
             const linhaDia = document.createElement('tr')
             linhaDia.id = "dayRow"
             const linhaData = document.createElement('tr')
             linhaData.id = "dateRow"
 
             const semana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
-
-            semana.forEach((dia) => {
-                const headerCell = document.createElement('th')
-                headerCell.textContent = dia
-                headerRow.appendChild(headerCell)
-            })
 
             // definindo as variaveis inicias do dia
             let diaZero = new Date()
@@ -106,7 +98,6 @@ fetch('dados.json').then((res) => {
                 linhaData.appendChild(celulaData);
             }
 
-            calendarTable.appendChild(headerRow)
             calendarTable.appendChild(linhaDia)
             calendarTable.appendChild(linhaData)
 
