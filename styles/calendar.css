@@ -100,7 +100,11 @@ td{
     text-transform: uppercase;
 }
 
-
+#horas{
+    overflow: auto;
+    max-height: 200px;
+    border-collapse: collapse;
+}
 /* .cabecalho-calendar .icons {
     display: flex;
 }

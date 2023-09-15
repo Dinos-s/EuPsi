@@ -100,8 +100,27 @@ fetch('dados.json').then((res) => {
 
             calendarTable.appendChild(linhaDia)
             calendarTable.appendChild(linhaData)
-
             calendarWrapper.appendChild(calendarTable)
+            
+            // Aqui está o codigo para criar e add a tabela de horas(time) 
+            const tableTime = document.createElement('table')
+            tableTime.id = 'horas'
+
+            // cria os elementos do tabela
+            const colunasHora = []
+            for (let i = 0; i <= 7; i++){
+                const colunaHora = document.createElement('td')
+                colunaHora.id = `colunaHora${i}`
+                colunasHora.push(colunaHora)
+            }
+
+            const linhaHora = document.createElement('tr')
+            colunasHora.forEach((column) => {
+                linhaHora.appendChild(column)
+            })
+            tableTime.appendChild(linhaHora)
+
+            calendarWrapper.appendChild(tableTime)
             calendarDiv.appendChild(calendarWrapper)
             card.appendChild(calendarDiv)
 
