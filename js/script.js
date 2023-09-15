@@ -118,6 +118,7 @@ fetch('dados.json').then((res) => {
             colunasHora.forEach((column) => {
                 linhaHora.appendChild(column)
             })
+
             tableTime.appendChild(linhaHora)
 
             calendarWrapper.appendChild(tableTime)
@@ -129,42 +130,6 @@ fetch('dados.json').then((res) => {
     })
 })
 
-// const cardContainer = document.querySelector('.card-Container')
-// fetch("dados.json").then((res) => {
-//     res.json().then((data) => {
-//         data.psicologos.forEach((psi) => { // extraindo os psicologos do json e os transformando em cards separados;
-//             cardContainer.innerHTML += `
-//             <a href='agendamento.html?psi=${encodeURIComponent(psi.nome)}' class='card-link'>
-//                 <div class='card'>
-//                         <div class="background"></div>
-//                     <div class="avatar">
-//                         <img src="${psi.profile}" alt="picture">
-//                     </div>
-//                     <div class="content">
-//                         <h4 class="perfil">${psi.nome}</h4>
-//                         <p class="especialidade">${psi.especialidade}</p>
-//                         <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
-//                         <p class="cidade">${psi.cidade}</p>
-//                     </div>
-
-//                     <div class="calendar">
-//                         <div class="wrapper">
-//                             <table id="DiasSemana">
-//                                 <tr>
-//                                     <th colspan="7">Dias da Semana</th>
-//                                 </tr>
-//                                 <tr id="dayRow"></tr>
-//                                 <tr id="dateRow"></tr>
-//                             </table>
-//                         </div>
-//                     </div>
-
-//                 </div>
-//             </a>`   
-//         })
-//     })
-// })
-// modo dinamico do agendamento
 const paramURL = new URLSearchParams(window.location.search)
 const psiNome = paramURL.get('psi')
 fetch('dados.json').then(res => res.json())
@@ -231,82 +196,30 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
     }
 }
 
-// function atualizarHorasTela() {
-//     for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
-//         const horaColumn = document.getElementById(`horaColumn${i}`);
-//         horaColumn.innerHTML = '';
+function atualizarHorasTela() {
+    for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
+        const horaColumn = document.getElementById(`horaColumn${i}`);
+        horaColumn.innerHTML = '';
 
-//         // Hora inicial
-//         let horaAtual = new Date();
-//         horaAtual.setMinutes(0); // Começa no minuto 0
+        // Hora inicial
+        let horaAtual = new Date();
+        // horaAtual.setMinutes(0); // Começa no minuto 0
+        horaAtual.setHours(7, 0)
 
-//         for (let j = 0; j < 7; j++) { // esse gera a quantidade de horas do dia
-//             const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        let horaFinal = new Date();
+        horaFinal.setHours(22, 0)
 
-//             const celulaHora = document.createElement('div');
-//             celulaHora.textContent = horaFormatada;
-//             celulaHora.className = 'hora';
+        while (horaAtual < horaFinal) { // esse gera a quantidade de horas do dia
+            const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-//             horaColumn.appendChild(celulaHora);
+            const celulaHora = document.createElement('div');
+            celulaHora.textContent = horaFormatada;
+            celulaHora.className = 'hora';
 
-//             // Avança 50 minutos
-//             horaAtual.setMinutes(horaAtual.getMinutes() + 50);
-//         }
-//     }
-// }
+            horaColumn.appendChild(celulaHora);
 
-// let date = new Date();
-// let currentYear = date.getFullYear()
-// let currentMonth = date.getMonth()
-
-// const currentDate = document.querySelector('.current-date')
-// const days = document.querySelector('.days');
-// let monthName = months[date.getMonth()];
-// const prevNextIcon = document.querySelectorAll('.icons span')
-
-// const render = () => {
-//     let fisrtDateMonth = new Date(currentYear, currentMonth, 1).getDay()
-//     let lastDateMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
-//     let lastDayOfMonth = new Date(currentYear, currentMonth, lastDateMonth).getDay()
-//     let lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate()
-//     let day = ''
-
-//     for (let i = fisrtDateMonth; i > 0; i--) {
-//         day += `<li class='inativo'>${lastDateOfLastMonth - i + 1}</li>`
-//     }
-
-//     for (let s = 1; s <= lastDateMonth; s++) {
-//         let isToday = '';
-
-//         if (s === date.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
-//             isToday = 'ativo';
-//         } else {
-//             isToday = '';
-//         }
-        
-//         day += `<li class='${isToday}'>${s}</li>`
-//     }
-
-//     for (let i = lastDayOfMonth; i < 6; i++) {
-//         day += `<li class="inativo">${i - lastDayOfMonth + 1}</li>`
-//     }
-
-//     currentDate.innerText = `${months[currentMonth]} ${currentYear}`
-//     days.innerHTML = day
-// }
-// render()
-
-// prevNextIcon.forEach(icon => {
-//     icon.addEventListener('click', () => {
-//         currentMonth = icon.id === 'prev' ? currentMonth - 1 : currentMonth + 1
-
-//         if (currentMonth < 0 || currentMonth > 11) {
-//             date = new Date(currentYear, currentMonth, new Date().getDate())
-//             currentYear = date.getFullYear()
-//             currentMonth = date.getMonth()
-//         } else {
-//             date = new Date();
-//         }
-//         render()
-//     })
-// })
+            // Avança 50 minutos
+            horaAtual.setMinutes(horaAtual.getMinutes() + 30);
+        }
+    }
+}
