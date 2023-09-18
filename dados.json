@@ -26,5 +26,9 @@
             "especialidade": "Psicanalista",
             "profile": "./assets/perfil-default.png"
         }
+    ],
+
+    "hora_disp": [
+        
     ]
 }
