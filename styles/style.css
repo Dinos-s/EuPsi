@@ -16,11 +16,18 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+<<<<<<< HEAD
     /* padding: 10px 20px; */
     padding: 0px 20px;
     background-color: burlywood;
 
     /* position: fixed; */
+=======
+    padding: 10px 20px;
+
+    height: 85px;
+    
+>>>>>>> 6aa91b6d6ca1827b52d2992a4c774797d1ae3a75
 }
 
 .logo img, .logo {
