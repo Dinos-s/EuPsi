@@ -16,18 +16,10 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-<<<<<<< HEAD
-    /* padding: 10px 20px; */
-    padding: 0px 20px;
-    background-color: burlywood;
-
-    /* position: fixed; */
-=======
     padding: 10px 20px;
 
     height:65px;
     
->>>>>>> 6aa91b6d6ca1827b52d2992a4c774797d1ae3a75
 }
 
 .logo img, .logo {
@@ -45,8 +37,6 @@ header .menu{
     /* left: 0; Define a distância da esquerda */
     /* background-color: #333; Cor de fundo do menu */
     /* z-index: 1000; Define a ordem de empilhamento, para que o menu esteja acima de outros elementos */
-
-    
 }
 
 nav ul {
@@ -55,22 +45,13 @@ nav ul {
 }
 
 nav ul li {
-<<<<<<< HEAD
-    margin: 0 10px;
-    /* position: relative; */
-=======
     margin: 0 8px;
     position: relative;
->>>>>>> a698e6a9b2aae0f4e271317efcbab403a0436eec
 }
 
 nav ul li a {
     color: black;
-<<<<<<< HEAD
-    font-size: 16px;
-=======
     font-size: 14px;
->>>>>>> a698e6a9b2aae0f4e271317efcbab403a0436eec
     text-transform: uppercase;
     transition: color 0.3s;
 }
@@ -182,6 +163,32 @@ nav ul li a:hover::before {
 
 .banner ul li:hover {
   border-color: #fff42c;
+}
+
+/* SOBRE */ 
+.titulo_sobre{
+    padding: 20px;
+    padding-bottom: 0px;
+    text-align: center;
+    /* background-color: #f8f7a9; */
+}
+
+/* .titulo_sobre > h2 {
+    /* background-color: #f8f7a9; /
+} */
+
+.sobre{
+    /* ---Config margens--- */
+    padding: 10%;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* ---Informoções texto--- */
+    text-align: justify;
+    /* font-size:  1,5rem; */
+    line-height: 1.4rem;
+    /* background-color: #f8f7a9; */
 }
 
 /* Inicio janela MODAL */
@@ -300,32 +307,6 @@ nav ul li a:hover::before {
 }  
 /* Fim janela MODAL */
 
-/* SOBRE */ 
-.titulo_sobre{
-    padding: 20px;
-    padding-bottom: 0px;
-    text-align: center;
-    /* background-color: #f8f7a9; */
-}
-
-/* .titulo_sobre > h2 {
-    /* background-color: #f8f7a9; /
-} */
-
-.sobre{
-    /* ---Config margens--- */
-    padding: 10%;
-    padding-top: 0px;
-    padding-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    /* ---Informoções texto--- */
-    text-align: justify;
-    /* font-size:  1,5rem; */
-    line-height: 1.4rem;
-    /* background-color: #f8f7a9; */
-}
-
 /* FOOTER [rodapé] */
 footer {
     display: flex;
@@ -354,7 +335,6 @@ footer > .f3{
 footer > .f3 > .menuf{
 /* background-color: aqua; */
 font-size: 0.7rem;
-text-align: center;
+/* text-align: center; */
 line-height: 0.9rem;
-
 }
