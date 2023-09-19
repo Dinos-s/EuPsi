@@ -16,17 +16,30 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
+    padding: 0px 20px;
+    background-color: burlywood;
+
+    /* position: fixed; */
 }
 
 .logo img, .logo {
     width: 100px;
+    /* position: fixed; */
 }
 
 header .menu{
-    display: flex;
+    /* display: flex; */
     align-items: center;
     width: 100%;
+
+    /* position: fixed; Define a posição fixa para que o menu fique sempre visível na página */
+    /* top: 0; Define a distância do topo */
+    /* left: 0; Define a distância da esquerda */
+    /* background-color: #333; Cor de fundo do menu */
+    /* z-index: 1000; Define a ordem de empilhamento, para que o menu esteja acima de outros elementos */
+
+    
 }
 
 nav ul {
@@ -36,12 +49,12 @@ nav ul {
 
 nav ul li {
     margin: 0 10px;
-    position: relative;
+    /* position: relative; */
 }
 
 nav ul li a {
     color: black;
-    font-size: 17px;
+    font-size: 16px;
     text-transform: uppercase;
     transition: color 0.3s;
 }
@@ -74,6 +87,8 @@ nav ul li a:hover::before {
     flex-direction: column;
     line-height: 1.2rem;
     text-align: center;
+
+    /* position: fixed; */
 }
 .icons_rede_sociais > a {
     padding-top: 10px;
