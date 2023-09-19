@@ -18,7 +18,7 @@ header {
     justify-content: space-between;
     padding: 10px 20px;
 
-    height: 85px;
+    height:65px;
     
 }
 
@@ -38,13 +38,13 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 10px;
+    margin: 0 8px;
     position: relative;
 }
 
 nav ul li a {
     color: black;
-    font-size: 17px;
+    font-size: 14px;
     text-transform: uppercase;
     transition: color 0.3s;
 }
