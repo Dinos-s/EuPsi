@@ -25,7 +25,7 @@ header {
 =======
     padding: 10px 20px;
 
-    height: 85px;
+    height:65px;
     
 >>>>>>> 6aa91b6d6ca1827b52d2992a4c774797d1ae3a75
 }
@@ -55,13 +55,22 @@ nav ul {
 }
 
 nav ul li {
+<<<<<<< HEAD
     margin: 0 10px;
     /* position: relative; */
+=======
+    margin: 0 8px;
+    position: relative;
+>>>>>>> a698e6a9b2aae0f4e271317efcbab403a0436eec
 }
 
 nav ul li a {
     color: black;
+<<<<<<< HEAD
     font-size: 16px;
+=======
+    font-size: 14px;
+>>>>>>> a698e6a9b2aae0f4e271317efcbab403a0436eec
     text-transform: uppercase;
     transition: color 0.3s;
 }
