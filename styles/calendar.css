@@ -1,10 +1,10 @@
-.agendamento {
+/* .agendamento {
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
     align-items: center;
     justify-content: center;
-    /* margin-left: 65px; */
+    /* margin-left: 65px; *
     gap: 25px;
     width: auto;
 }
@@ -12,10 +12,10 @@
 .user {
     display: flex;
     gap: 15px;
-    /* margin-right: 20px; */
-    /* top: 150px; */
+    /* margin-right: 20px; *
+    /* top: 150px; *
     width: 500px;
-}
+} 
 
 .user > img.avatar{
     border-radius: 15%;
@@ -27,7 +27,7 @@
 
 .user > .info > p > span.crp {
     color: #d1ce34;
-}
+} */
 
 .price {
     font-size: x-large;
@@ -80,7 +80,6 @@
 table {
     border-collapse: collapse;
     width: 100%;
-    border: 1px solid #eee;
 }
 
 th{
@@ -88,7 +87,6 @@ th{
     font-weight: bold;
     text-align: center;
     padding: 8px;
-    border: 1px solid #eee;
 }
 
 td{
@@ -99,9 +97,14 @@ td{
 
 .dia{
     background-color: #ffd700;
+    text-transform: uppercase;
 }
 
-
+#horas{
+    overflow: auto;
+    max-height: 200px;
+    border-collapse: collapse;
+}
 /* .cabecalho-calendar .icons {
     display: flex;
 }

@@ -17,6 +17,9 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
+
+    height: 85px;
+    
 }
 
 .logo img, .logo {
