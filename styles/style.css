@@ -11,23 +11,16 @@ body {
 }
 
 header {
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
-<<<<<<< HEAD
     /* padding: 10px 20px; */
-    padding: 0px 20px;
-    background-color: burlywood;
-
-    /* position: fixed; */
-=======
-    padding: 10px 20px;
 
     height:65px;
-    
->>>>>>> 6aa91b6d6ca1827b52d2992a4c774797d1ae3a75
+    width: 100%;
+    position: fixed;
 }
 
 .logo img, .logo {
@@ -36,17 +29,9 @@ header {
 }
 
 header .menu{
-    /* display: flex; */
+    display: flex;
     align-items: center;
     width: 100%;
-
-    /* position: fixed; Define a posição fixa para que o menu fique sempre visível na página */
-    /* top: 0; Define a distância do topo */
-    /* left: 0; Define a distância da esquerda */
-    /* background-color: #333; Cor de fundo do menu */
-    /* z-index: 1000; Define a ordem de empilhamento, para que o menu esteja acima de outros elementos */
-
-    
 }
 
 nav ul {
@@ -55,22 +40,14 @@ nav ul {
 }
 
 nav ul li {
-<<<<<<< HEAD
-    margin: 0 10px;
-    /* position: relative; */
-=======
     margin: 0 8px;
     position: relative;
->>>>>>> a698e6a9b2aae0f4e271317efcbab403a0436eec
 }
 
 nav ul li a {
     color: black;
-<<<<<<< HEAD
-    font-size: 16px;
-=======
-    font-size: 14px;
->>>>>>> a698e6a9b2aae0f4e271317efcbab403a0436eec
+    font-size: 0.8rem;
+    font-weight: 500;
     text-transform: uppercase;
     transition: color 0.3s;
 }
@@ -100,15 +77,21 @@ nav ul li a:hover::before {
 
 .acesso{
     display: flex;
-    flex-direction: column;
     line-height: 1.2rem;
-    text-align: center;
-
-    /* position: fixed; */
+    justify-content: space-between ;
+    align-items: center;
 }
-.icons_rede_sociais > a {
-    padding-top: 10px;
+
+.acesso > li{
+    padding: 6px;
+    border: 2px solid rgb(136, 136, 136);
+    border-radius: 10px; 
     margin: 10px;
+}
+
+.icons_rede_sociais > a {
+    padding: 6px;
+    /* text-align: center; */
 }
 
 .img-fundo{
@@ -119,6 +102,7 @@ nav ul li a:hover::before {
     overflow: hidden;
     display: flex;
     justify-content: center;
+    padding-top: 3em;
 }
 
 .img-fundo .consulta{
@@ -140,9 +124,10 @@ nav ul li a:hover::before {
 .banner {
     text-align: center;
     background-color: transparent;
-    padding: 50px;
+    /* padding: 50px; */
+    padding-top: 16em;
     z-index: 1;
-    margin-top: 200px; 
+    /* margin-top: 200px;  */
     padding-bottom: 160px;
 }
 
@@ -352,7 +337,7 @@ footer > .f3{
 }
 
 footer > .f3 > .menuf{
-/* background-color: aqua; */
+background-color: aqua;
 font-size: 0.7rem;
 text-align: center;
 line-height: 0.9rem;
