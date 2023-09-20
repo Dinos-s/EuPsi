@@ -108,9 +108,9 @@ fetch('dados.json').then((res) => {
 
             // cria os elementos do tabela
             const colunasHora = []
-            for (let i = 0; i <= 7; i++){
+            for (let i = 1; i <= 7; i++){
                 const colunaHora = document.createElement('td')
-                colunaHora.id = `colunaHora${i}`
+                colunaHora.id = `horaColumn${i}`
                 colunasHora.push(colunaHora)
             }
 
@@ -124,8 +124,9 @@ fetch('dados.json').then((res) => {
             calendarWrapper.appendChild(tableTime)
             calendarDiv.appendChild(calendarWrapper)
             card.appendChild(calendarDiv)
-
+            
             cardContainer.appendChild(card)
+            atualizarHorasTela()
         })
     })
 })
@@ -212,11 +213,18 @@ function atualizarHorasTela() {
         while (horaAtual < horaFinal) { // esse gera a quantidade de horas do dia
             const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-            const celulaHora = document.createElement('div');
+            const celulaHora = document.createElement('input');
             celulaHora.textContent = horaFormatada;
+            celulaHora.type = 'radio'
+            celulaHora.name = 'hora'
+            celulaHora.value = horaFormatada
             celulaHora.className = 'hora';
 
+            const label = document.createElement('label')
+            label.textContent = horaFormatada;
+
             horaColumn.appendChild(celulaHora);
+            horaColumn.appendChild(label)
 
             // Avança 50 minutos
             horaAtual.setMinutes(horaAtual.getMinutes() + 30);
