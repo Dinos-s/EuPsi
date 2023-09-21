@@ -11,7 +11,7 @@
     /* align-items: center; */
     justify-content: center;
     height: 250px;
-    /* width: 250px; */
+    width: 420px;
 }
 
 .wrapper {
@@ -48,7 +48,7 @@
 
 table {
     border-collapse: collapse;
-    width: 90%;
+    width: 400px;
 }
 
 th{
@@ -60,7 +60,7 @@ th{
 
 td{
     text-align: center;
-    padding: 8px;
+    padding: 5px;
     border: 1px solid #eee;
 }
 
@@ -69,11 +69,12 @@ td{
     text-transform: uppercase;
 }
 
-#horas{
-    overflow: auto;
-    max-height: 200px;
-    border-collapse: collapse;
+#teste{
+    height: 120px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ccc;
 }
+
 
 /* .cabecalho-calendar .icons {
     display: flex;
