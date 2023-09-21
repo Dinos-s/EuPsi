@@ -11,23 +11,16 @@ body {
 }
 
 header {
-    /* background-color: #f2f2f2; */
+    background-color: #f2f2f2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
-<<<<<<< HEAD
     /* padding: 10px 20px; */
 
     height:65px;
     width: 100%;
     position: fixed;
-=======
-    padding: 10px 20px;
-
-    height:65px;
-    
->>>>>>> 6ba324e338cde990aec1ce59cf4757fa165a72c1
 }
 
 .logo img, .logo {
@@ -39,15 +32,6 @@ header .menu{
     display: flex;
     align-items: center;
     width: 100%;
-<<<<<<< HEAD
-=======
-
-    /* position: fixed; Define a posição fixa para que o menu fique sempre visível na página */
-    /* top: 0; Define a distância do topo */
-    /* left: 0; Define a distância da esquerda */
-    /* background-color: #333; Cor de fundo do menu */
-    /* z-index: 1000; Define a ordem de empilhamento, para que o menu esteja acima de outros elementos */
->>>>>>> 6ba324e338cde990aec1ce59cf4757fa165a72c1
 }
 
 nav ul {
@@ -62,12 +46,8 @@ nav ul li {
 
 nav ul li a {
     color: black;
-<<<<<<< HEAD
     font-size: 0.8rem;
     font-weight: 500;
-=======
-    font-size: 14px;
->>>>>>> 6ba324e338cde990aec1ce59cf4757fa165a72c1
     text-transform: uppercase;
     transition: color 0.3s;
 }
