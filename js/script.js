@@ -102,14 +102,15 @@ function criaPsiCard(psi) {
     calendarWrapper.appendChild(calendarTable);
 
     // Aqui está o código para criar e adicionar a tabela de horas (time)
+
     const tableTime = document.createElement('table');
-    tableTime.id = 'horas-scroll';
+    tableTime.className = 'horas-scroll';
 
     // Cria os elementos da tabela
     const colunasHora = [];
     for (let i = 1; i <= 7; i++) {
         const colunaHora = document.createElement('td');
-        colunaHora.id = `horaColumn${i}`;
+        colunaHora.className = `horaColumn${i}`;
         colunasHora.push(colunaHora);
     }
 
@@ -130,8 +131,8 @@ function criaPsiCard(psi) {
 fetch('dados.json').then((res) => {
     res.json().then((data) => {
         data.psicologos.forEach((psi) => {
-            const card = criaPsiCard(psi)
-            cardContainer.appendChild(card)
+            const card = criaPsiCard(psi);
+            cardContainer.appendChild(card);
             atualizarHorasTela()
         })
     })
@@ -165,12 +166,12 @@ const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Jul
 
 let dataAtual = new Date()
 
-// function mudarSemana(semana) {
-//     dataAtual.setDate(dataAtual.getDate() + semana * 7)
-//     const PrimeiroDiaSemana = new Date(dataAtual)
-//     PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
-//     atualizarDiasTela(PrimeiroDiaSemana)
-// }
+function mudarSemana(semana) {
+    dataAtual.setDate(dataAtual.getDate() + semana * 7)
+    const PrimeiroDiaSemana = new Date(dataAtual)
+    PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
+    atualizarDiasTela(PrimeiroDiaSemana)
+}
 
 const PrimeiroDiaSemana = new Date(dataAtual)
 PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
@@ -219,18 +220,11 @@ function atualizarHorasTela() {
         while (horaAtual < horaFinal) { // esse gera a quantidade de horas do dia
             const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-            const celulaHora = document.createElement('input');
-            celulaHora.textContent = horaFormatada;
-            celulaHora.type = 'radio'
-            celulaHora.name = 'hora'
-            celulaHora.value = horaFormatada
+            const celulaHora = document.createElement('div');
+            celulaHora.textContent = horaFormatada
             celulaHora.className = 'hora';
 
-            const label = document.createElement('label')
-            label.textContent = horaFormatada;
-
             horaColumn.appendChild(celulaHora);
-            horaColumn.appendChild(label)
 
             // Avança 50 minutos
             horaAtual.setMinutes(horaAtual.getMinutes() + 30);
