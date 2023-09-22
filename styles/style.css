@@ -8,6 +8,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    /* padding: 70px; */
 }
 
 header {
@@ -18,8 +19,12 @@ header {
     justify-content: space-between;
     padding: 10px 20px;
 
+<<<<<<< Updated upstream
     height:65px;
-    
+    width: 100%;
+=======
+    height: 85px;
+>>>>>>> Stashed changes
 }
 
 .logo img, .logo {
@@ -78,6 +83,7 @@ nav ul li a:hover::before {
     line-height: 1.2rem;
     text-align: center;
 }
+
 .icons_rede_sociais > a {
     padding-top: 10px;
     margin: 10px;
