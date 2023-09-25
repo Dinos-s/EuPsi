@@ -42,9 +42,15 @@ function criaPsiCard(psi) {
     profileCRP.textContent = `${psi.CRP} | CRP - ${psi.regiao} Região`;
     profileCRP.classList.add('crp');
 
+    const cidadePreco = document.createElement('section')
+    cidadePreco.classList.add('regular');
+
     const profileCidade = document.createElement('p');
     profileCidade.textContent = psi.cidade;
     profileCidade.classList.add('cidade');
+
+    const preco = document.createElement('p')
+    preco.innerHTML = '<span class="price">R$ 90</span>/50 min'
 
     // Abaixo está listado os cards dos psicólogos
     card.appendChild(background);
@@ -54,7 +60,9 @@ function criaPsiCard(psi) {
     content.appendChild(profileName);
     content.appendChild(profileEspecialidade);
     content.appendChild(profileCRP);
-    content.appendChild(profileCidade);
+    cidadePreco.appendChild(profileCidade);
+    cidadePreco.appendChild(preco)
+    content.appendChild(cidadePreco)
 
     // Calendário dinâmico
     const calendarDiv = document.createElement('div');
@@ -125,6 +133,7 @@ function criaPsiCard(psi) {
     calendarDiv.appendChild(calendarWrapper);
     card.appendChild(calendarDiv);
 
+    atualizarHorasTela()
     return card;
 }
 
@@ -133,7 +142,6 @@ fetch('dados.json').then((res) => {
         data.psicologos.forEach((psi) => {
             const card = criaPsiCard(psi);
             cardContainer.appendChild(card);
-            atualizarHorasTela()
         })
     })
 })
@@ -176,13 +184,13 @@ function mudarSemana(semana) {
 const PrimeiroDiaSemana = new Date(dataAtual)
 PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
 atualizarDiasTela(PrimeiroDiaSemana)
-atualizarHorasTela()
+// atualizarHorasTela()
 
 function atualizarDiasTela(PrimeiroDiaSemana) {
     const linhaDia = document.getElementById('dayRow')
     const linhaSemana = document.getElementById('dateRow')
-    linhaDia.innerHTML = ''
-    linhaSemana.innerHTML = ''
+    linhaDia.innerHTML += ''
+    linhaSemana.innerHTML += ''
 
     for (let i = 0; i < 7; i++) {
         const dia = new Date(PrimeiroDiaSemana)
