@@ -50,7 +50,11 @@ function criaPsiCard(psi) {
     profileCidade.classList.add('cidade');
 
     const preco = document.createElement('p')
-    preco.innerHTML = '<span class="price">R$ 90</span>/50 min'
+    preco.innerHTML = `<span class="price">R$ ${psi.preco}</span>/50 min`
+
+    const resumo = document.createElement('p')
+    resumo.className ='resumo'
+    resumo.textContent = psi.resumo
 
     // Abaixo está listado os cards dos psicólogos
     card.appendChild(background);
@@ -63,6 +67,7 @@ function criaPsiCard(psi) {
     cidadePreco.appendChild(profileCidade);
     cidadePreco.appendChild(preco)
     content.appendChild(cidadePreco)
+    content.appendChild(resumo)
 
     // Calendário dinâmico
     const calendarDiv = document.createElement('div');

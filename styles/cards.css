@@ -13,7 +13,8 @@
     border-radius: 20px 20px 16px 16px;
     background-color: white;
     cursor: pointer;
-    width: 130vh;
+    width: 53rem;
+    height: 60vh;
     border: 1px solid black;
     margin: 25px 30px;
 }
@@ -70,6 +71,8 @@
     grid-row: 4 / 5;
     grid-column: 1 / 1;
     padding: 0px 24px 24px 24px;
+    height: 150px;
+    width: 350px;
 }
 
 .content > h4, p {

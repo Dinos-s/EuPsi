@@ -5,8 +5,10 @@
             "cidade": "Recife - PE",
             "CRP": "12/345678",
             "regiao": "4°",
+            "preco":"30",
             "especialidade": "Psicoligia Pedriata",
-            "profile": "./assets/images.jpg"
+            "profile": "./assets/images.jpg",
+            "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard"
         },
 
         {
@@ -14,8 +16,10 @@
             "cidade": "São Paulo - SP",
             "CRP": "24/67949",
             "regiao": "2°",
+            "preco": "50",
             "especialidade": "Orientação profissional",
-            "profile": "./assets/perfil-default.png"
+            "profile": "./assets/perfil-default.png",
+            "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard"
         },
 
         {
@@ -23,8 +27,10 @@
             "cidade": "Araruama - RJ",
             "CRP": "25/156786",
             "regiao": "12°",
+            "preco": "120",
             "especialidade": "Psicanalista",
-            "profile": "./assets/perfil-default.png"
+            "profile": "./assets/perfil-default.png",
+            "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard"
         }
     ]
 }
