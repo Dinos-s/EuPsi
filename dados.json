@@ -8,7 +8,14 @@
             "preco":"30",
             "especialidade": "Psicoligia Pedriata",
             "profile": "./assets/images.jpg",
-            "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard"
+            "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
+            "horarios_atendimento": {
+                "segunda-feira": ["08:30 - 11:30", "14:30 - 17:30"],
+                "terça-feira": ["09:00 - 12:00", "15:00 - 18:00"],
+                "quarta-feira": ["08:00 - 11:00", "14:00 - 17:00"],
+                "quinta-feira": ["10:30 - 13:30", "16:30 - 19:30"],
+                "sexta-feira": ["09:30 - 12:30", "15:30 - 18:30"]
+            }
         },
 
         {
