@@ -69,8 +69,18 @@ td{
     text-transform: uppercase;
 }
 
-#teste{
-    height: 170px;
+button{
+    margin: 2px;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: #ffd700;
+    color: black;
+}
+
+.colunaTempo{
+    height: 178px;
     overflow-y: scroll;
     border-bottom: 1px solid #ccc;
 }

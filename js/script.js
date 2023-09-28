@@ -111,10 +111,13 @@ function criaPsiCard(psi) {
     }
 
     calendarTable.appendChild(linhaDia);
-    calendarTable.appendChild(linhaData);
+    // calendarTable.appendChild(linhaData);
     calendarWrapper.appendChild(calendarTable);
 
     // Aqui está o código para criar e adicionar a tabela de horas (time)
+
+    const containerTime = document.createElement('div')
+    containerTime.className = 'colunaTempo'
 
     const tableTime = document.createElement('table');
     tableTime.className = 'horas-scroll';
@@ -133,12 +136,12 @@ function criaPsiCard(psi) {
     });
 
     tableTime.appendChild(linhaHora);
-
-    calendarWrapper.appendChild(tableTime);
+    
+    containerTime.appendChild(tableTime)
+    calendarWrapper.appendChild(containerTime);
     calendarDiv.appendChild(calendarWrapper);
     card.appendChild(calendarDiv);
 
-    atualizarHorasTela()
     return card;
 }
 
@@ -147,6 +150,7 @@ fetch('dados.json').then((res) => {
         data.psicologos.forEach((psi) => {
             const card = criaPsiCard(psi);
             cardContainer.appendChild(card);
+            atualizarHorasTela()
         })
     })
 })
@@ -219,28 +223,37 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
 
 function atualizarHorasTela() {
     for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
-        const horaColumn = document.getElementById(`horaColumn${i}`);
-        horaColumn.innerHTML = '';
+        const horaColumns = document.querySelectorAll(`.horaColumn${i}`);
 
-        // Hora inicial
-        let horaAtual = new Date();
-        // horaAtual.setMinutes(0); // Começa no minuto 0
-        horaAtual.setHours(7, 0)
+        horaColumns.forEach((horaColumn) => {
+            horaColumn.innerHTML += '';
 
-        let horaFinal = new Date();
-        horaFinal.setHours(22, 0)
+            // Hora inicial
+            let horaAtual = new Date();
+            // horaAtual.setMinutes(0); // Começa no minuto 0
+            horaAtual.setHours(7, 0)
 
-        while (horaAtual < horaFinal) { // esse gera a quantidade de horas do dia
-            const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            let horaFinal = new Date();
+            horaFinal.setHours(22, 0)
 
-            const celulaHora = document.createElement('div');
-            celulaHora.textContent = horaFormatada
-            celulaHora.className = 'hora';
+            const ul = document.createElement('ul');
+            ul.className = 'hora-list'; // Adicione uma classe para a lista
 
-            horaColumn.appendChild(celulaHora);
+            while (horaAtual < horaFinal) { // esse gera a quantidade de horas do dia
+                const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-            // Avança 50 minutos
-            horaAtual.setMinutes(horaAtual.getMinutes() + 30);
-        }
+                const li = document.createElement('li');
+                const button = document.createElement('button');
+                button.textContent = horaFormatada;
+                button.className = 'hora-button'; // Adicione uma classe para o botão
+                li.appendChild(button);
+                ul.appendChild(li);
+
+                // Avança 50 minutos
+                horaAtual.setMinutes(horaAtual.getMinutes() + 50);
+            }
+
+            horaColumn.appendChild(ul); // Adicione a lista à coluna de hora
+        });
     }
 }
