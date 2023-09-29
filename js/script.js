@@ -222,19 +222,19 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
         const dia = new Date(PrimeiroDiaSemana)
         dia.setDate(PrimeiroDiaSemana.getDate() + i)
         const diaSemana = dia.toLocaleDateString('pt-BR', { weekday: 'short' })
-        const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: "2-digit" })
+        // const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: "2-digit" })
 
         const celulaDia = document.createElement('td')
-        const celulaData = document.createElement('td')
+        // const celulaData = document.createElement('td')
 
         celulaDia.textContent = diaSemana
-        celulaData.textContent = data
+        // celulaData.textContent = data
 
         celulaDia.className = 'dia'
-        celulaData.className = 'data'
+        // celulaData.className = 'data'
 
         linhaDia.appendChild(celulaDia)
-        linhaSemana.appendChild(celulaData)
+        // linhaSemana.appendChild(celulaData)
     }
 }
 

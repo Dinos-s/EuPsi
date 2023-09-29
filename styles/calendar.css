@@ -10,8 +10,8 @@
 }
 
 .wrapper {
-    /* height: 380px; */
-    width: 480px;
+    height: 380px;
+    /* width: 480px; */
     /* background: #ffd700; */
     border-radius: 10px;
 }

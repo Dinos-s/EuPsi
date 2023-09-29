@@ -71,6 +71,11 @@
     gap: 13px;
 }
 
+.price {
+    font-size: x-large;
+    font-weight: bold;
+}
+
 .card_inferior {
     text-align: justify;
     padding: 10px 25px;
