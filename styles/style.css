@@ -21,6 +21,7 @@ header {
 
     height:65px;
     width: 100%;
+    /* position: fixed; */
 }
 
 .logo img, .logo {
