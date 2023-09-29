@@ -17,11 +17,17 @@ function criaPsiCard(psi) {
     const card = document.createElement('div');
     card.classList.add('card');
 
-    const profileImage = document.createElement('div');
-    profileImage.classList.add('avatar');
-
     const background = document.createElement('div');
     background.classList.add('background');
+
+    const cardSuperior = document.createElement('div')
+    cardSuperior.classList.add('card_superior');
+
+    const lado1 = document.createElement('div')
+    lado1.classList.add('lado1');
+
+    const profileImage = document.createElement('div');
+    profileImage.classList.add('avatar');
 
     const img = document.createElement('img');
     img.src = psi.profile;
@@ -52,22 +58,33 @@ function criaPsiCard(psi) {
     const preco = document.createElement('p')
     preco.innerHTML = `<span class="price">R$ ${psi.preco}</span>/50 min`
 
+    const cardInferior = document.createElement('div')
+    cardInferior.classList.add('card_inferior')
+
     const resumo = document.createElement('p')
     resumo.className ='resumo'
     resumo.textContent = psi.resumo
 
     // Abaixo está listado os cards dos psicólogos
+    // colocando os elementos dentro dos elementos
     card.appendChild(background);
-    card.appendChild(profileImage);
+    card.appendChild(cardSuperior)
+    cardSuperior.appendChild(lado1)
+    lado1.appendChild(profileImage)
     profileImage.appendChild(img);
-    card.appendChild(content);
+    lado1.appendChild(content);
     content.appendChild(profileName);
     content.appendChild(profileEspecialidade);
     content.appendChild(profileCRP);
     cidadePreco.appendChild(profileCidade);
     cidadePreco.appendChild(preco)
     content.appendChild(cidadePreco)
-    content.appendChild(resumo)
+    cardInferior.appendChild(resumo)
+    card.appendChild(cardInferior)
+
+    //lado2 do card
+    const lado2 = document.createElement('div')
+    lado2.classList.add('lado2')
 
     // Calendário dinâmico
     const calendarDiv = document.createElement('div');
@@ -136,11 +153,11 @@ function criaPsiCard(psi) {
     });
 
     tableTime.appendChild(linhaHora);
-    
+    lado2.appendChild(calendarDiv)
+    cardSuperior.appendChild(lado2)
     containerTime.appendChild(tableTime)
     calendarWrapper.appendChild(containerTime);
     calendarDiv.appendChild(calendarWrapper);
-    card.appendChild(calendarDiv);
 
     return card;
 }
