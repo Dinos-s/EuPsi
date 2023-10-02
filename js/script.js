@@ -65,6 +65,15 @@ function criaPsiCard(psi) {
     resumo.className ='resumo'
     resumo.textContent = psi.resumo
 
+    const sobreBTN = document.createElement('button')
+    sobreBTN.textContent = 'Saber Mais'
+    sobreBTN.addEventListener('click', () => {
+        const pisicolgo = {nome: psi.nome}
+        const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
+        window.location.href = url
+    })
+
+
     // Abaixo está listado os cards dos psicólogos
     // colocando os elementos dentro dos elementos
     card.appendChild(background);
@@ -80,6 +89,7 @@ function criaPsiCard(psi) {
     cidadePreco.appendChild(preco)
     content.appendChild(cidadePreco)
     cardInferior.appendChild(resumo)
+    cardInferior.appendChild(sobreBTN)
     card.appendChild(cardInferior)
 
     //lado2 do card
@@ -161,10 +171,11 @@ function criaPsiCard(psi) {
     });
 
     tableTime.appendChild(linhaHora);
-    lado2.appendChild(calendarDiv)
     cardSuperior.appendChild(lado2)
     containerTime.appendChild(tableTime)
     calendarWrapper.appendChild(containerTime);
+    lado2.appendChild(calendarDiv)
+    
     calendarDiv.appendChild(calendarWrapper);
 
     return card;
@@ -197,6 +208,7 @@ fetch('dados.json').then(res => res.json())
             infoUser.textContent = doctor.nome
             crp.textContent = doctor.CRP
             city.textContent = doctor.cidade
+            price.textContent = `R$ ${doctor.preco}`
         }
     })
     .catch(error => {
