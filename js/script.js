@@ -97,6 +97,13 @@ function criaPsiCard(psi) {
     calendarTable.id = 'DiasSemana';
 
     // Estrutura do calendário
+    const linhaTitulo = document.createElement('tr')
+    linhaTitulo.className = 'linhaTitulo'
+    const colunaTitulo = document.createElement('td')
+    colunaTitulo.textContent = 'Horários Disponíveis'
+    colunaTitulo.setAttribute('colspan', '7')
+    linhaTitulo.appendChild(colunaTitulo)
+
     const linhaDia = document.createElement('tr');
     linhaDia.id = 'dayRow';
     const linhaData = document.createElement('tr');
@@ -127,6 +134,7 @@ function criaPsiCard(psi) {
         linhaData.appendChild(celulaData);
     }
 
+    calendarTable.appendChild(linhaTitulo)
     calendarTable.appendChild(linhaDia);
     // calendarTable.appendChild(linhaData);
     calendarWrapper.appendChild(calendarTable);
