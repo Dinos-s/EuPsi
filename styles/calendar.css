@@ -46,7 +46,7 @@ table {
     width: 400px;
 }
 
-th {
+th, .linhaTitulo {
     background-color: #f2f2f2;
     font-weight: bold;
     text-align: center;
