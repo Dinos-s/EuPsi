@@ -11,6 +11,7 @@ body {
     /* padding: 70px; */
 }
 
+/* Início da barra de navegação */
 header {
     background-color: #f2f2f2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -19,16 +20,17 @@ header {
     justify-content: space-between;
     padding: 10px 20px;
 
-    height:65px;
+    height: 65px;
     width: 100%;
     /* position: fixed; */
 }
 
-.logo img, .logo {
+.logo img,
+.logo {
     width: 100px;
 }
 
-header .menu{
+header .menu {
     display: flex;
     align-items: center;
     width: 100%;
@@ -74,19 +76,26 @@ nav ul li a:hover::before {
     transform: scaleX(1);
 }
 
-.acesso{
+.acesso {
     display: flex;
     flex-direction: column;
     line-height: 1.2rem;
     text-align: center;
 }
 
-.icons_rede_sociais > a {
+.icons_rede_sociais>a {
     padding-top: 10px;
     margin: 10px;
 }
+/* Fim da barra de navegação */
 
-.img-fundo{
+/* Início da pagina */
+main {
+    position: relative;
+    top: 20px;
+}
+
+.img-fundo {
     position: absolute;
     z-index: -1;
     width: 100%;
@@ -96,12 +105,12 @@ nav ul li a:hover::before {
     justify-content: center;
 }
 
-.img-fundo > .consulta{
+.img-fundo>.consulta {
     height: 100vh;
     /* width: 100vw; */
 }
 
-.img-fundo::after{
+.img-fundo::after {
     content: "";
     background-color: #dfd51a;
     height: 100vh;
@@ -117,7 +126,7 @@ nav ul li a:hover::before {
     background-color: transparent;
     padding: 50px;
     z-index: 1;
-    margin-top: 200px; 
+    margin-top: 200px;
     padding-bottom: 160px;
 }
 
@@ -152,15 +161,15 @@ nav ul li a:hover::before {
     color: #dfd51a;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s; 
+    transition: color 0.3s;
 }
 
 .banner ul li:hover {
-  border-color: #fff42c;
+    border-color: #fff42c;
 }
 
 /* Inicio janela MODAL */
-.janela_modal{
+.janela_modal {
     visibility: hidden;
     opacity: 0;
     position: absolute;
@@ -171,28 +180,28 @@ nav ul li a:hover::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(77, 77, 77, 0.7); 
+    background: rgba(77, 77, 77, 0.7);
     transition: all 0.4s;
     /* height: 1000px; */
-} 
+}
 
 .janela_modal:target {
     visibility: visible;
     opacity: 1;
-  }
+}
 
-.modal_conteiner > h3{
-    justify-content:  center;
+.modal_conteiner>h3 {
+    justify-content: center;
     display: flex;
 }
 
-.modal_conteiner > h5{
-    justify-content:  center;
+.modal_conteiner>h5 {
+    justify-content: center;
     display: flex;
     color: #9ca3af;
 }
 
-.janela_modal_cliente{
+.janela_modal_cliente {
     width: 90%;
     height: 70px;
     mix-blend-mode: normal;
@@ -212,30 +221,30 @@ nav ul li a:hover::before {
     /* background-color: red; */
 }
 
-.janela_modal_cliente_icons{
+.janela_modal_cliente_icons {
     margin-top: 14px;
     margin-left: 14px;
     position: absolute;
     top: 3%;
 }
 
-.janela_modal_cliente_titulo{
+.janela_modal_cliente_titulo {
     width: 100%;
     color: #1f2937;
     padding-top: 11px;
     padding-left: 50px;
-    font-family: Source Sans Pro,sans-serif;
+    font-family: Source Sans Pro, sans-serif;
     font-size: 16px;
     font-weight: 600;
 }
 
-.janela_modal_cliente_frase{
+.janela_modal_cliente_frase {
     width: 100%;
     direction: ltr;
-    color: #9ca3af; 
+    color: #9ca3af;
     text-transform: none;
     padding-left: 50px;
-    font-family: Source Sans Pro,sans-serif;
+    font-family: Source Sans Pro, sans-serif;
     font-size: 13px;
     font-weight: 400;
     text-decoration: none;
@@ -272,11 +281,12 @@ nav ul li a:hover::before {
     background-color: #cfcca8;
     color: #000000;
     border-radius: 3px;
-}  
+}
+
 /* Fim janela MODAL */
 
-/* SOBRE */ 
-.titulo_sobre{
+/* SOBRE */
+.titulo_sobre {
     padding: 20px;
     padding-bottom: 0px;
     text-align: center;
@@ -287,7 +297,7 @@ nav ul li a:hover::before {
     /* background-color: #f8f7a9; /
 } */
 
-.sobre{
+.sobre {
     /* ---Config margens--- */
     padding: 10%;
     padding-top: 0px;
@@ -313,23 +323,22 @@ footer {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-footer > .f2{
+footer>.f2 {
     /* margin: 100px; */
     padding: 15px;
     margin-right: 22px;
     width: 1000px;
 }
 
-footer > .f3{
-  padding: 10px;
-  display: flex;
-  /* background-color: blue; */
+footer>.f3 {
+    padding: 10px;
+    display: flex;
+    /* background-color: blue; */
 }
 
-footer > .f3 > .menuf{
-/* background-color: aqua; */
-font-size: 0.7rem;
-text-align: center;
-line-height: 0.9rem;
-
+footer>.f3>.menuf {
+    /* background-color: aqua; */
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 0.9rem;
 }

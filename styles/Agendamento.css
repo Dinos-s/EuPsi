@@ -1,0 +1,46 @@
+.agendamento {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 65px; */
+    gap: 25px;
+    width: auto;
+}
+
+.voltar{
+    font-size: 20px;
+    color: #ffd700;
+    margin-left: 22px;
+}
+
+.user {
+    display: flex;
+    gap: 15px;
+    /* margin-right: 20px; */
+    /* top: 150px; */
+    width: 500px;
+}
+
+.user > img.avatar{
+    border-radius: 15%;
+}
+
+.user > .info > h2, p.crp{
+    margin-bottom: 16px;
+}
+
+.user > .info > p > span.crp {
+    color: #ffd700;
+}
+
+.price {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.saberMais{
+    margin-top: 22px;
+    text-align: center;
+}
