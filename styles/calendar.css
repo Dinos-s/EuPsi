@@ -1,12 +1,7 @@
-.price {
-    font-size: x-large;
-    font-weight: bold;
-}
-
 /* Codigo do calendario */
 .calendar {
     display: flex;
-    /* margin-top: 24px; */
+    margin-top: 24px;
     padding: 10px 10px;
     /* align-items: center; */
     justify-content: center;
@@ -15,8 +10,8 @@
 }
 
 .wrapper {
-    /* height: 380px; */
-    width: 480px;
+    height: 100%;
+    /* width: 480px; */
     /* background: #ffd700; */
     border-radius: 10px;
 }
@@ -41,7 +36,7 @@
     align-items: center;
 }
 
-.ph-bold:hover{
+.ph-bold:hover {
     color: #ffd700;
     background: #787977;
 }
@@ -51,28 +46,57 @@ table {
     width: 400px;
 }
 
-th{
+th {
     background-color: #f2f2f2;
     font-weight: bold;
     text-align: center;
     padding: 8px;
 }
 
-td{
+td {
     text-align: center;
     padding: 5px;
     border: 1px solid #eee;
 }
 
-.dia{
+.dia {
     background-color: #ffd700;
     text-transform: uppercase;
 }
 
-#teste{
-    height: 170px;
+button {
+    margin: 2px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ffd700;
+    color: black;
+}
+
+.colunaTempo {
+    height: 200px;
     overflow-y: scroll;
     border-bottom: 1px solid #ccc;
+}
+
+.colunaTempo::-webkit-scrollbar {
+    width: 5px;
+}
+
+.colunaTempo::-webkit-scrollbar-track {
+    background: #6e6767;
+    border-radius: 2px;
+}
+
+.colunaTempo::-webkit-scrollbar-thumb {
+    background: #ffd700;
+    
+    border-radius: 2px;
+}
+
+.colunaTempo::-webkit-scrollbar-thumb:hover {
+    background: white;
 }
 
 

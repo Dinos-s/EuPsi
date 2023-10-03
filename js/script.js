@@ -17,11 +17,17 @@ function criaPsiCard(psi) {
     const card = document.createElement('div');
     card.classList.add('card');
 
-    const profileImage = document.createElement('div');
-    profileImage.classList.add('avatar');
-
     const background = document.createElement('div');
     background.classList.add('background');
+
+    const cardSuperior = document.createElement('div')
+    cardSuperior.classList.add('card_superior');
+
+    const lado1 = document.createElement('div')
+    lado1.classList.add('lado1');
+
+    const profileImage = document.createElement('div');
+    profileImage.classList.add('avatar');
 
     const img = document.createElement('img');
     img.src = psi.profile;
@@ -50,19 +56,35 @@ function criaPsiCard(psi) {
     profileCidade.classList.add('cidade');
 
     const preco = document.createElement('p')
-    preco.innerHTML = '<span class="price">R$ 90</span>/50 min'
+    preco.innerHTML = `<span class="price">R$ ${psi.preco}</span>/50 min`
+
+    const cardInferior = document.createElement('div')
+    cardInferior.classList.add('card_inferior')
+
+    const resumo = document.createElement('p')
+    resumo.className ='resumo'
+    resumo.textContent = psi.resumo
 
     // Abaixo está listado os cards dos psicólogos
+    // colocando os elementos dentro dos elementos
     card.appendChild(background);
-    card.appendChild(profileImage);
+    card.appendChild(cardSuperior)
+    cardSuperior.appendChild(lado1)
+    lado1.appendChild(profileImage)
     profileImage.appendChild(img);
-    card.appendChild(content);
+    lado1.appendChild(content);
     content.appendChild(profileName);
     content.appendChild(profileEspecialidade);
     content.appendChild(profileCRP);
     cidadePreco.appendChild(profileCidade);
     cidadePreco.appendChild(preco)
     content.appendChild(cidadePreco)
+    cardInferior.appendChild(resumo)
+    card.appendChild(cardInferior)
+
+    //lado2 do card
+    const lado2 = document.createElement('div')
+    lado2.classList.add('lado2')
 
     // Calendário dinâmico
     const calendarDiv = document.createElement('div');
@@ -106,10 +128,13 @@ function criaPsiCard(psi) {
     }
 
     calendarTable.appendChild(linhaDia);
-    calendarTable.appendChild(linhaData);
+    // calendarTable.appendChild(linhaData);
     calendarWrapper.appendChild(calendarTable);
 
     // Aqui está o código para criar e adicionar a tabela de horas (time)
+
+    const containerTime = document.createElement('div')
+    containerTime.className = 'colunaTempo'
 
     const tableTime = document.createElement('table');
     tableTime.className = 'horas-scroll';
@@ -128,12 +153,12 @@ function criaPsiCard(psi) {
     });
 
     tableTime.appendChild(linhaHora);
-
-    calendarWrapper.appendChild(tableTime);
+    lado2.appendChild(calendarDiv)
+    cardSuperior.appendChild(lado2)
+    containerTime.appendChild(tableTime)
+    calendarWrapper.appendChild(containerTime);
     calendarDiv.appendChild(calendarWrapper);
-    card.appendChild(calendarDiv);
 
-    atualizarHorasTela()
     return card;
 }
 
@@ -142,6 +167,7 @@ fetch('dados.json').then((res) => {
         data.psicologos.forEach((psi) => {
             const card = criaPsiCard(psi);
             cardContainer.appendChild(card);
+            atualizarHorasTela()
         })
     })
 })
@@ -196,46 +222,55 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
         const dia = new Date(PrimeiroDiaSemana)
         dia.setDate(PrimeiroDiaSemana.getDate() + i)
         const diaSemana = dia.toLocaleDateString('pt-BR', { weekday: 'short' })
-        const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: "2-digit" })
+        // const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: "2-digit" })
 
         const celulaDia = document.createElement('td')
-        const celulaData = document.createElement('td')
+        // const celulaData = document.createElement('td')
 
         celulaDia.textContent = diaSemana
-        celulaData.textContent = data
+        // celulaData.textContent = data
 
         celulaDia.className = 'dia'
-        celulaData.className = 'data'
+        // celulaData.className = 'data'
 
         linhaDia.appendChild(celulaDia)
-        linhaSemana.appendChild(celulaData)
+        // linhaSemana.appendChild(celulaData)
     }
 }
 
 function atualizarHorasTela() {
     for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
-        const horaColumn = document.getElementById(`horaColumn${i}`);
-        horaColumn.innerHTML = '';
+        const horaColumns = document.querySelectorAll(`.horaColumn${i}`);
 
-        // Hora inicial
-        let horaAtual = new Date();
-        // horaAtual.setMinutes(0); // Começa no minuto 0
-        horaAtual.setHours(7, 0)
+        horaColumns.forEach((horaColumn) => {
+            horaColumn.innerHTML += '';
 
-        let horaFinal = new Date();
-        horaFinal.setHours(22, 0)
+            // Hora inicial
+            let horaAtual = new Date();
+            // horaAtual.setMinutes(0); // Começa no minuto 0
+            horaAtual.setHours(7, 0)
 
-        while (horaAtual < horaFinal) { // esse gera a quantidade de horas do dia
-            const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            let horaFinal = new Date();
+            horaFinal.setHours(22, 0)
 
-            const celulaHora = document.createElement('div');
-            celulaHora.textContent = horaFormatada
-            celulaHora.className = 'hora';
+            const ul = document.createElement('ul');
+            ul.className = 'hora-list'; // Adicione uma classe para a lista
 
-            horaColumn.appendChild(celulaHora);
+            while (horaAtual < horaFinal) { // esse gera a quantidade de horas do dia
+                const horaFormatada = horaAtual.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-            // Avança 50 minutos
-            horaAtual.setMinutes(horaAtual.getMinutes() + 30);
-        }
+                const li = document.createElement('li');
+                const button = document.createElement('button');
+                button.textContent = horaFormatada;
+                button.className = 'hora-button'; // Adicione uma classe para o botão
+                li.appendChild(button);
+                ul.appendChild(li);
+
+                // Avança 50 minutos
+                horaAtual.setMinutes(horaAtual.getMinutes() + 50);
+            }
+
+            horaColumn.appendChild(ul); // Adicione a lista à coluna de hora
+        });
     }
 }

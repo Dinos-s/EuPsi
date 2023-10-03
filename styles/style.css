@@ -21,7 +21,11 @@ header {
 
     height:65px;
     width: 100%;
+<<<<<<< HEAD
     position: fixed;
+=======
+    /* position: fixed; */
+>>>>>>> 1ccb3fe2fc4a163a857846eb248c39327c5066a5
 }
 
 .logo img, .logo {

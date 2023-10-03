@@ -52,49 +52,50 @@
 
     </header>
 
-    <div class='agendamento'>
-        <div class="user">
-            <img class='avatar' src="./assets/images.jpg" alt="psicologo">
-            <section class="info">
-                <h2>Bruno Souza</h2>
-                <p class="crp"><span class="crp">CRP: 12/345678</span> | <span class="city">Recife</span></p>
-                <p><span class="price">R$ 90</span>/ 50 min</p>
-            </section>
-        </div>
+    <main>
+        <div class='agendamento'>
+            <div class="user">
+                <img class='avatar' src="./assets/images.jpg" alt="psicologo">
+                <section class="info">
+                    <h2>Bruno Souza</h2>
+                    <p class="crp"><span class="crp">CRP: 12/345678</span> | <span class="city">Recife</span></p>
+                    <p><span class="price">R$ 90</span>/ 50 min</p>
+                </section>
+            </div>
 
-        <div class="calendar">
-            <div class="wrapper">
-                <header class="cabecalho-calendar">
-                    <span onclick="mudarSemana(-1)" class="ph-bold ph-caret-left prev"></span>
-                    <h2 class="today">hoje</h2>
-                    <span onclick="mudarSemana(1)" class="ph-bold ph-caret-right next"></span>
-                </header>
-                <table id="DiasSemana">
-                    <tr>
-                        <th colspan="7">Dias da Semana</th>
-                    </tr>
-                    <tr id="dayRow"></tr>
-                    <tr id="dateRow"></tr>
-                </table>
+            <div class="calendar">
+                <div class="wrapper">
+                    <header class="cabecalho-calendar">
+                        <span onclick="mudarSemana(-1)" class="ph-bold ph-caret-left prev"></span>
+                        <h2 class="today">hoje</h2>
+                        <span onclick="mudarSemana(1)" class="ph-bold ph-caret-right next"></span>
+                    </header>
+                    <table id="DiasSemana">
+                        <tr>
+                            <!-- <th colspan="7">Dias da Semana</th> -->
+                        </tr>
+                        <tr id="dayRow"></tr>
+                        <tr id="dateRow"></tr>
+                    </table>
 
-                <table>
-                    <tr>
-                        <th colspan="7">Horas do dia</th>
-                    </tr>
-                    <tr>
-                        <td id="horaColumn1"></td>
-                        <td id="horaColumn2"></td>
-                        <td id="horaColumn3"></td>
-                        <td id="horaColumn4"></td>
-                        <td id="horaColumn5"></td>
-                        <td id="horaColumn6"></td>
-                        <td id="horaColumn7"></td>
-                    </tr>
-                </table>
+                    <table>
+                        <tr>
+                            <th colspan="7">Horas do dia</th>
+                        </tr>
+                        <tr>
+                            <td id="horaColumn1"></td>
+                            <td id="horaColumn2"></td>
+                            <td id="horaColumn3"></td>
+                            <td id="horaColumn4"></td>
+                            <td id="horaColumn5"></td>
+                            <td id="horaColumn6"></td>
+                            <td id="horaColumn7"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
+    </main>
 
     <footer>
         <section class="f1">
