@@ -8,7 +8,8 @@
 
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/calendar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./styles/Agendamento.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <!-- incones -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -51,12 +52,15 @@
     </header>
 
     <main>
+        <a href="procuraPsi.html" class="voltar">
+            <i class="fa fa-arrow-left-long"></i>
+        </a>
         <div class='agendamento'>
             <div class="user">
                 <img class='avatar' src="./assets/images.jpg" alt="psicologo">
                 <section class="info">
                     <h2>Bruno Souza</h2>
-                    <p class="crp"><span class="crp">CRP: 12/345678</span> | <span class="city">Recife</span></p>
+                    <p>CRP: <span class="crp">12/345678</span> | <span class="city">Recife</span></p>
                     <p><span class="price">R$ 90</span>/ 50 min</p>
                 </section>
             </div>
@@ -76,17 +80,19 @@
                         <tr id="dateRow"></tr>
                     </table>
 
-                    <table>
-                        <tr>
-                            <td id="horaColumn1"></td>
-                            <td id="horaColumn2"></td>
-                            <td id="horaColumn3"></td>
-                            <td id="horaColumn4"></td>
-                            <td id="horaColumn5"></td>
-                            <td id="horaColumn6"></td>
-                            <td id="horaColumn7"></td>
-                        </tr>
-                    </table>
+                    <div class="colunaTempo">
+                        <table>
+                            <tr>
+                                <td class="horaColumn1"></td>
+                                <td class="horaColumn2"></td>
+                                <td class="horaColumn3"></td>
+                                <td class="horaColumn4"></td>
+                                <td class="horaColumn5"></td>
+                                <td class="horaColumn6"></td>
+                                <td class="horaColumn7"></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

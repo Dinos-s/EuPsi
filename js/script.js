@@ -186,7 +186,7 @@ fetch('dados.json').then((res) => {
         data.psicologos.forEach((psi) => {
             const card = criaPsiCard(psi);
             cardContainer.appendChild(card);
-            atualizarHorasTela()
+            horasNaTabela()
         })
     })
 })
@@ -206,7 +206,7 @@ fetch('dados.json').then(res => res.json())
             // Pega os dados correspondents e o substitui pelos do json;
             avatar.src = doctor.profile
             infoUser.textContent = doctor.nome
-            crp.textContent = doctor.CRP
+            crp.textContent =  doctor.CRP
             city.textContent = doctor.cidade
             price.textContent = `R$ ${doctor.preco}`
         }
@@ -230,7 +230,7 @@ function mudarSemana(semana) {
 const PrimeiroDiaSemana = new Date(dataAtual)
 PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
 atualizarDiasTela(PrimeiroDiaSemana)
-// atualizarHorasTela()
+horasNaTabela()
 
 function atualizarDiasTela(PrimeiroDiaSemana) {
     const linhaDia = document.getElementById('dayRow')
@@ -258,7 +258,8 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
     }
 }
 
-function atualizarHorasTela() {
+// Aqui está acrescentando os horários na tabela para todos os usuários
+function horasNaTabela() {
     for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
         const horaColumns = document.querySelectorAll(`.horaColumn${i}`);
 
