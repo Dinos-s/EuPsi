@@ -89,7 +89,7 @@ function criaPsiCard(psi) {
     cidadePreco.appendChild(preco)
     content.appendChild(cidadePreco)
     cardInferior.appendChild(resumo)
-    // cardInferior.appendChild(sobreBTN)
+    cardInferior.appendChild(sobreBTN)
     card.appendChild(cardInferior)
 
     //lado2 do card
@@ -206,7 +206,7 @@ fetch('dados.json').then(res => res.json())
             // Pega os dados correspondents e o substitui pelos do json;
             avatar.src = doctor.profile
             infoUser.textContent = doctor.nome
-            crp.textContent = doctor.CRP
+            crp.textContent =  doctor.CRP
             city.textContent = doctor.cidade
             price.textContent = `R$ ${doctor.preco}`
         }
