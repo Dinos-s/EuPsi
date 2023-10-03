@@ -9,6 +9,12 @@
     width: auto;
 }
 
+.voltar{
+    font-size: 20px;
+    color: #ffd700;
+    margin-left: 22px;
+}
+
 .user {
     display: flex;
     gap: 15px;
@@ -34,8 +40,7 @@
     font-weight: bold;
 }
 
-.voltar{
-    font-size: 20px;
-    color: #ffd700;
-    margin-left: 22px;
+.saberMais{
+    margin-top: 22px;
+    text-align: center;
 }

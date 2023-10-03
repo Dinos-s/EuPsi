@@ -202,13 +202,16 @@ fetch('dados.json').then(res => res.json())
             const crp = document.querySelector('.crp')
             const city = document.querySelector('.city')
             const price = document.querySelector('.price')
-
+            const saberMais = document.querySelector('.saberMais')
+            
             // Pega os dados correspondents e o substitui pelos do json;
             avatar.src = doctor.profile
             infoUser.textContent = doctor.nome
             crp.textContent =  doctor.CRP
             city.textContent = doctor.cidade
             price.textContent = `R$ ${doctor.preco}`
+
+            saberMais.textContent = doctor.resumo
         }
     })
     .catch(error => {
