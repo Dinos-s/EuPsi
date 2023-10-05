@@ -36,8 +36,16 @@
             "regiao": "12°",
             "preco": "120",
             "especialidade": "Psicanalista",
-            "profile": "./assets/perfil-default.png",
-            "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard"
+            "profile": "./assets/perfil-default.png"
+        },
+
+        {
+            "nome": "Jose da Silva",
+            "cidade": "Garanhuns  - RJ",
+            "CRP": "25/156786",
+            "regiao": "15°",
+            "especialidade": "Psicoligia",
+            "profile": "./assetsjj/perfil-default.png"
         }
     ]
 }
