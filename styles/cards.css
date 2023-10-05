@@ -13,7 +13,6 @@
     flex-direction: column;
 }
 .card {
-<<<<<<< HEAD
     /* display: flex; */
     /* display: grid; */
     grid-template-rows: 10px repeat(2, 48px) 1fr;
@@ -21,15 +20,11 @@
     border-radius: 20px 20px 16px 16px;
     /* background-color: white; */
     cursor: pointer;
-=======
-    border-radius: 20px 20px 16px 16px;
->>>>>>> 1ccb3fe2fc4a163a857846eb248c39327c5066a5
     width: 130vh;
     border: 1px solid black;
     margin: 25px 30px;
 }
 
-<<<<<<< HEAD
 .card__superior{
     display: flex;
 }
@@ -52,14 +47,6 @@
     /* background-color: #ffd700; */
     background-color: red;
     border-radius: 16px 16px 0px 0px;
-=======
-.background {
-    width: 100%;
-    height: 50px;
-    background-color: #ffd700;
-    border-top-right-radius: 16px;
-    border-top-left-radius: 16px;
->>>>>>> 1ccb3fe2fc4a163a857846eb248c39327c5066a5
 }
 
 .card_superior{
@@ -77,15 +64,9 @@
 }
 
 .avatar {
-<<<<<<< HEAD
     /* grid-row: 1/7; */
     /* grid-column: 1 / -1; */
     padding: 5px 0 0 25px;
-=======
-    padding: 5px 0 0 25px;
-    width: 192px;
-    height: 192px;
->>>>>>> 1ccb3fe2fc4a163a857846eb248c39327c5066a5
     /* z-index: 1; */
     width: 192px;
     height: 192px;
@@ -107,16 +88,9 @@
     margin-bottom: 8px;
 }
 
-<<<<<<< HEAD
 /* .content > h4, p {
     margin-bottom: 12px;
 } */
-=======
-.especialidade {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
->>>>>>> 1ccb3fe2fc4a163a857846eb248c39327c5066a5
 
 .cidade {
     margin-top: 6px;
@@ -127,15 +101,3 @@
     gap: 13px;
 }
 
-<<<<<<< HEAD
-=======
-.price {
-    font-size: x-large;
-    font-weight: bold;
-}
-
-.card_inferior {
-    text-align: justify;
-    padding: 10px 25px;
-}
->>>>>>> 1ccb3fe2fc4a163a857846eb248c39327c5066a5

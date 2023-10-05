@@ -22,11 +22,7 @@ header {
 
     height: 65px;
     width: 100%;
-<<<<<<< HEAD
     position: fixed;
-=======
-    /* position: fixed; */
->>>>>>> 1ccb3fe2fc4a163a857846eb248c39327c5066a5
 }
 
 .logo img,
@@ -98,17 +94,11 @@ nav ul li a:hover::before {
     list-style-image: url('sqpurple.gif');
 }
 
-<<<<<<< HEAD
 .icons_rede_sociais > a {
     padding: 6px;
     /* text-align: center; */
     font-size:  24px;
     color: black;
-=======
-.icons_rede_sociais>a {
-    padding-top: 10px;
-    margin: 10px;
->>>>>>> 6f964b689a9b341bd79dfc80c262d7af2f87664a
 }
 /* Fim da barra de navegação */
 
@@ -129,11 +119,7 @@ main {
     padding-top: 3em;
 }
 
-<<<<<<< HEAD
 .img-fundo .consulta{
-=======
-.img-fundo>.consulta {
->>>>>>> 6f964b689a9b341bd79dfc80c262d7af2f87664a
     height: 100vh;
     /* width: 100vw; */
 }
@@ -155,11 +141,7 @@ main {
     /* padding: 50px; */
     padding-top: 16em;
     z-index: 1;
-<<<<<<< HEAD
     /* margin-top: 200px;  */
-=======
-    margin-top: 200px;
->>>>>>> 6f964b689a9b341bd79dfc80c262d7af2f87664a
     padding-bottom: 160px;
 }
 
@@ -344,35 +326,6 @@ main {
 
 /* Fim janela MODAL */
 
-<<<<<<< HEAD
-=======
-/* SOBRE */
-.titulo_sobre {
-    padding: 20px;
-    padding-bottom: 0px;
-    text-align: center;
-    /* background-color: #f8f7a9; */
-}
-
-/* .titulo_sobre > h2 {
-    /* background-color: #f8f7a9; /
-} */
-
-.sobre {
-    /* ---Config margens--- */
-    padding: 10%;
-    padding-top: 0px;
-    padding-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    /* ---Informoções texto--- */
-    text-align: justify;
-    /* font-size:  1,5rem; */
-    line-height: 1.4rem;
-    /* background-color: #f8f7a9; */
-}
-
->>>>>>> 6f964b689a9b341bd79dfc80c262d7af2f87664a
 /* FOOTER [rodapé] */
 footer {
     display: flex;
@@ -398,18 +351,9 @@ footer>.f3 {
     /* background-color: blue; */
 }
 
-<<<<<<< HEAD
 footer > .f3 > .menuf{
-background-color: aqua;
-font-size: 0.7rem;
-/* text-align: center; */
-line-height: 0.9rem;
-}
-=======
-footer>.f3>.menuf {
-    /* background-color: aqua; */
+    background-color: aqua;
     font-size: 0.7rem;
-    text-align: center;
+    /* text-align: center; */
     line-height: 0.9rem;
 }
->>>>>>> 6f964b689a9b341bd79dfc80c262d7af2f87664a
