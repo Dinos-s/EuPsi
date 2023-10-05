@@ -12,7 +12,9 @@
 .voltar{
     font-size: 20px;
     color: #ffd700;
-    margin-left: 22px;
+    left: 22px;
+    top: 1rem;
+    position: relative;
 }
 
 .user {

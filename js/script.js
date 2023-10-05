@@ -89,7 +89,7 @@ function criaPsiCard(psi) {
     cidadePreco.appendChild(preco)
     content.appendChild(cidadePreco)
     cardInferior.appendChild(resumo)
-    // cardInferior.appendChild(sobreBTN)
+    cardInferior.appendChild(sobreBTN)
     card.appendChild(cardInferior)
 
     //lado2 do card
