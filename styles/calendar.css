@@ -64,12 +64,13 @@ td {
     text-transform: uppercase;
 }
 
-button {
+.hora-button {
     margin: 2px;
     border-radius: 5px;
+    border: 2px solid #ffd700;
 }
 
-button:hover {
+.hora-button:hover {
     background-color: #ffd700;
     color: black;
 }

@@ -66,7 +66,8 @@ function criaPsiCard(psi) {
     resumo.textContent = psi.resumo
 
     const sobreBTN = document.createElement('button')
-    sobreBTN.textContent = 'Saber Mais'
+    sobreBTN.textContent = 'Saber Mais...'
+    sobreBTN.className = 'sobreBTN'
     sobreBTN.addEventListener('click', () => {
         const pisicolgo = {nome: psi.nome}
         const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
@@ -89,7 +90,7 @@ function criaPsiCard(psi) {
     cidadePreco.appendChild(preco)
     content.appendChild(cidadePreco)
     cardInferior.appendChild(resumo)
-    cardInferior.appendChild(sobreBTN)
+    resumo.appendChild(sobreBTN)
     card.appendChild(cardInferior)
 
     //lado2 do card

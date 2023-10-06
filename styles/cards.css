@@ -81,3 +81,23 @@
     text-align: justify;
     padding: 10px 25px;
 }
+
+.sobreBTN {
+    border: 2px solid #ffd700;
+    font-size: 12px;
+    background: transparent;
+    padding: 10px;
+    border-radius: 20px;
+    left: 5px;
+    position: relative;
+    transition: .4s;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.sobreBTN:hover {
+    background-color: #ffd700;
+    cursor: pointer;
+    transition: .3s;
+    font-weight: bolder;
+}
