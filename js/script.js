@@ -63,10 +63,11 @@ function criaPsiCard(psi) {
 
     const resumo = document.createElement('p')
     resumo.className ='resumo'
-    resumo.textContent = psi.resumo
+    resumo.textContent = textoLongo(psi.resumo)
 
     const sobreBTN = document.createElement('button')
-    sobreBTN.textContent = 'Saber Mais'
+    sobreBTN.textContent = 'Saber Mais...'
+    sobreBTN.className = 'sobreBTN'
     sobreBTN.addEventListener('click', () => {
         const pisicolgo = {nome: psi.nome}
         const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
@@ -89,7 +90,7 @@ function criaPsiCard(psi) {
     cidadePreco.appendChild(preco)
     content.appendChild(cidadePreco)
     cardInferior.appendChild(resumo)
-    cardInferior.appendChild(sobreBTN)
+    resumo.appendChild(sobreBTN)
     card.appendChild(cardInferior)
 
     //lado2 do card
@@ -296,5 +297,14 @@ function horasNaTabela() {
 
             horaColumn.appendChild(ul); // Adicione a lista à coluna de hora
         });
+    }
+}
+
+// tres pontos excesso de texto
+function textoLongo(texto) {
+    if (texto && texto.length > 200) {
+        return texto.slice(0, 200) + '...';
+    } else {
+        return texto
     }
 }
