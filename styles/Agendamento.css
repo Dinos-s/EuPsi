@@ -45,4 +45,9 @@
 .saberMais{
     margin-top: 22px;
     text-align: center;
+    padding: 15px;
+}
+
+.eu{
+    text-align: justify;
 }

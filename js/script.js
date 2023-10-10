@@ -211,8 +211,17 @@ fetch('dados.json').then(res => res.json())
             crp.textContent =  doctor.CRP
             city.textContent = doctor.cidade
             price.textContent = `R$ ${doctor.preco}`
-
-            saberMais.textContent = doctor.resumo
+            
+            saberMais.innerHTML=`
+                <section>
+                    <h1>Perfil</h1>
+                    <p class='resumo'>${doctor.resumo}</p>
+                    <div class='experience'>
+                        <h2>Experiência</h2>
+                        <ul>${doctor.experiencia}</ul>
+                    </div>
+                </section>
+            `
         }
     })
     .catch(error => {
