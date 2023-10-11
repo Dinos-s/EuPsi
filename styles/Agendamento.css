@@ -44,10 +44,13 @@
 
 .saberMais{
     margin-top: 22px;
-    text-align: center;
     padding: 15px;
+    width: 45rem;
+    margin-left: 25px;
 }
 
-.eu{
-    text-align: justify;
+.experience {
+    margin-top: 12px;
+    padding: 0 0 12px;
+    list-style: circle;
 }

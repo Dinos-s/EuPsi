@@ -62,14 +62,14 @@ function criaPsiCard(psi) {
     cardInferior.classList.add('card_inferior')
 
     const resumo = document.createElement('p')
-    resumo.className ='resumo'
+    resumo.className = 'resumo'
     resumo.textContent = textoLongo(psi.resumo)
 
     const sobreBTN = document.createElement('button')
     sobreBTN.textContent = 'Saber Mais...'
     sobreBTN.className = 'sobreBTN'
     sobreBTN.addEventListener('click', () => {
-        const pisicolgo = {nome: psi.nome}
+        const pisicolgo = { nome: psi.nome }
         const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
         window.location.href = url
     })
@@ -176,7 +176,7 @@ function criaPsiCard(psi) {
     containerTime.appendChild(tableTime)
     calendarWrapper.appendChild(containerTime);
     lado2.appendChild(calendarDiv)
-    
+
     calendarDiv.appendChild(calendarWrapper);
 
     return card;
@@ -204,24 +204,25 @@ fetch('dados.json').then(res => res.json())
             const city = document.querySelector('.city')
             const price = document.querySelector('.price')
             const saberMais = document.querySelector('.saberMais')
-            
+
             // Pega os dados correspondents e o substitui pelos do json;
             avatar.src = doctor.profile
             infoUser.textContent = doctor.nome
-            crp.textContent =  doctor.CRP
+            crp.textContent = doctor.CRP
             city.textContent = doctor.cidade
             price.textContent = `R$ ${doctor.preco}`
-            
-            saberMais.innerHTML=`
-                <section>
-                    <h1>Perfil</h1>
-                    <p class='resumo'>${doctor.resumo}</p>
-                    <div class='experience'>
-                        <h2>Experiência</h2>
-                        <ul>${doctor.experiencia}</ul>
-                    </div>
-                </section>
+
+            saberMais.innerHTML = `
+                <h3>Perfil</h3>
+                <p class='resumo'>${doctor.resumo}</p>
+                <div class='experience'>
+                    <h3>Experiência</h3>
+                    <ul id='softskills'>
+                        
+                    </ul>
+                </div>
             `
+            experience(doctor)
         }
     })
     .catch(error => {
@@ -309,11 +310,21 @@ function horasNaTabela() {
     }
 }
 
-// tres pontos excesso de texto
+// três pontos no excesso de texto
 function textoLongo(texto) {
     if (texto && texto.length > 200) {
         return texto.slice(0, 200) + '...';
     } else {
         return texto
     }
+}
+
+// pegando as experiencias do json
+function experience(doctor) {
+    const Softskills = document.getElementById('softskills');
+    Softskills.innerHTML = doctor.experiencia.map((skill) => {
+        return `<li class='tes'>
+                    ${skill}
+                </li>`
+    }).join('');
 }
