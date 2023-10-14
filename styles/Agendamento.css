@@ -47,10 +47,19 @@
     padding: 15px;
     width: 45rem;
     margin-left: 25px;
+    align-items: center;
+}
+
+.descPessoal .resumo {
+    text-align: justify;
 }
 
 .experience {
     margin-top: 12px;
     padding: 0 0 12px;
+}
+
+.experiencias{
     list-style: circle;
+    margin-top: 2px;
 }
