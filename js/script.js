@@ -187,8 +187,8 @@ fetch('dados.json').then((res) => {
         data.psicologos.forEach((psi) => {
             const card = criaPsiCard(psi);
             cardContainer.appendChild(card);
-            horasNaTabela()
         })
+        horasNaTabela()
     })
 })
 
