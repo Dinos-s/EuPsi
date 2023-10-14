@@ -213,11 +213,13 @@ fetch('dados.json').then(res => res.json())
             price.textContent = `R$ ${doctor.preco}`
 
             saberMais.innerHTML = `
-                <h3>Perfil</h3>
-                <p class='resumo'>${doctor.resumo}</p>
+                <div class='descPessoal'>
+                    <h3>Descrição Pessoal</h3>
+                    <p class='resumo'>${doctor.resumo}</p>
+                </div>
                 <div class='experience'>
                     <h3>Experiência</h3>
-                    <ul id='softskills'>
+                    <ul class='softskills'>
                         
                     </ul>
                 </div>
@@ -321,9 +323,9 @@ function textoLongo(texto) {
 
 // pegando as experiencias do json
 function experience(doctor) {
-    const Softskills = document.getElementById('softskills');
+    const Softskills = document.querySelector('.softskills');
     Softskills.innerHTML = doctor.experiencia.map((skill) => {
-        return `<li class='tes'>
+        return `<li class='experiencias'>
                     ${skill}
                 </li>`
     }).join('');
