@@ -13,173 +13,71 @@ navLinks.forEach(link => {
 const cardContainer = document.querySelector('.card-Container')
 
 function criaPsiCard(psi) {
-    // Criação dos elementos e classes do interior do card
-    const card = document.createElement('div');
-    card.classList.add('card');
+    const card = document.createElement('div')
+    card.innerHTML = `
+    <div class="card">
+    <div class="background"></div>
+    <div class="card_superior">
+        <div class="lado1">
+            <div class="avatar"><img src="${psi.profile}" alt="picture"></div>
+            <div class="content">
+                <h4 class="perfil">${psi.nome}</h4>
+                <p class="especialidade">Psicoligia Pedriata</p>
+                <p class="crp">${psi.CRP} | CRP - ${psi.regiao} Região</p>
+                <section class="regular">
+                    <p class="cidade">${psi.cidade}</p>
+                    <p><span class="price">R$ ${psi.preco}</span>/50 min</p>
+                </section>
+            </div>
+        </div>
+        <div class="lado2">
+            <div class="calendar">
+                <div class="wrapper">
+                    <table id="DiasSemana">
+                        <tr class="linhaTitulo">
+                            <td colspan="7">Horários Disponíveis</td>
+                        </tr>
+                        <tr id="dayRow">
+                            <td class="dia">dom.</td>
+                            <td class="dia">seg.</td>
+                            <td class="dia">ter.</td>
+                            <td class="dia">qua.</td>
+                            <td class="dia">qui.</td>
+                            <td class="dia">sex.</td>
+                            <td class="dia">sáb.</td>
+                        </tr>
+                    </table>
+                    <div class="colunaTempo">
+                        <table class="horas-scroll">
+                            <tr>
+                                <td class="horaColumn1"></td>
+                                <td class="horaColumn2"></td>
+                                <td class="horaColumn3"></td>
+                                <td class="horaColumn4"></td>
+                                <td class="horaColumn5"></td>
+                                <td class="horaColumn6"></td>
+                                <td class="horaColumn7"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card_inferior">
+        <p class="resumo">${textoLongo(psi.resumo)}<button class="sobreBTN">Saber Mais...</button></p>
+    </div>
+</div>
+    `;
+        // Encontre o botão .sobreBTN dentro deste card
+        const sobreBTN = card.querySelector('.sobreBTN');
 
-    const background = document.createElement('div');
-    background.classList.add('background');
-
-    const cardSuperior = document.createElement('div')
-    cardSuperior.classList.add('card_superior');
-
-    const lado1 = document.createElement('div')
-    lado1.classList.add('lado1');
-
-    const profileImage = document.createElement('div');
-    profileImage.classList.add('avatar');
-
-    const img = document.createElement('img');
-    img.src = psi.profile;
-    img.alt = 'picture';
-
-    const content = document.createElement('div');
-    content.classList.add('content');
-
-    const profileName = document.createElement('h4');
-    profileName.textContent = psi.nome;
-    profileName.classList.add('perfil');
-
-    const profileEspecialidade = document.createElement('p');
-    profileEspecialidade.textContent = psi.especialidade;
-    profileEspecialidade.classList.add('especialidade');
-
-    const profileCRP = document.createElement('p');
-    profileCRP.textContent = `${psi.CRP} | CRP - ${psi.regiao} Região`;
-    profileCRP.classList.add('crp');
-
-    const cidadePreco = document.createElement('section')
-    cidadePreco.classList.add('regular');
-
-    const profileCidade = document.createElement('p');
-    profileCidade.textContent = psi.cidade;
-    profileCidade.classList.add('cidade');
-
-    const preco = document.createElement('p')
-    preco.innerHTML = `<span class="price">R$ ${psi.preco}</span>/50 min`
-
-    const cardInferior = document.createElement('div')
-    cardInferior.classList.add('card_inferior')
-
-    const resumo = document.createElement('p')
-    resumo.className = 'resumo'
-    resumo.textContent = textoLongo(psi.resumo)
-
-    const sobreBTN = document.createElement('button')
-    sobreBTN.textContent = 'Saber Mais...'
-    sobreBTN.className = 'sobreBTN'
-    sobreBTN.addEventListener('click', () => {
-        const pisicolgo = { nome: psi.nome }
-        const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
-        window.location.href = url
-    })
-
-
-    // Abaixo está listado os cards dos psicólogos
-    // colocando os elementos dentro dos elementos
-    card.appendChild(background);
-    card.appendChild(cardSuperior)
-    cardSuperior.appendChild(lado1)
-    lado1.appendChild(profileImage)
-    profileImage.appendChild(img);
-    lado1.appendChild(content);
-    content.appendChild(profileName);
-    content.appendChild(profileEspecialidade);
-    content.appendChild(profileCRP);
-    cidadePreco.appendChild(profileCidade);
-    cidadePreco.appendChild(preco)
-    content.appendChild(cidadePreco)
-    cardInferior.appendChild(resumo)
-    resumo.appendChild(sobreBTN)
-    card.appendChild(cardInferior)
-
-    //lado2 do card
-    const lado2 = document.createElement('div')
-    lado2.classList.add('lado2')
-
-    // Calendário dinâmico
-    const calendarDiv = document.createElement('div');
-    calendarDiv.classList.add('calendar');
-
-    const calendarWrapper = document.createElement('div');
-    calendarWrapper.classList.add('wrapper');
-
-    const calendarTable = document.createElement('table');
-    calendarTable.id = 'DiasSemana';
-
-    // Estrutura do calendário
-    const linhaTitulo = document.createElement('tr')
-    linhaTitulo.className = 'linhaTitulo'
-    const colunaTitulo = document.createElement('td')
-    colunaTitulo.textContent = 'Horários Disponíveis'
-    colunaTitulo.setAttribute('colspan', '7')
-    linhaTitulo.appendChild(colunaTitulo)
-
-    const linhaDia = document.createElement('tr');
-    linhaDia.id = 'dayRow';
-    const linhaData = document.createElement('tr');
-    linhaData.id = 'dateRow';
-
-    const semana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-
-    // Definindo as variáveis iniciais do dia
-    let diaZero = new Date();
-    let inicioSemanal = new Date(diaZero);
-    inicioSemanal.setDate(diaZero.getDate() - diaZero.getDay());
-
-    // Dias da semana
-    for (let i = 0; i < 7; i++) {
-        const dia = new Date(inicioSemanal);
-        dia.setDate(inicioSemanal.getDate() + i);
-        const diaSemana = dia.toLocaleDateString('pt-BR', { weekday: 'short' });
-        const data = dia.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
-
-        const celulaDia = document.createElement('td');
-        celulaDia.textContent = diaSemana;
-        celulaDia.className = 'dia';
-        linhaDia.appendChild(celulaDia);
-
-        const celulaData = document.createElement('td');
-        celulaData.textContent = data;
-        celulaData.className = 'data';
-        linhaData.appendChild(celulaData);
-    }
-
-    calendarTable.appendChild(linhaTitulo)
-    calendarTable.appendChild(linhaDia);
-    // calendarTable.appendChild(linhaData);
-    calendarWrapper.appendChild(calendarTable);
-
-    // Aqui está o código para criar e adicionar a tabela de horas (time)
-
-    const containerTime = document.createElement('div')
-    containerTime.className = 'colunaTempo'
-
-    const tableTime = document.createElement('table');
-    tableTime.className = 'horas-scroll';
-
-    // Cria os elementos da tabela
-    const colunasHora = [];
-    for (let i = 1; i <= 7; i++) {
-        const colunaHora = document.createElement('td');
-        colunaHora.className = `horaColumn${i}`;
-        colunasHora.push(colunaHora);
-    }
-
-    const linhaHora = document.createElement('tr');
-    colunasHora.forEach((column) => {
-        linhaHora.appendChild(column);
-    });
-
-    tableTime.appendChild(linhaHora);
-    cardSuperior.appendChild(lado2)
-    containerTime.appendChild(tableTime)
-    calendarWrapper.appendChild(containerTime);
-    lado2.appendChild(calendarDiv)
-
-    calendarDiv.appendChild(calendarWrapper);
-
-    return card;
+        sobreBTN.addEventListener('click', () => {
+            const psicologo = { nome: psi.nome };
+            const url = `agendamento.html?psi=${encodeURIComponent(psicologo.nome)}`;
+            window.location.href = url;
+        });
+    return card   
 }
 
 fetch('dados.json').then((res) => {
@@ -187,10 +85,11 @@ fetch('dados.json').then((res) => {
         data.psicologos.forEach((psi) => {
             const card = criaPsiCard(psi);
             cardContainer.appendChild(card);
-            horasNaTabela()
         })
+        horasNaTabela()
     })
 })
+
 
 const paramURL = new URLSearchParams(window.location.search)
 const psiNome = paramURL.get('psi')
@@ -276,7 +175,7 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
 
 // Aqui está acrescentando os horários na tabela para todos os usuários
 function horasNaTabela() {
-    for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
+    for (let i = 0; i <= 7; i++) { // esse for é usado para as colunas das horas
         const horaColumns = document.querySelectorAll(`.horaColumn${i}`);
 
         horaColumns.forEach((horaColumn) => {
