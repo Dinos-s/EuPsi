@@ -55,11 +55,17 @@
 }
 
 .experience {
+    border-top: 2px dashed #ffd700;
     margin-top: 12px;
-    padding: 0 0 12px;
+    padding: 10px 0 12px;
+}
+
+.softskills {
+    margin-left: 19px;
+    display: relative;
 }
 
 .experiencias{
-    list-style: circle;
+    list-style: disc;
     margin-top: 2px;
 }

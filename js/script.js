@@ -12,6 +12,7 @@ navLinks.forEach(link => {
 // pegando usuarios do json
 const cardContainer = document.querySelector('.card-Container')
 
+
 function criaPsiCard(psi) {
     // Criação dos elementos e classes do interior do card
     const card = document.createElement('div');
@@ -192,6 +193,7 @@ fetch('dados.json').then((res) => {
     })
 })
 
+
 const paramURL = new URLSearchParams(window.location.search)
 const psiNome = paramURL.get('psi')
 fetch('dados.json').then(res => res.json())
@@ -276,7 +278,7 @@ function atualizarDiasTela(PrimeiroDiaSemana) {
 
 // Aqui está acrescentando os horários na tabela para todos os usuários
 function horasNaTabela() {
-    for (let i = 1; i <= 7; i++) { // esse for é usado para as colunas das horas
+    for (let i = 0; i <= 7; i++) { // esse for é usado para as colunas das horas
         const horaColumns = document.querySelectorAll(`.horaColumn${i}`);
 
         horaColumns.forEach((horaColumn) => {
