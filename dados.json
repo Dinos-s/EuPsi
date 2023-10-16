@@ -26,6 +26,7 @@
             "regiao": "2°",
             "preco": "50",
             "especialidade": "Orientação profissional",
+            "experiencia": ["Psicologia Pediátrica", "Transtorno Obsessivo Compulsivo (TOC)"],
             "profile": "./assets/perfil-default.png",
             "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard"
         },
@@ -37,7 +38,9 @@
             "regiao": "12°",
             "preco": "120",
             "especialidade": "Psicanalista",
-            "profile": "./assets/perfil-default.png"
+            "experiencia": ["Psicologia Pediátrica", "Transtorno Obsessivo Compulsivo (TOC)"],
+            "profile": "./assets/perfil-default.png",
+            "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         },
 
         {
