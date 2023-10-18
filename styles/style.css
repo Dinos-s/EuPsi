@@ -109,6 +109,10 @@ main {
     top: 4em;
 }
 
+#principal {
+    top: 0;
+}
+
 .img-fundo {
     position: absolute;
     z-index: -1;
