@@ -237,10 +237,17 @@ fetch('dados.json').then(res => res.json())
                         
                     </ul>
                 </div>
+                <div class='maisInfos'>
+                    <h3>Formação</h3>
+                    <ul class='diploma softskills'>
+                        
+                    </ul>
+                </div>
             `
             experience(doctor)
             especialidade(doctor)
             arbodagem(doctor)
+            formation(doctor)
         }
     })
     .catch(error => {
@@ -367,3 +374,15 @@ function arbodagem(doctor) {
     }).join('');
 }
 
+// Formação do psicologo
+function formation(doctor) {
+    const Escolar = document.querySelector('.diploma')
+    Escolar.innerHTML = doctor.formacao.map((skill) => {
+        return `<li class='experiencias'>
+                    <h2 class="title">${skill.curso}</h2>
+                    <h3>${skill.university}</h3>
+                    <p class="period">${skill.conclusao}</p>
+                    <p>${skill.tipo}</p>
+                </li>`
+    }).join('');
+}
