@@ -6,7 +6,8 @@
             "CRP": "12/345678",
             "regiao": "4°",
             "preco":"30",
-            "especialidade": "Psicoligia Pedriata",
+            "especialidade": ["Psicoligia", "Pedriata"],
+            "abordagens": ["PSICOLOGIA ANALÍTICA", "PSICOLOGIA HUMANISTA"],
             "profile": "./assets/images.jpg",
             "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
             "experiencia": ["Psicanalista", "Depressão"],
@@ -25,8 +26,15 @@
             "CRP": "24/67949",
             "regiao": "2°",
             "preco": "50",
-            "especialidade": "Orientação profissional",
-            "experiencia": ["Psicologia Pediátrica", "Transtorno Obsessivo Compulsivo (TOC)"],
+            "especialidade": ["Orientação profissional"],
+            "experiencia": [
+                "Psicologia Pediátrica",
+                "Transtorno Obsessivo Compulsivo (TOC)"
+            ],
+            "abordagens": [
+                "ABORDAGEM CENTRADA NA PESSOA",
+                "COGNITIVO COMPORTAMENTAL (TCC)"
+            ],
             "profile": "./assets/perfil-default.png",
             "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard"
         },
@@ -37,8 +45,11 @@
             "CRP": "25/156786",
             "regiao": "12°",
             "preco": "120",
-            "especialidade": "Psicanalista",
+            "especialidade": ["Psicanalista"],
             "experiencia": ["Psicologia Pediátrica", "Transtorno Obsessivo Compulsivo (TOC)"],
+            "abordagens": [
+                "GESTÃO TERAPIA"
+            ],
             "profile": "./assets/perfil-default.png",
             "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         },
@@ -48,7 +59,8 @@
             "cidade": "Garanhuns - RJ",
             "CRP": "25/156786",
             "regiao": "15°",
-            "especialidade": "Psicoligia",
+            "especialidade": ["Psicoligia"],
+            "abordagens": ["PSICANÁLISE"],
             "profile": "./assetsjj/perfil-default.png"
         }
     ]

@@ -219,14 +219,28 @@ fetch('dados.json').then(res => res.json())
                     <h3>Descrição Pessoal</h3>
                     <p class='resumo'>${doctor.resumo}</p>
                 </div>
-                <div class='experience'>
+                <div class='maisInfos'>
                     <h3>Experiência</h3>
                     <ul class='softskills'>
                         
                     </ul>
                 </div>
+                <div class='maisInfos'>
+                    <h3>Especialidade</h3>
+                    <ul class='especialidades softskills'>
+                        
+                    </ul>
+                </div>
+                <div class='maisInfos'>
+                    <h3>Abordagens</h3>
+                    <ul class='abordar softskills'>
+                        
+                    </ul>
+                </div>
             `
             experience(doctor)
+            especialidade(doctor)
+            arbodagem(doctor)
         }
     })
     .catch(error => {
@@ -332,3 +346,24 @@ function experience(doctor) {
                 </li>`
     }).join('');
 }
+
+// pegando as especialidades no json
+function especialidade(doctor) {
+    const Especial = document.querySelector('.especialidades');
+    Especial.innerHTML = doctor.especialidade.map((skill) => {
+        return `<li class='experiencias'>
+                    ${skill}
+                </li>`
+    }).join('');
+}
+
+// abordargens do psicologo
+function arbodagem(doctor) {
+    const Abordar = document.querySelector('.abordar')
+    Abordar.innerHTML = doctor.abordagens.map((skill) => {
+        return `<li class='experiencias'>
+                    ${skill}
+                </li>`
+    }).join('');
+}
+
