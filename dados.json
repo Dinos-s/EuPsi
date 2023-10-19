@@ -5,18 +5,50 @@
             "cidade": "Recife - PE",
             "CRP": "12/345678",
             "regiao": "4°",
-            "preco":"30",
-            "especialidade": ["Psicoligia", "Pedriata"],
-            "abordagens": ["PSICOLOGIA ANALÍTICA", "PSICOLOGIA HUMANISTA"],
+            "preco": "30",
+            "especialidade": [
+                "Psicoligia",
+                "Pedriata"
+            ],
+            "abordagens": [
+                "PSICOLOGIA ANALÍTICA",
+                "PSICOLOGIA HUMANISTA"
+            ],
             "profile": "./assets/images.jpg",
             "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            "experiencia": ["Psicanalista", "Depressão"],
+            "experiencia": [
+                "Psicanalista",
+                "Depressão"
+            ],
+            "formacao": [
+                {
+                    "curso": "Psicologia",
+                    "university": "Universidade da Saúde Mental",
+                    "conclusao": "02/2013",
+                    "tipo": "Bacharelado"
+                }
+            ],
             "horarios_atendimento": {
-                "segunda-feira": ["08:30 - 11:30", "14:30 - 17:30"],
-                "terça-feira": ["09:00 - 12:00", "15:00 - 18:00"],
-                "quarta-feira": ["08:00 - 11:00", "14:00 - 17:00"],
-                "quinta-feira": ["10:30 - 13:30", "16:30 - 19:30"],
-                "sexta-feira": ["09:30 - 12:30", "15:30 - 18:30"]
+                "segunda-feira": [
+                    "08:30 - 11:30",
+                    "14:30 - 17:30"
+                ],
+                "terça-feira": [
+                    "09:00 - 12:00",
+                    "15:00 - 18:00"
+                ],
+                "quarta-feira": [
+                    "08:00 - 11:00",
+                    "14:00 - 17:00"
+                ],
+                "quinta-feira": [
+                    "10:30 - 13:30",
+                    "16:30 - 19:30"
+                ],
+                "sexta-feira": [
+                    "09:30 - 12:30",
+                    "15:30 - 18:30"
+                ]
             }
         },
 
@@ -26,7 +58,9 @@
             "CRP": "24/67949",
             "regiao": "2°",
             "preco": "50",
-            "especialidade": ["Orientação profissional"],
+            "especialidade": [
+                "Orientação profissional"
+            ],
             "experiencia": [
                 "Psicologia Pediátrica",
                 "Transtorno Obsessivo Compulsivo (TOC)"
@@ -34,6 +68,14 @@
             "abordagens": [
                 "ABORDAGEM CENTRADA NA PESSOA",
                 "COGNITIVO COMPORTAMENTAL (TCC)"
+            ],
+            "formacao": [
+                {
+                    "curso": "Psicologia",
+                    "university": "Universidade da Saúde Mental",
+                    "conclusao": "02/2013",
+                    "tipo": "Bacharelado"
+                }
             ],
             "profile": "./assets/perfil-default.png",
             "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard"
@@ -45,10 +87,23 @@
             "CRP": "25/156786",
             "regiao": "12°",
             "preco": "120",
-            "especialidade": ["Psicanalista"],
-            "experiencia": ["Psicologia Pediátrica", "Transtorno Obsessivo Compulsivo (TOC)"],
+            "especialidade": [
+                "Psicanalista"
+            ],
+            "experiencia": [
+                "Psicologia Pediátrica",
+                "Transtorno Obsessivo Compulsivo (TOC)"
+            ],
             "abordagens": [
                 "GESTÃO TERAPIA"
+            ],
+            "formacao": [
+                {
+                    "curso": "Psicologia",
+                    "university": "Universidade da Saúde Mental",
+                    "conclusao": "02/2013",
+                    "tipo": "Bacharelado"
+                }
             ],
             "profile": "./assets/perfil-default.png",
             "resumo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
@@ -59,8 +114,20 @@
             "cidade": "Garanhuns - RJ",
             "CRP": "25/156786",
             "regiao": "15°",
-            "especialidade": ["Psicoligia"],
-            "abordagens": ["PSICANÁLISE"],
+            "especialidade": [
+                "Psicoligia"
+            ],
+            "formacao": [
+                {
+                    "curso": "Psicologia",
+                    "university": "Universidade da Saúde Mental",
+                    "conclusao": "02/2013",
+                    "tipo": "Bacharelado"
+                }
+            ],
+            "abordagens": [
+                "PSICANÁLISE"
+            ],
             "profile": "./assetsjj/perfil-default.png"
         }
     ]
