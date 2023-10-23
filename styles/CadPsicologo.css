@@ -32,6 +32,10 @@
     border-radius: 5px;
 }
 
+.cadastra_psicologo input:hover {
+    border-color: #f1e208; 
+}
+
 .cadastra_psicologo button {
     background-color: #dfd51a;
     color: white;

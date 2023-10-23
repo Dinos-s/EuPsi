@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +8,8 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/CadPsicologo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <title>EuPSI - Cadastro Psicologo</title>
+    <title>Perfil do Psicólogo</title>
 </head>
-
 <body>
     <header>
         <!-- LOGO -->
@@ -49,27 +46,31 @@
     </header>
 
     <main>
-        <form id="form">
-            <div class="cadastra_psicologo">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" placeholder="Nos diga seu nome">
-        
-                <label for="crp">CRP:</label>
-                <input type="text" id="crp" placeholder="Digite seu CRP">
-
-                <label for="email">email:</label>
-                <input type="email" id="email" placeholder="Informe seu email"> 
-                
-                <label for="senha">Crie uma senha:</label>
-                <input type="password" name="senha" id="senha" placeholder="Crie a sua Senha">
-                
-
-                <label for="senha-repeat">Confirme a senha:</label>
-                <input type="password" name="senha-repeat" id="senha-repeat" placeholder="Confirmar Senha">
-
-                <button type="submit" id="submitBTN">Enviar</button>
-            </div>
-        </form>
+        <div class="cadastra_psicologo">
+            <h1>EuPSI - Cadastro Psicologo</h1>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Nos diga seu nome">
+    
+            <label for="crp">CRP:</label>
+            <input type="text" id="crp" placeholder="Digite seu CRP">
+    
+            <label for="valorsessao">Valor da sessão:</label>
+            <input type="number" id="valorsessao" placeholder="Nos diga o valor de sua sessão">
+    
+            <label for="temposessao">Tempo da sessão:</label>
+            <input type="number" id="temposessao" placeholder="Quanto tempo dura sua sessão (em minutos)">
+    
+            <label for="email">Email:</label>
+            <input required type="email" id="email" placeholder="Informe se e-mail">
+    
+            <label for="Localidade">Localidade:</label>
+            <input required type="text" id="Localidade" placeholder="Informe se e-mail">
+    
+            <label for="mensagem">Abordagem:</label>
+            <textarea id="mensagem" cols="40" rows="8" placeholder="Falenos um pouco mais sobre você"></textarea>
+    
+            <button type="submit">Enviar</button>
+        </div>
     </main>
 
     <footer>
@@ -96,7 +97,5 @@
         </section>
     </footer>
     <script src="./js/script.js"></script>
-    <script src="./js/form.js"></script>
 </body>
-
 </html>
