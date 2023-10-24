@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.cadastra_psicologo label{    
+.cadastra_psicologo label {
     display: block;
     width: 100%;
     margin-bottom: 5px;
@@ -33,7 +33,7 @@
 }
 
 .cadastra_psicologo input:hover {
-    border-color: #f1e208; 
+    border-color: #f1e208;
 }
 
 .cadastra_psicologo button {
@@ -50,4 +50,16 @@
     background-color: white;
     color: #dfd51a;
     transition: 1s;
+}
+
+.abordagem {
+    /* border: 1px red solid; */
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.abordagem > input[type=checkbox] {
+    margin: 0;
+    width: 16px;
 }
