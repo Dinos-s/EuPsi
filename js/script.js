@@ -328,7 +328,7 @@ function horasNaTabela() {
                 const button = document.createElement('button');
                 button.textContent = horaFormatada;
                 button.className = 'hora-button'; // Adicione uma classe para o botão
-                button.addEventListener('click', indoCadCliente);
+                button.addEventListener('click', indoCadCliente); // Redireciona os butões para cadPaciente
                 li.appendChild(button);
                 ul.appendChild(li);
 
@@ -341,6 +341,7 @@ function horasNaTabela() {
     }
 }
 
+// nessa função redireciona os butões para cadPaciente
 function indoCadCliente() {
     window.location.href = 'CadPaciente.html'
 }
