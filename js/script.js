@@ -33,6 +33,11 @@ function criaPsiCard(psi) {
     const img = document.createElement('img');
     img.src = psi.profile;
     img.alt = 'picture';
+    img.addEventListener('click', () => {
+        const pisicolgo = { nome: psi.nome }
+        const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
+        window.location.href = url
+    })
 
     const content = document.createElement('div');
     content.classList.add('content');
@@ -323,6 +328,7 @@ function horasNaTabela() {
                 const button = document.createElement('button');
                 button.textContent = horaFormatada;
                 button.className = 'hora-button'; // Adicione uma classe para o botão
+                button.addEventListener('click', indoCadCliente); // Redireciona os butões para cadPaciente
                 li.appendChild(button);
                 ul.appendChild(li);
 
@@ -333,6 +339,11 @@ function horasNaTabela() {
             horaColumn.appendChild(ul); // Adicione a lista à coluna de hora
         });
     }
+}
+
+// nessa função redireciona os butões para cadPaciente
+function indoCadCliente() {
+    window.location.href = 'CadPaciente.html'
 }
 
 // três pontos no excesso de texto

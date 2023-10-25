@@ -53,13 +53,18 @@
 }
 
 .abordagem {
-    /* border: 1px red solid; */
     padding: 5px;
-    display: flex;
-    flex-direction: column;
 }
 
-.abordagem > input[type=checkbox] {
-    margin: 0;
-    width: 16px;
+.abordagem > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.abordagem input[type=checkbox] {
+    margin-right: 5px;
+    margin-top: 10px;
+    width: 20px;
 }
