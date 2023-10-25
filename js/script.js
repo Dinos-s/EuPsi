@@ -328,6 +328,7 @@ function horasNaTabela() {
                 const button = document.createElement('button');
                 button.textContent = horaFormatada;
                 button.className = 'hora-button'; // Adicione uma classe para o botão
+                button.addEventListener('click', indoCadCliente);
                 li.appendChild(button);
                 ul.appendChild(li);
 
@@ -338,6 +339,10 @@ function horasNaTabela() {
             horaColumn.appendChild(ul); // Adicione a lista à coluna de hora
         });
     }
+}
+
+function indoCadCliente() {
+    window.location.href = 'CadPaciente.html'
 }
 
 // três pontos no excesso de texto

@@ -49,20 +49,28 @@
     </header>
 
     <main>
-        <div class="cadastra_paciente">
-            <h1>EuPSI - Cadastro Paciente</h1>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" placeholder="Nos diga seu nome">
-    
-            <label for="telefone">Telefone:</label>
-            <input required type="number" id="telefone" placeholder="Informe seu telefone">
-    
-            <label for="email">Email:</label>
-            <input required type="email" id="email" placeholder="Informe se e-mail">
-    
-            <button type="submit">Enviar</button>
-    
-        </div>
+        <form>
+            <div class="cadastra_paciente">
+                <h1>EuPSI - Cadastro Paciente</h1>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Nos diga seu nome" required>
+        
+                <label for="telefone">Telefone:</label>
+                <input required type="number" id="telefone" placeholder="Informe seu telefone">
+        
+                <label for="email">Email:</label>
+                <input required type="email" id="email" placeholder="Informe se e-mail">
+
+                <label for="senha">Crie uma senha:</label>
+                <input type="password" name="senha" id="senha" placeholder="Crie a sua Senha" required>
+
+                <label for="senha-repeat">Confirme a senha:</label>
+                <input type="password" name="senha-repeat" id="senha-repeat" placeholder="Confirmar Senha" required>
+        
+                <button type="submit">Enviar</button>
+        
+            </div>
+        </form>
     </main>
 
     <footer>
