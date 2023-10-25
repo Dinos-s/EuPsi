@@ -33,6 +33,11 @@ function criaPsiCard(psi) {
     const img = document.createElement('img');
     img.src = psi.profile;
     img.alt = 'picture';
+    img.addEventListener('click', () => {
+        const pisicolgo = { nome: psi.nome }
+        const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
+        window.location.href = url
+    })
 
     const content = document.createElement('div');
     content.classList.add('content');

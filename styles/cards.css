@@ -48,6 +48,13 @@
     border-radius: 50%;
     object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.863) 3px 5px 15px;
+    transition: .6s;
+}
+
+.avatar > img:hover {
+    transform: scale(1.08);
+    transition: .6s;
+    cursor: pointer;
 }
 
 .perfil {
