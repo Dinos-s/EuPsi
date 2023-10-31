@@ -70,7 +70,9 @@
 }
 
 #imagem-preview{
-    max-width: 300px; 
-    max-height: 300px;
+    max-width: 150px;
     border-radius: 5px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
 }
