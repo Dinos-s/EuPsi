@@ -4,12 +4,14 @@ const email = document.getElementById('email');
 const senha = document.getElementById('senha');
 const senhaRepeat = document.getElementById('senha-repeat');
 const submitBtn = document.getElementById('submitBtn');
+const imagemInput = document.getElementById('imagem');
+const imagemPreview = document.getElementById('imagem-preview');
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-  
-    validarForm()
-});
+// form.addEventListener("submit", (event) => {
+//     if (!validarForm()) {
+//         event.preventDefault();
+//     }
+// });
   
 function validarForm() {
 
@@ -28,3 +30,17 @@ function validarForm() {
         return false;
     }
 }
+
+imagemInput.addEventListener('change', (event) => {
+    const selectedFile = event.target.files[0];
+    
+    if (selectedFile) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            imagemPreview.src = e.target.result;
+        };
+        reader.readAsDataURL(selectedFile);
+    } else {
+        imagemPreview.src = ''; // Limpar a pré-visualização se nenhum arquivo for selecionado
+    }
+});
