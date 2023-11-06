@@ -76,3 +76,17 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.input-container {
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-container > label {
+    flex: 1;
+}
+
+.input-container {
+    flex: 3;
+    margin-right: 10px;
+}
