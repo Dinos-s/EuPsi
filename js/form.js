@@ -6,12 +6,13 @@ const senhaRepeat = document.getElementById('senha-repeat');
 const submitBtn = document.getElementById('submitBtn');
 const imagemInput = document.getElementById('imagem');
 const imagemPreview = document.getElementById('imagem-preview');
+const containerInfos = document.querySelectorAll('.input-container');
 
-// form.addEventListener("submit", (event) => {
-//     if (!validarForm()) {
-//         event.preventDefault();
-//     }
-// });
+form.addEventListener("submit", (event) => {
+    if (!validarForm()) {
+        event.preventDefault();
+    }
+});
   
 function validarForm() {
 
@@ -44,3 +45,14 @@ imagemInput.addEventListener('change', (event) => {
         imagemPreview.src = ''; // Limpar a pré-visualização se nenhum arquivo for selecionado
     }
 });
+
+// adiciona um novo campo no fim da pagina
+containerInfos.forEach(container => {
+    const addBtn = container.querySelector('.add-more')
+    addBtn.addEventListener('click', () => {
+        const newInputContainer = container.cloneNode(true)
+        const newInput = newInputContainer.querySelector('input')
+        newInput.value = ''
+        container.parentElement.appendChild(newInputContainer)
+    })
+})
