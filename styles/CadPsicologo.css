@@ -19,7 +19,7 @@
 
 .cadastra_psicologo input,
 .cadastra_psicologo textarea,
-.cadastra_psicologo button {
+.cadastra_psicologo .enviarForm {
     display: block;
     width: 100%;
     margin-bottom: 15px;
@@ -36,16 +36,16 @@
     border-color: #f1e208;
 }
 
-.cadastra_psicologo button {
+.cadastra_psicologo .enviarForm {
     background-color: #dfd51a;
     color: white;
     padding: 10px;
-    border: none;
+    border: 1px solid #f1e208;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.cadastra_psicologo button:hover {
+.cadastra_psicologo .enviarForm:hover {
     border: 1px solid #f1e208;
     background-color: white;
     color: #dfd51a;
@@ -78,15 +78,31 @@
 }
 
 .input-container {
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 10px;
+    justify-content: center;
+    column-gap: 12px;
 }
 
-.input-container > label {
+.input-container > input{
     flex: 1;
+    /* margin-top: 10px; */
 }
 
-.input-container {
-    flex: 3;
-    margin-right: 10px;
+.add-more{
+    background-color: #f1e208;
+    border: 1px solid #f1e208;
+    border-radius: 5px;
+    font-size: 15pt;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.add-more:hover {
+    border: 1px solid #f1e208;
+    background-color: white;
+    color: #dfd51a;
+    transition: 1s;
 }
