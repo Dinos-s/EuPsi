@@ -4,34 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./assets/eupsi.png">
+    <link rel="icon" type="image/x-icon" href="../assets/eupsi.png">
 
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="./styles/cards.css">
-    <link rel="stylesheet" href="./styles/calendar.css">
-    <title>Procura Psicólogo - EuPSI(protótipo)</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/calendar.css">
+    <link rel="stylesheet" href="../styles/Agendamento.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <!-- incones -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <title>Agendamento</title>
 </head>
 
 <body>
     <header>
         <!-- LOGO -->
-        <a href="index.html" class="logo">
-            <img src="./assets/eupsi.png" alt="teste" class="logoIndex">
+        <a href="../index.html" class="logo">
+            <img src="../assets/eupsi.png" alt="teste">
         </a>
 
         <!-- MENU -->
         <nav>
             <ul class="menu">
-                <li><a href="index.html">início</a></li>
-                <li><a class="active" href="procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="../index.html">início</a></li>
+                <li><a class="active" href="./procuraPsi.html">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
-                <li><a href="contato.html">contato</a></li>
+                <li><a href="./contato.html">contato</a></li>
             </ul>
         </nav>
+
         <div class="acesso">
-            <li><a href="#">Entrar</a></li>
+            <li><a href="./login.html">Entrar</a></li>
+            <!-- <li><a href="CadPaciente.html">Cadastro</a></li> -->
             <li><a href="#id_janela_modal">Cadastro</a></li>
             
             <section class="icons_rede_sociais">
@@ -46,53 +50,56 @@
                 </a>
             </section>
         </div>
+
     </header>
 
     <main>
-        <div class="card-Container">
-            <!-- card modelo -->
-            <!-- <div class="card">
-                <div class="background">
-                    <!- <img src="./assets/paisagem.jpg" alt="background"> ->
-                </div>
-                <div class="avatar">
-                    <img src="./assets/images.jpg" alt="picture">
-                </div>
-                <div class="content">
-                    <h4 class="perfil">Gabriel de Matos Ramos</h4>
-                    <p class="especialidade">Psícologo Infantil</p>
-                    <p class="crp">23579 / CRP - 4° Região</p>
-                    <section class="regular">
-                        <p class="cidade">Recife - PE</p>
-                        <p><span class="price">R$ 90</span>/ 50 min</p>
-                    </section>
-                </div>
-                <div class="calendar">
-                    <div class="wrapper">
-                        <table id="DiasSemana">
-                            <tr id="dayRow"></tr>
-                            <tr id="dateRow"></tr>
+        <a href="./procuraPsi.html" class="voltar">
+            <i class="fa fa-arrow-left-long"></i>
+        </a>
+        <div class='agendamento'>
+            <div class="user">
+                <img class='avatar' src="../assets/images.jpg" alt="psicologo">
+                <section class="info">
+                    <h2>Bruno Souza</h2>
+                    <p>CRP: <span class="crp">12/345678</span> | <span class="city">Recife</span></p>
+                    <p><span class="price">R$ 90</span>/ 50 min</p>
+                </section>
+            </div>
+
+            <div class="calendar">
+                <div class="wrapper">
+                    <!-- <header class="cabecalho-calendar">
+                        <span onclick="mudarSemana(-1)" class="ph-bold ph-caret-left prev"></span>
+                        <h2 class="today">hoje</h2>
+                        <span onclick="mudarSemana(1)" class="ph-bold ph-caret-right next"></span>
+                    </header> -->
+                    <table id="DiasSemana">
+                        <tr>
+                            <!-- <th colspan="7">Dias da Semana</th> -->
+                        </tr>
+                        <tr id="dayRow"></tr>
+                        <tr id="dateRow"></tr>
+                    </table>
+
+                    <div class="colunaTempo">
+                        <table>
+                            <tr>
+                                <td class="horaColumn1"></td>
+                                <td class="horaColumn2"></td>
+                                <td class="horaColumn3"></td>
+                                <td class="horaColumn4"></td>
+                                <td class="horaColumn5"></td>
+                                <td class="horaColumn6"></td>
+                                <td class="horaColumn7"></td>
+                            </tr>
                         </table>
-
-
-
-                        <div id="teste">
-                            <table class="horas-scroll">
-                                <tr id="colunasHora">
-                                    <td id="horaColumn1"></td>
-                                    <td id="horaColumn2"></td>
-                                    <td id="horaColumn3"></td>
-                                    <td id="horaColumn4"></td>
-                                    <td id="horaColumn5"></td>
-                                    <td id="horaColumn6"></td>
-                                    <td id="horaColumn7"></td>
-                                </tr>
-                            </table>
-                        </div>
                     </div>
                 </div>
-            </div> -->
-
+            </div>
+        </div>
+        <div class="saberMais">
+            
         </div>
     </main>
 
@@ -103,7 +110,7 @@
             <h5>Em qual das opções você se encaixa?</h5>
 
             <!-- Duas ANCORAS estao com as mesmas class -->
-            <a href="CadPaciente.html" 
+            <a href="./CadPaciente.html" 
                class="janela_modal_cliente">
                  <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg" 
                     loading="lazy" 
@@ -113,7 +120,7 @@
                       <div class="janela_modal_cliente_frase">Quero fazer sessões de terapias e ver conteúdos sobre saúde emocional</div>
             </a>
 
-            <a href="CadPsicologo.html" class="janela_modal_cliente">
+            <a href="./CadPsicologo.html" class="janela_modal_cliente">
                 <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
                     loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Profissional</div>
@@ -133,7 +140,7 @@
 
     <footer>
         <section class="f1">
-            <img src="./assets/eupsi.png" alt="EuPSI" class="logo">
+            <img src="../assets/eupsi.png" alt="EuPSI" class="logo">
         </section>
 
         <section class="f2">
@@ -144,15 +151,15 @@
         <section class="f3">
             <ul class="menuf">
                 <li>Menu</li>
-                <li><a href="index.html">início</a></li>
-                <li><a class="active" href="procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="../index.html">início</a></li>
+                <li><a class="active" href="./procuraPsi.html">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
-                <li><a href="contato.html">contato</a></li>
+                <li><a href="./contato.html">contato</a></li>
             </ul>
         </section>
     </footer>
-
-    <script src="./js/script.js"></script>
+    
+    <script src="../js/script.js"></script>
 </body>
 
 </html>
