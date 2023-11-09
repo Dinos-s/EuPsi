@@ -52,6 +52,23 @@
     transition: 1s;
 }
 
+#btnEnviar {
+    background-color: #dfd51a;
+    color: white;
+    padding: 10px;
+    border: 1px solid #f1e208;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#btnEnviar:hover {
+    border: 1px solid #f1e208;
+    background-color: white;
+    color: #dfd51a;
+    transition: 1s;
+}
+
 .abordagem {
     padding: 5px;
 }
