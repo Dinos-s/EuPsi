@@ -16,22 +16,22 @@
 <body>
     <header>
         <!-- LOGO -->
-        <a href="index.html" class="logo">
+        <a href="./index.html" class="logo">
             <img src="./assets/eupsi.png" alt="teste">
         </a>
 
         <!-- MENU -->
         <nav>
             <ul class="menu">
-                <li><a href="index.html">início</a></li>
-                <li><a class="active" href="procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./index.html">início</a></li>
+                <li><a class="active" href="./procuraPsi.html">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
-                <li><a href="contato.html">contato</a></li>
+                <li><a href="./contato.html">contato</a></li>
             </ul>
         </nav>
 
         <div class="acesso">
-            <li><a href="#">Entrar</a></li>
+            <li><a href="./login.html">Entrar</a></li>
             <li><a href="#id_janela_modal">Cadastro</a></li>
 
             <section class="icons_rede_sociais">
@@ -49,12 +49,12 @@
     </header>
 
     <main>
-        <form id="form">
-            <div class="cadastra_psicologo">
+        <div class="cadastra_psicologo">
+            <form id="form">
                 <h1>EuPSI - Cadastro de Psicólogo</h1>
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" placeholder="Nos diga seu nome"required>
-        
+                <input type="text" id="nome" placeholder="Nos diga seu nome" required>
+
                 <label for="crp">CRP:</label>
                 <input type="text" id="crp" placeholder="Digite seu CRP" required>
 
@@ -62,8 +62,8 @@
                 <input type="email" id="email" placeholder="Informe seu e-mail">
 
                 <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" placeholder="Informe seu número de Telefone" required> 
-                
+                <input type="tel" id="telefone" name="telefone" placeholder="Informe seu número de Telefone" required>
+
                 <label for="senha">Crie uma senha:</label>
                 <input type="password" name="senha" id="senha" placeholder="Crie a sua Senha" required>
 
@@ -71,44 +71,43 @@
                 <input type="password" name="senha-repeat" id="senha-repeat" placeholder="Confirmar Senha" required>
 
                 <button type="submit" id="btnEnviar">Enviar</button>
-            </div>
-        </form>
+            </form>
+        </div>
+
     </main>
 
-        <!-- JANELA MODAL DE CADASTRAO -->
-        <div id="id_janela_modal" class = 'janela_modal'>
-            <div class="modal_conteiner">
-                <h3>Olá! Bem vindo ao nosso cadastro.</h3>
-                <h5>Em qual das opções você se encaixa?</h5>
-    
-                <!-- Duas ANCORAS estao com as mesmas class -->
-                <a href="CadPaciente.html" 
-                   class="janela_modal_cliente">
-                     <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg" 
-                        loading="lazy" 
-                        alt="" 
-                        class="janela_modal_cliente_icons">
-                          <div class="janela_modal_cliente_titulo">Cliente</div>
-                          <div class="janela_modal_cliente_frase">Quero fazer sessões de terapias e ver conteúdos sobre saúde emocional</div>
-                </a>
-    
-                <a href="CadPsicologo.html" class="janela_modal_cliente">
-                    <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
-                        loading="lazy" alt="" class="janela_modal_cliente_icons">
-                    <div class="janela_modal_cliente_titulo">Profissional</div>
-                    <div class="janela_modal_cliente_frase">Quero atender pacientes online e fazer gestão da minha carreira
-                    </div>
-                </a>
-    
-                <!-- Botão fechar -->
-                <!-- 
+    <!-- JANELA MODAL DE CADASTRAO -->
+    <div id="id_janela_modal" class='janela_modal'>
+        <div class="modal_conteiner">
+            <h3>Olá! Bem vindo ao nosso cadastro.</h3>
+            <h5>Em qual das opções você se encaixa?</h5>
+
+            <!-- Duas ANCORAS estao com as mesmas class -->
+            <a href="./CadPaciente.html" class="janela_modal_cliente">
+                <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg"
+                    loading="lazy" alt="" class="janela_modal_cliente_icons">
+                <div class="janela_modal_cliente_titulo">Cliente</div>
+                <div class="janela_modal_cliente_frase">Quero fazer sessões de terapias e ver conteúdos sobre saúde
+                    emocional</div>
+            </a>
+
+            <a href="./CadPsicologo.html" class="janela_modal_cliente">
+                <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
+                    loading="lazy" alt="" class="janela_modal_cliente_icons">
+                <div class="janela_modal_cliente_titulo">Profissional</div>
+                <div class="janela_modal_cliente_frase">Quero atender pacientes online e fazer gestão da minha carreira
+                </div>
+            </a>
+
+            <!-- Botão fechar -->
+            <!-- 
                 <div class="modal_footer">
                     <a href="#" class="modal_footer_btn_close"> Fechar </a>
                 </div> -->
-    
-                <a href="#" class="modal_close">&times;</a>
-            </div>
+
+            <a href="#" class="modal_close">&times;</a>
         </div>
+    </div>
 
     <footer>
         <section class="f1">
@@ -126,10 +125,10 @@
         <section class="f3">
             <ul class="menuf">
                 <li>Menu</li>
-                <li><a href="index.html">início</a></li>
-                <li><a href="procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./index.html">início</a></li>
+                <li><a href="./procuraPsi.html">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
-                <li><a href="contato.html">contato</a></li>
+                <li><a href="./contato.html">contato</a></li>
             </ul>
         </section>
     </footer>
