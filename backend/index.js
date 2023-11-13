@@ -1,6 +1,14 @@
-const express = require('express')
-const pkg = require('./dataBase/conect')
+import express from "express";
+import pkg from 'body-parser';
+import sequelize from './dataBase/conect.js';
+import router from './routes/router.js';
 
+const app = express();
+const { json, urlencoded} = pkg
+
+app.use(json());
+app.use(urlencoded({ extended: true }));
+app.use("/", router);
 
 (async () => {
     try {
