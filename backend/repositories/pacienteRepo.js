@@ -1,6 +1,6 @@
 import paciente from '../models/pacienteModel.js'
 
-// 1 - salvar usuario
+// 1 - salvar paciente
 const savePaciente = async(pacienteModel) => {
     const save = await paciente.create(pacienteModel)
     return save
