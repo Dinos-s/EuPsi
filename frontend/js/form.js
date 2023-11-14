@@ -56,3 +56,14 @@ containerInfos.forEach(container => {
         container.parentElement.appendChild(newInputContainer)
     })
 })
+
+// // integrando o form com o banco de dados
+// const cadPaciente = document.querySelector('.cadPaciente')
+
+// async function pacientes() {
+//     const response = await fetch("http://localhost:3000/");
+//     const movies = await response.json();
+//     console.log(movies);
+// }
+
+// pacientes()

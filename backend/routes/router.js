@@ -1,6 +1,7 @@
 import express from 'express';
 let router = express.Router();
 import pacienteController from "./pacienteController.js";
+import psicologoController from './psicologoController.js';
 
 
 router.get('/', (req, res) => {
@@ -9,6 +10,6 @@ router.get('/', (req, res) => {
 })
 
 router.use('/', pacienteController)
-// router.use('/', psicologoController)
+router.use('/', psicologoController)
 
 export default router;

@@ -3,7 +3,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../dataBase/conect.js";
 
-const psicologos = sequelize.define('psicologos', {
+const psicologo = sequelize.define('psicologos', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -11,6 +11,10 @@ const psicologos = sequelize.define('psicologos', {
         primaryKey: true,
     },
     nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    crp: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -28,4 +32,4 @@ const psicologos = sequelize.define('psicologos', {
     },
 });
 
-export default psicologos;
+export default psicologo;
