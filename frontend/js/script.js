@@ -12,7 +12,6 @@ navLinks.forEach(link => {
 // pegando usuarios do json
 const cardContainer = document.querySelector('.card-Container')
 
-
 function criaPsiCard(psi) {
     // Criação dos elementos e classes do interior do card
     const card = document.createElement('div');
