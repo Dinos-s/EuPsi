@@ -20,12 +20,7 @@ cadPaciente.addEventListener('submit', function (event) {
   // Você pode adicionar mais campos conforme necessário
 
   // Construir um objeto com os dados do formulário
-  const formData = {
-    nome,
-    telefone,
-    email,
-    senha,
-  };
+  const formData = { nome, telefone, email, senha, };
 
   // Enviar dados para o servidor usando Fetch API
   fetch('http://localhost:3000/addPaciente', {
