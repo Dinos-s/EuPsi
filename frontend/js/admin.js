@@ -46,5 +46,9 @@ function renderPacientes(pacienteData) {
 }
 
 // Chamando as funções para renderizar as listas
-psicologos()
-pacientes()
+async function obtendoDados() {
+    await pacientes()
+    await psicologos()
+}
+
+obtendoDados()
