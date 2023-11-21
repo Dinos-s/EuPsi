@@ -1,6 +1,4 @@
 // integrando o form com o banco de dados
-
-
 async function pacientes() {
   const response = await fetch("http://localhost:3000/pacientes");
   const pacientes = await response.json();
@@ -24,21 +22,24 @@ function cadPaciente() {
   const senha = document.getElementById('senha').value;
 
   const formData = { nome, telefone, email, senha };
-
-  fetch('http://localhost:3000/addPaciente', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
-    .then(response => response.text())
-    .then(data => {
-      console.log(data);
+  try {
+    fetch('http://localhost:3000/addPaciente', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     })
-    .catch(error => {
-      console.error('Erro ao enviar dados para o servidor:', error);
-    });
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+      })
+
+      // a linha abaixo será executada para redirecionar para outra pagina
+      window.location.href='./procuraPsi.html'
+  } catch (error) {
+    console.error('Erro ao enviar dados para o servidor:', error);
+  };
 }
 
 //função de cadatro de psicologo
@@ -51,20 +52,24 @@ function cadPsi() {
 
   const formData = { nome, crp, telefone, email, senha };
 
-  fetch('http://localhost:3000/addPsicologo', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
-    .then(response => response.text())
-    .then(data => {
-      console.log(data);
+  try {
+    fetch('http://localhost:3000/addPsicologo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     })
-    .catch(error => {
-      console.error('Erro ao enviar dados para o servidor:', error);
-    });
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+      })
+      
+      // a linha abaixo será executada para redirecionar para outra pagina
+      window.location.href='./perfilPsi.html'
+  } catch (error) {
+    console.error('Erro ao enviar dados para o servidor:', error);
+  };
 }
 
 // fetch('http://localhost:3000/pacientes')
