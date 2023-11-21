@@ -11,10 +11,49 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 45%;
+    height: 530px;
+    overflow-y: scroll;
+}
+
+.psicologos::-webkit-scrollbar{
+    width: 4px;
+}
+
+.pacientes::-webkit-scrollbar{
+    width: 4px;
+}
+
+.psicologos::-webkit-scrollbar-track {
+    background: #6e6767;
+    border-radius: 2px;
+}
+
+.pacientes::-webkit-scrollbar-track {
+    background: #6e6767;
+    border-radius: 2px;
+}
+
+.psicologos::-webkit-scrollbar-thumb {
+    background: #ffd700;
+    border-radius: 2px;
+}
+
+.pacientes::-webkit-scrollbar-thumb {
+    background: #ffd700;
+    border-radius: 2px;
+}
+
+.psicologos::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+
+.pacientes::-webkit-scrollbar-thumb:hover {
+    background: white;
 }
 
 h2 {
     color: #333;
+    text-align: center;
 }
 
 #psicologos-list,
