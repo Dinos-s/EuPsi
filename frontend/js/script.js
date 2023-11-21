@@ -331,8 +331,8 @@ function horasNaTabela() {
                 li.appendChild(button);
                 ul.appendChild(li);
 
-                // Avança 50 minutos
-                horaAtual.setMinutes(horaAtual.getMinutes() + 50);
+                // Avança 30 minutos
+                horaAtual.setMinutes(horaAtual.getMinutes() + 30);
             }
 
             horaColumn.appendChild(ul); // Adicione a lista à coluna de hora

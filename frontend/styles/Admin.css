@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.psicologos,
+.pacientes {
+    margin-top: 2%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+
+h2 {
+    color: #333;
+}
+
+#psicologos-list,
+#pacientes-list {
+    margin-top: 10px;
+}
