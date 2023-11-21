@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/CadPsicologo.css">
+    <link rel="stylesheet" href="./styles/Login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <title>EuPSICO - Cadastro Psicologo</title>
@@ -49,7 +50,6 @@
     </header>
 
     <main>
-
         <form id="form" class="cadPsi">
             <div class="cadastra_psicologo">
                 <h1>EuPSICO - Cadastro de Psicólogo</h1>
@@ -72,10 +72,10 @@
                 <input type="password" name="senha-repeat" id="senha-repeat" placeholder="Confirmar Senha" required>
 
                 <button type="submit" id="btnEnviar" onclick="cadPsi()">Enviar</button>
+
+                <p class="erro">Caso já tenha, faça o login, clique <a href="./login.html">aqui</a> !</p>
             </div>
         </form>
-
-
     </main>
 
     <!-- JANELA MODAL DE CADASTRAO -->
