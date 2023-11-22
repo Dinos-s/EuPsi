@@ -20,12 +20,17 @@ const deletaPaciente = (id) => {
     return pacienteRepo.deletaPaciente(id)
 }
 
+const getPacienteByEmail = (email) => {
+    return pacienteRepo.getPacienteByEmail(email)
+}
+
 const service = {
     savePaciente,
     getAllPacientes,
     getPacienteById,
     updatePaciente,
-    deletaPaciente
+    deletaPaciente,
+    getPacienteByEmail
 }
 
 export default service

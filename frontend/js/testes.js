@@ -66,7 +66,7 @@ function cadPsi() {
       })
       
       // a linha abaixo será executada para redirecionar para outra pagina
-      window.location.href='./perfilPsi.html'
+      window.location.href=`./perfilPsi.html`
   } catch (error) {
     console.error('Erro ao enviar dados para o servidor:', error);
   };

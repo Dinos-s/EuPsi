@@ -51,12 +51,22 @@ const deletaPaciente = async(id) => {
     })
 }
 
+// 6 - Verificar se o pacienten está cadastrado
+const getPacienteByEmail = async (email) => {
+    return await paciente.findOne({
+      where: {
+        email: email,
+      },
+    });
+  };
+
 const factory = {
     savePaciente,
     getAllPacientes,
     getPacienteById,
     updatePaciente,
-    deletaPaciente
+    deletaPaciente,
+    getPacienteByEmail
 }
 
 // Exporta os dados para que possam ser usados em outro arquivo
