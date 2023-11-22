@@ -1,5 +1,4 @@
 // aqui estará listado o modelo de table de usuario que será criado no banco de dados;
-
 import { DataTypes } from "sequelize";
 import sequelize from "../dataBase/conect.js";
 
@@ -25,6 +24,6 @@ const pacientes = sequelize.define('pacientes', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-}, { underscored: true });
+}, { timestamps: true });
 
 export default pacientes;

@@ -9,7 +9,7 @@ const sequelize = new Sequelize (
         dialect: 'mysql',
         port: 3306,
         define: {
-            timestamps: false
+            timestamps: true
         }
     }
 );
