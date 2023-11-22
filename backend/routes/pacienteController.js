@@ -1,15 +1,20 @@
 import express from 'express';
+import bcrypt from "bcrypt";
 let router = express.Router();
 import pacienteService from '../services/PacienteSevice.js'
 
 router.post('/addPaciente', async (req, res) => {
     const { nome, telefone, email, senha } = req.body
+
+    //emcriptando a senha
+    const salt = await bcrypt.genSalt(15)
+    const senhaHash = await bcrypt.hash(senha, salt)
     
     const PacienteModel = {
         nome: nome,
         telefone: telefone,
         email: email,
-        senha: senha
+        senha: senhaHash
     }
 
     const paciente = await pacienteService.savePaciente(PacienteModel)

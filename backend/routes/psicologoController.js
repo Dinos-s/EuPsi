@@ -1,16 +1,21 @@
 import express from "express";
+import bcrypt from "bcrypt";
 let router = express.Router()
 import psiService from "../services/PsicologoService.js";
 
 router.post('/addPsicologo', async (req, res) => {
     const { nome, crp, telefone, email, senha } = req.body
 
+    //emcriptando a senha
+    const salt = await bcrypt.genSalt(15)
+    const senhaHash = await bcrypt.hash(senha, salt)
+
     const PsiModel = {
         nome: nome,
         crp: crp,
         telefone: telefone,
         email: email,
-        senha: senha
+        senha: senhaHash
     }
 
     const psicologo = await psiService.savePsicologo(PsiModel)
