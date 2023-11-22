@@ -27,9 +27,9 @@ router.get('/psicologos', async (req, res) => {
     return res.status(200).json(allPisicologos)
 })
 
-router.get('/psicologos/:id', async (req, res) => {
+router.get('/psicologo/:id', async (req, res) => {
     const psicologo = await psiService.getPisicologoById(req.params.id)
-    return res.status(200).json()
+    return res.status(200).json(psicologo)
 })
 
 router.put('/updatePsi/:id', async (req, res) => {
@@ -47,7 +47,7 @@ router.put('/updatePsi/:id', async (req, res) => {
     return res.status(200).json(psicologo)
 })
 
-router.delete('/deletePsicologo', async (req, res) => {
+router.delete('/deletePsicologo/:id', async (req, res) => {
     const psicologo = await psiService.deletaPsicologo(req.params.id)
     return res.status(200).json(psicologo)
 })

@@ -10,6 +10,10 @@ const psicologo = sequelize.define('psicologos', {
         allowNull: false,
         primaryKey: true,
     },
+    photo_perfil: {
+        type: DataTypes.BLOB,
+        allowNull: true
+    },
     nome: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -29,6 +33,38 @@ const psicologo = sequelize.define('psicologos', {
     senha: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    valor_sessao: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+    },
+    tempo_sessao: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
+    experiencia: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    especialidade: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    formacao: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    localidade: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    abordagens: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
+    descricao_pessoal: {
+        type: DataTypes.TEXT,
+        allowNull: true,
     },
 });
 
