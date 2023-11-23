@@ -24,13 +24,18 @@ const getPacienteByEmail = (email) => {
     return pacienteRepo.getPacienteByEmail(email)
 }
 
+const getTotalPacientes = () => {
+    return pacienteRepo.totalPacientes()
+}
+
 const service = {
     savePaciente,
     getAllPacientes,
     getPacienteById,
     updatePaciente,
     deletaPaciente,
-    getPacienteByEmail
+    getPacienteByEmail,
+    getTotalPacientes,
 }
 
 export default service

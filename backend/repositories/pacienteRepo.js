@@ -58,7 +58,13 @@ const getPacienteByEmail = async (email) => {
         email: email,
       },
     });
-  };
+};
+
+
+// 7 - Contanto o total de paciente cadastrados
+const totalPacientes = async() => {
+    return await paciente.count()
+} 
 
 const factory = {
     savePaciente,
@@ -66,7 +72,8 @@ const factory = {
     getPacienteById,
     updatePaciente,
     deletaPaciente,
-    getPacienteByEmail
+    getPacienteByEmail,
+    totalPacientes,
 }
 
 // Exporta os dados para que possam ser usados em outro arquivo

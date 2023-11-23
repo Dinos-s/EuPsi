@@ -60,6 +60,11 @@ router.get('/pacientes', async (req, res) => {
     return res.status(200).json(allPacientes)
 })
 
+router.get('/total/Pacientes', async(req, res) => {
+    const totalPacientes = await pacienteService.getTotalPacientes()
+    return res.status(200).json(totalPacientes)
+})
+
 router.get('/paciente/:id', async (req, res) => {
     const paciente = await pacienteService.getPacienteById(req.params.id)
     return res.status(200).json(paciente)
