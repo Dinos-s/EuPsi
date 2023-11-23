@@ -13,6 +13,10 @@ const psicologo = sequelize.define('psicologos', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    photo_perfil: {
+        type: DataTypes.BLOB,
+        allowNull: true,
+    },
     crp: {
         type: DataTypes.STRING,
         allowNull: false,
