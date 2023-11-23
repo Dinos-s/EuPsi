@@ -6,7 +6,7 @@ let router = express.Router();
 import pacienteService from '../services/PacienteSevice.js'
 
 router.post('/addPaciente', async (req, res) => {
-    const { nome, telefone, email, senha } = req.body
+    const { nome, cpf, telefone, email, senha } = req.body
 
     //emcriptando a senha
     const salt = await bcrypt.genSalt(12)
@@ -14,6 +14,7 @@ router.post('/addPaciente', async (req, res) => {
 
     const PacienteModel = {
         nome: nome,
+        cpf: cpf,
         telefone: telefone,
         email: email,
         senha: senhaHash
@@ -65,10 +66,11 @@ router.get('/paciente/:id', async (req, res) => {
 })
 
 router.put('/updatePaciente/:id', async (req, res) => {
-    const { nome, telefone, email, senha } = req.body
+    const { nome, cpf, telefone, email, senha } = req.body
 
     const PacienteModel = {
         nome: nome,
+        cpf: cpf,
         telefone: telefone,
         email: email,
         senha: senha
