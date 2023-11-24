@@ -19,29 +19,22 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single('file')
 
 router.post('/addPsicologo', async (req, res) => {
-    upload(req, res, async (err) => {
-        const { nome, crp, telefone, email, senha } = req.body
+    const { nome, crp, telefone, email, senha } = req.body
 
-        //emcriptando a senha
-        const salt = await bcrypt.genSalt(12)
-        const senhaHash = await bcrypt.hash(senha, salt)
+    //emcriptando a senha
+    const salt = await bcrypt.genSalt(12)
+    const senhaHash = await bcrypt.hash(senha, salt)
 
-        const PsiModel = {
-            nome: nome,
-            photo_perfil: req.file ? req.file.path : null,
-            crp: crp,
-            telefone: telefone,
-            email: email,
-            senha: senhaHash
-        }
+    const PsiModel = {
+        nome: nome,
+        crp: crp,
+        telefone: telefone,
+        email: email,
+        senha: senhaHash
+    }
 
-        if (err) {
-            return res.status(500).json({ error: "Falha ao enviar a imagem!" });
-        }
-
-        const psicologo = await psiService.savePsicologo(PsiModel)
-        return res.status(201).json(psicologo)
-    })
+    const psicologo = await psiService.savePsicologo(PsiModel)
+    return res.status(201).json(psicologo)
 })
 
 router.get('/psicologos', async (req, res) => {
@@ -55,28 +48,18 @@ router.get('/psicologo/:id', async (req, res) => {
 })
 
 router.put('/updatePsi/:id', async (req, res) => {
-    upload(req, res, async (err) => {
-        const { nome, crp, telefone, email, senha } = req.body
+    const { nome, crp, telefone, email, senha } = req.body
 
-        const PsiModel = {
-            nome: nome,
-            crp: crp,
-            telefone: telefone,
-            email: email,
-            senha: senha
-        }
+    const PsiModel = {
+        nome: nome,
+        crp: crp,
+        telefone: telefone,
+        email: email,
+        senha: senha
+    }
 
-        if (req.file) {
-            PsiModel.photo_perfil = req.file.path;
-        }
-
-        if (err) {
-            return res.status(500).json({ error: 'Falha ao enviar a imgem!' })
-        }
-
-        const psicologo = await psiService.updatePsicologo(req.params.id, PsiModel)
-        return res.status(200).json(psicologo)
-    })
+    const psicologo = await psiService.updatePsicologo(req.params.id, PsiModel)
+    return res.status(200).json(psicologo)
 })
 
 router.delete('/deletePsicologo/:id', async (req, res) => {

@@ -54,12 +54,11 @@ const deletaPaciente = async(id) => {
 // 6 - Verificar se o pacienten está cadastrado
 const getPacienteByEmail = async (email) => {
     return await paciente.findOne({
-      where: {
-        email: email,
-      },
+        where: {
+            email: email,
+        },
     });
 };
-
 
 // 7 - Contanto o total de paciente cadastrados
 const totalPacientes = async() => {
