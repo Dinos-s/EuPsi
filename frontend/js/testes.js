@@ -1,18 +1,24 @@
 // integrando o form com o banco de dados
+
+const form = document.querySelector('#form')
 async function pacientes() {
   const response = await fetch("http://localhost:3000/pacientes");
   const pacientes = await response.json();
   console.log(pacientes);
   return pacientes
 }
-
 pacientes()
 
-cadPaciente.addEventListener('submit', function (event) {
-  event.preventDefault();
-  cadPaciente();
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  cadPaciente()
   cadPsi()
-});
+
+  const paramURL = new URLSearchParams(window.location.search)
+  const psiId = paramURL.get('id')
+  dadosDoPsi(psiId)
+})
 
 // Função para cadastrar o paciente
 function cadPaciente() {
@@ -31,13 +37,13 @@ function cadPaciente() {
       },
       body: JSON.stringify(formData),
     })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(data => {
         console.log(data);
       })
 
-      // a linha abaixo será executada para redirecionar para outra pagina
-      window.location.href='./procuraPsi.html'
+    // a linha abaixo será executada para redirecionar para outra pagina
+    window.location.href = 'procuraPsi.html'
   } catch (error) {
     console.error('Erro ao enviar dados para o servidor:', error);
   };
@@ -61,16 +67,33 @@ function cadPsi() {
       },
       body: JSON.stringify(formData),
     })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(data => {
         console.log(data);
+        const psiId = data.id
+        // a linha abaixo será executada para redirecionar para outra pagina
+        window.location.href = `perfilPsi.html?id=${encodeURIComponent(psiId)}`;
       })
-      
-      // a linha abaixo será executada para redirecionar para outra pagina
-      window.location.href=`./perfilPsi.html`
+
   } catch (error) {
     console.error('Erro ao enviar dados para o servidor:', error);
   };
+}
+
+// função que vai pegar os dados do banco para o perfilPsi
+async function dadosDoPsi(id) {
+  try {
+    const response = await fetch(`http://localhost:3000/psicologo/${id}`);
+    const psicologo = await response.json();
+
+    // Preencha os campos do formulário com os dados obtidos
+    document.getElementById('nome').value = psicologo.nome;
+    document.getElementById('crp').value = psicologo.crp;
+    document.getElementById('telefone').value = psicologo.telefone;
+    document.getElementById('email').value = psicologo.email;
+  } catch (error) {
+    console.error('Erro ao obter dados do psicólogo:', error);
+  }
 }
 
 // fetch('http://localhost:3000/pacientes')
