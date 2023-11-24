@@ -13,9 +13,14 @@ const psicologo = sequelize.define('psicologos', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    photo_perfil: {
+        type: DataTypes.BLOB,
+        allowNull: true,
+    },
     crp: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true
     },
     telefone: {
         type: DataTypes.STRING,
@@ -24,6 +29,7 @@ const psicologo = sequelize.define('psicologos', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
     senha: {
         type: DataTypes.STRING,

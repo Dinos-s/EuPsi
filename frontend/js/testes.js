@@ -17,11 +17,12 @@ cadPaciente.addEventListener('submit', function (event) {
 // Função para cadastrar o paciente
 function cadPaciente() {
   const nome = document.getElementById('nome').value;
+  const cpf = document.getElementById('cpf').value;
   const telefone = document.getElementById('telefone').value;
   const email = document.getElementById('email').value;
   const senha = document.getElementById('senha').value;
 
-  const formData = { nome, telefone, email, senha };
+  const formData = { nome, cpf, telefone, email, senha };
   try {
     fetch('http://localhost:3000/addPaciente', {
       method: 'POST',

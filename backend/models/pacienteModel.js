@@ -12,6 +12,11 @@ const pacientes = sequelize.define('pacientes', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    cpf: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
     telefone: {
         type: DataTypes.STRING(15),
         allowNull: false,
@@ -19,6 +24,7 @@ const pacientes = sequelize.define('pacientes', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
     senha: {
         type: DataTypes.STRING,

@@ -15,38 +15,24 @@
     overflow-y: scroll;
 }
 
-.psicologos::-webkit-scrollbar{
-    width: 4px;
-}
-
+.psicologos::-webkit-scrollbar,
 .pacientes::-webkit-scrollbar{
     width: 4px;
 }
 
-.psicologos::-webkit-scrollbar-track {
-    background: #6e6767;
-    border-radius: 2px;
-}
-
+.psicologos::-webkit-scrollbar-track,
 .pacientes::-webkit-scrollbar-track {
     background: #6e6767;
     border-radius: 2px;
 }
 
-.psicologos::-webkit-scrollbar-thumb {
-    background: #ffd700;
-    border-radius: 2px;
-}
-
+.psicologos::-webkit-scrollbar-thumb,
 .pacientes::-webkit-scrollbar-thumb {
     background: #ffd700;
     border-radius: 2px;
 }
 
-.psicologos::-webkit-scrollbar-thumb:hover {
-    background: white;
-}
-
+.psicologos::-webkit-scrollbar-thumb:hover,
 .pacientes::-webkit-scrollbar-thumb:hover {
     background: white;
 }
@@ -59,4 +45,13 @@ h2 {
 #psicologos-list,
 #pacientes-list {
     margin-top: 10px;
+}
+
+#total-pacientes{
+    margin-top: 15px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 33%;
 }

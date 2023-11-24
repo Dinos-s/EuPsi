@@ -1,13 +1,28 @@
 import express from "express";
 import bcrypt from "bcrypt";
+import multer from "multer";
+
 let router = express.Router()
 import psiService from "../services/PsicologoService.js";
+
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, './images')
+    },
+    filename: (req, file, callback) => {
+        const { nome } = req.body
+        const time = new Date.now()
+        callback(null, `${nome}_${time}_${file.originalname}`)
+    }
+})
+
+const upload = multer({ storage: storage }).single('file')
 
 router.post('/addPsicologo', async (req, res) => {
     const { nome, crp, telefone, email, senha } = req.body
 
     //emcriptando a senha
-    const salt = await bcrypt.genSalt(15)
+    const salt = await bcrypt.genSalt(12)
     const senhaHash = await bcrypt.hash(senha, salt)
 
     const PsiModel = {
