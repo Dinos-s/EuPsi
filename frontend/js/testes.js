@@ -1,6 +1,5 @@
 // integrando o form com o banco de dados
-
-const form = document.querySelector('#form')
+// const form = document.querySelector('#form')
 async function pacientes() {
   const response = await fetch("http://localhost:3000/pacientes");
   const pacientes = await response.json();
@@ -9,16 +8,15 @@ async function pacientes() {
 }
 pacientes()
 
+// document.querySelector('#form').addEventListener('submit', (event) => {
+//   event.preventDefault()
+  // cadPaciente()
+  // cadPsi()
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault()
-  cadPaciente()
-  cadPsi()
-
-  const paramURL = new URLSearchParams(window.location.search)
-  const psiId = paramURL.get('id')
-  dadosDoPsi(psiId)
-})
+//   const paramURL = new URLSearchParams(window.location.search)
+//   const psiId = paramURL.get('id')
+//   dadosDoPsi(psiId)
+// })
 
 // Função para cadastrar o paciente
 function cadPaciente() {
@@ -29,6 +27,11 @@ function cadPaciente() {
   const senha = document.getElementById('senha').value;
 
   const formData = { nome, cpf, telefone, email, senha };
+
+  if (!nome || !cpf || !telefone || !email || !senha) {
+    console.error('Por favor, preencha todos os campos obrigatórios.');
+    return;
+  }
   try {
     fetch('http://localhost:3000/addPaciente', {
       method: 'POST',
@@ -56,8 +59,14 @@ function cadPsi() {
   const telefone = document.getElementById('telefone').value;
   const email = document.getElementById('email').value;
   const senha = document.getElementById('senha').value;
+  const senhaRepeat = document.getElementById('senha-repeat');
 
   const formData = { nome, crp, telefone, email, senha };
+
+  if (!nome || !crp || !telefone || !email || !senha ) {
+    console.error('Por favor, preencha todos os campos obrigatórios.');
+    return;
+  }
 
   try {
     fetch('http://localhost:3000/addPsicologo', {
