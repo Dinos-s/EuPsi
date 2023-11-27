@@ -137,7 +137,7 @@ function cadPsi() {
             .then(data => {
                 console.log(data);
                 const psiId = data.id
-                
+
                 // a linha abaixo será executada para redirecionar para outra pagina
                 window.location.href = `perfilPsi.html?id=${encodeURIComponent(psiId)}`;
             })
@@ -146,3 +146,24 @@ function cadPsi() {
         console.error('Erro ao enviar dados para o servidor:', error);
     };
 }
+
+// Função para obter mais dados do psicólogo e preencher outros campos
+async function dadosDoPsi(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/psicologo/${id}`);
+        const psicologo = await response.json();
+
+        // Preencha os campos do formulário com os dados obtidos
+        document.getElementById('nome').value = psicologo.nome;
+        document.getElementById('crp').value = psicologo.crp;
+        document.getElementById('telefone').value = psicologo.telefone;
+        document.getElementById('email').value = psicologo.email;
+    } catch (error) {
+        console.error('Erro ao obter dados do psicólogo:', error);
+    }
+}
+
+const paramId = new URLSearchParams(window.location.search)
+const id = paramId.get('id');
+
+dadosDoPsi(id) // essa linha executa a função logo acima
