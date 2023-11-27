@@ -41,11 +41,6 @@ function validarForm() {
         return false;
     }
 
-    if (senha.value.length <= 0 && senhaRepeat.value.length <= 0) {
-        alert('Senha não pode ser vazia')
-        return false
-    }
-
     return true
 }
 
@@ -81,14 +76,8 @@ function cadPaciente() {
     const telefone = document.getElementById('telefone').value;
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
-    const senhaRepeat = document.getElementById('senha-repeat').value;
 
     const formData = { nome, cpf, telefone, email, senha };
-
-    if (!nome || !cpf || !telefone || !email || !senha || !senhaRepeat) {
-        console.error('Por favor, preencha todos os campos obrigatórios.');
-        return;
-    }
     try {
         fetch('http://localhost:3000/addPaciente', {
             method: 'POST',
@@ -116,14 +105,8 @@ function cadPsi() {
     const telefone = document.getElementById('telefone').value;
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
-    const senhaRepeat = document.getElementById('senha-repeat').value;
 
     const formData = { nome, crp, telefone, email, senha };
-
-    if (!nome || !crp || !telefone || !email || !senha || !senhaRepeat) {
-        console.error('Por favor, preencha todos os campos obrigatórios.');
-        return;
-    }
 
     try {
         fetch('http://localhost:3000/addPsicologo', {

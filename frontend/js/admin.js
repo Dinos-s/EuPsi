@@ -22,6 +22,14 @@ async function totalPacientes() {
     renderTotalPacientes(contPacienete);
 }
 
+// função para mostrar o total de psicologos cadastrados
+async function totalPsicologos() {
+    const response = await fetch('http://localhost:3000/total/Psicologos')
+    const contPsicologos = await response.json();
+    console.log('Total de psicólogos cadastrados', contPsicologos);
+    renderTotalPsicologos(contPsicologos);
+}
+
 // Função para criar a lista de psicólogos
 function renderPsicologos(psiData) {
     const psicologosList = document.getElementById("psicologos-list");
@@ -66,11 +74,22 @@ function renderTotalPacientes(total) {
     totalPacientes.appendChild(pacientesList)
 }
 
+function renderTotalPsicologos(total) {
+    const totalPsicologos = document.getElementById('total-psicologos');
+    totalPsicologos.innerHTML = "";
+    
+    const psicologoList = document.createElement('p')
+    psicologoList.textContent = `Total de psicólogos cadastrados: ${total}`
+
+    totalPsicologos.appendChild(psicologoList)
+}
+
 // Chamando as funções para renderizar as listas
 async function obtendoDados() {
     await pacientes()
     await psicologos()
     await totalPacientes()
+    await totalPsicologos()
 }
 
 obtendoDados()

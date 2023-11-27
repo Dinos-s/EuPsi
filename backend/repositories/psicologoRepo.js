@@ -51,12 +51,17 @@ const deletaPsicologo = async (id) => {
     })
 }
 
+// 7 - Contanto o total de paciente cadastrados
+const totalPsi = async() => {
+    return await psicologo.count()
+} 
 const factory = {
     savePsicologo,
     getAllPisicologos,
     getPisicologoById,
     updatePsicologo,
-    deletaPsicologo
+    deletaPsicologo,
+    totalPsi,
 }
 
 export default factory

@@ -20,12 +20,17 @@ const deletaPsicologo = (id) => {
     return psiRepo.deletaPsicologo(id)
 }
 
+const getTotalPsi = () => {
+    return psiRepo.totalPsi()
+}
+
 const service = {
     savePsicologo,
     getAllPisicologos,
     getPisicologoById,
     updatePsicologo,
-    deletaPsicologo
+    deletaPsicologo,
+    getTotalPsi
 }
 
 export default service

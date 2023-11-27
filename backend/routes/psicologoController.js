@@ -47,6 +47,11 @@ router.get('/psicologo/:id', async (req, res) => {
     return res.status(200).json(psicologo)
 })
 
+router.get('/total/Psicologos', async (req, res) => {
+    const totalPsicologos = await psiService.getTotalPsi()
+    return res.status(200).json(totalPsicologos)
+})
+
 router.put('/updatePsi/:id', async (req, res) => {
     const { nome, crp, telefone, email, senha } = req.body
 
