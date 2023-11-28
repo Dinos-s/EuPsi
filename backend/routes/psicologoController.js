@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import multer from "multer";
+import jwt from "jsonwebtoken";
 
 let router = express.Router()
 import psiService from "../services/PsicologoService.js";
@@ -35,6 +36,34 @@ router.post('/addPsicologo', async (req, res) => {
 
     const psicologo = await psiService.savePsicologo(PsiModel)
     return res.status(201).json(psicologo)
+})
+
+//rota de login do psicologo
+router.post('/psicologo/login', async(req, res) => {
+    const { email, senha } = req.body
+    
+    // Verificar se o psicologo exite no banco de dados
+    const psicologo = await psiService.getPsicologoByEmail(email)
+    if (!psicologo) {
+        return res.status(401).json({mensagem: 'Credenciais inválidas email'})
+    }
+
+    // Verifica se a senha fornecida corresponde à senha cadastrada no banco de dados
+    const senhaCorreta = bcrypt.compare(senha, psicologo.senha)
+    if (!senhaCorreta) {
+        return res.status(401).json({ mensagem: 'Credenciais inválidas senha' })
+    }
+
+    try {
+        // Gerar token de atualização
+        const token = jwt.sign({ id: psicologo.id}, 'seuSegredoDoToken', {
+            expiresIn: '1h',
+        })
+        return res.status(200).json({ token })
+    } catch (error) {
+        console.error('Erro durante o login:', error);
+        return res.status(500).json({ mensagem: 'Erro interno do servidor' });
+    }
 })
 
 router.get('/psicologos', async (req, res) => {

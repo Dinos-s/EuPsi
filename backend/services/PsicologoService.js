@@ -20,6 +20,10 @@ const deletaPsicologo = (id) => {
     return psiRepo.deletaPsicologo(id)
 }
 
+const getPsicologoByEmail = (email) => {
+    return psiRepo.getPsicologoByEmail(email)
+}
+
 const getTotalPsi = () => {
     return psiRepo.totalPsi()
 }
@@ -30,7 +34,8 @@ const service = {
     getPisicologoById,
     updatePsicologo,
     deletaPsicologo,
-    getTotalPsi
+    getPsicologoByEmail,
+    getTotalPsi,
 }
 
 export default service
