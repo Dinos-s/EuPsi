@@ -49,16 +49,20 @@ router.post('/psicologo/login', async(req, res) => {
     }
 
     // Verifica se a senha fornecida corresponde à senha cadastrada no banco de dados
-    const senhaCorreta = bcrypt.compare(senha, psicologo.senha)
+    const senhaCorreta = await bcrypt.compare(senha, psicologo.senha)
     if (!senhaCorreta) {
         return res.status(401).json({ mensagem: 'Credenciais inválidas senha' })
     }
 
     try {
         // Gerar token de atualização
-        const token = jwt.sign({ id: psicologo.id}, 'seuSegredoDoToken', {
-            expiresIn: '1h',
-        })
+        const token = jwt.sign(
+            { id: psicologo.id,
+              nome: psicologo.nome,
+            },
+            'seuSegredoDoToken',
+            { expiresIn: '1h', }
+        )
         return res.status(200).json({ token })
     } catch (error) {
         console.error('Erro durante o login:', error);

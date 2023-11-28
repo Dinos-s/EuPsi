@@ -35,16 +35,20 @@ router.post('/paciente/login', async (req, res) => {
     }
 
     // Verificar se a senha fornecida corresponde à senha cadastrada no banco de dados
-    const senhaCorreta = bcrypt.compare(senha, paciente.senha);
+    const senhaCorreta = await bcrypt.compare(senha, paciente.senha);
     if (!senhaCorreta) {
         return res.status(401).json({ mensagem: 'Credenciais inválidas senha' });
     }
 
     try {
         // Gerar token de autenticação
-        const token = jwt.sign({ id: paciente.id }, 'seuSegredoDoToken', {
-            expiresIn: '1h',
-        });
+        const token = jwt.sign(
+            { id: paciente.id,
+              nome: paciente.nome,
+            },
+            'seuSegredoDoToken',
+            { expiresIn: '1h', }
+        );
 
         return res.status(200).json({ token });
     } catch (error) {
