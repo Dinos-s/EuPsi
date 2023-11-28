@@ -37,12 +37,21 @@ function renderPsicologos(psiData) {
 
     psiData.forEach((psicologo) => {
         const psicologoDiv = document.createElement("div");
+        
+        let statusText
+        if (psicologo.status == 'I') {
+            statusText = 'Inativo'
+        } else if (psicologo.status == 'A') {
+            statusText = 'Ativo'
+        }
+
         psicologoDiv.innerHTML = `
         <strong>${psicologo.nome}</strong><br>
         CRP: ${psicologo.crp}<br>
         Telefone: ${psicologo.telefone}<br>
         E-mail: ${psicologo.email}<br>
-        Data de entrada: ${psicologo.createdAt}<br><br>`;
+        Data de entrada: ${psicologo.createdAt}<br>
+        Status: ${statusText}<br><br>`;
         psicologosList.appendChild(psicologoDiv);
     });
 }

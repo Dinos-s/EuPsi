@@ -5,7 +5,7 @@ import psicologoController from './psicologoController.js';
 
 
 router.get('/', (req, res) => {
-    console.log('enfim está funcionando');
+    console.log('Enfim está funcionando');
 })
 
 router.use('/', pacienteController)
