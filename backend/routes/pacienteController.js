@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 let router = express.Router();
 import pacienteService from '../services/PacienteSevice.js'
-import auth from "../middlewares/autentica.js";
+import checkToken from "../middlewares/autentica.js";
 
 router.post('/addPaciente', async (req, res) => {
     const { nome, cpf, telefone, email, senha } = req.body
@@ -43,18 +43,19 @@ router.post('/paciente/login', async (req, res) => {
 
     try {
         // Gerar token de autenticação
+        const secret = process.env.SECRET || 'seuSegredoDoToken' // Caso o process.env.SECRET não funcione use outro valor
         const token = jwt.sign(
             { id: paciente.id,
               nome: paciente.nome,
             },
-            'seuSegredoDoToken',
+            secret ,
             { expiresIn: '1h', }
         );
 
         return res.status(200).json({ token });
     } catch (error) {
         console.error('Erro durante o login:', error);
-        return res.status(500).json({ mensagem: 'Erro interno do servidor' });
+        return res.status(500).json({ mensagem: 'Erro interno do servidor'});
     }
 });
 
@@ -74,8 +75,18 @@ router.get('/paciente/:id', async (req, res) => {
 })
 
 // rota de acesso apenas para um unico usuário 
-router.get('/paciente/:id', auth, async (req, res) => {
-    
+router.get('/paciente/auth/:id', checkToken, async (req, res) => {
+    try {
+        const paciente = await pacienteService.getPacienteById(req.params.id);
+
+        if (!paciente) {
+            return res.status(404).json({ mensagem: 'Paciente não encontrado' })
+        }
+
+        return res.status(200).json(paciente)
+    } catch (error) {
+        return res.status(500).json({ mensagem: 'Erro interno do servidor'})
+    }
 })
 
 router.put('/updatePaciente/:id', async (req, res) => {
