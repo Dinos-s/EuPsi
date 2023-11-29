@@ -35,6 +35,11 @@ const psicologo = sequelize.define('psicologos', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    status: {
+        type: DataTypes.ENUM('I', 'A'),
+        allowNull: false,
+        defaultValue: 'I', // por pradrão recebe um I de inativo;
+    },
 }, {timestamps: true});
 
 export default psicologo;

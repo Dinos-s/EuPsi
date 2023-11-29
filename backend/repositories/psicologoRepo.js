@@ -51,12 +51,28 @@ const deletaPsicologo = async (id) => {
     })
 }
 
+// 6 - Verifica se o psicologo está cadastrado
+const getPsicologoByEmail = async (email) => {
+    return await psicologo.findOne({
+        where: {
+            email: email,
+        }
+    })
+}
+
+// 7 - Contanto o total de paciente cadastrados
+const totalPsi = async() => {
+    return await psicologo.count()
+} 
+
 const factory = {
     savePsicologo,
     getAllPisicologos,
     getPisicologoById,
     updatePsicologo,
-    deletaPsicologo
+    deletaPsicologo,
+    getPsicologoByEmail,
+    totalPsi,
 }
 
 export default factory

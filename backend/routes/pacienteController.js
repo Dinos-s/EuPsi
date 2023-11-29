@@ -30,23 +30,25 @@ router.post('/paciente/login', async (req, res) => {
 
     // Verificar se o paciente existe no banco de dados
     const paciente = await pacienteService.getPacienteByEmail(email);
-
     if (!paciente) {
         return res.status(401).json({ mensagem: 'Credenciais inválidas email' });
     }
 
-    // Verificar se a senha fornecida corresponde à senha armazenada no banco de dados
-    const senhaCorreta = bcrypt.compare(senha, paciente.senha);
-
+    // Verificar se a senha fornecida corresponde à senha cadastrada no banco de dados
+    const senhaCorreta = await bcrypt.compare(senha, paciente.senha);
     if (!senhaCorreta) {
         return res.status(401).json({ mensagem: 'Credenciais inválidas senha' });
     }
 
     try {
         // Gerar token de autenticação
-        const token = jwt.sign({ id: paciente.id }, 'seuSegredoDoToken', {
-            expiresIn: '1h',
-        });
+        const token = jwt.sign(
+            { id: paciente.id,
+              nome: paciente.nome,
+            },
+            'seuSegredoDoToken',
+            { expiresIn: '1h', }
+        );
 
         return res.status(200).json({ token });
     } catch (error) {

@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import multer from "multer";
+import jwt from "jsonwebtoken";
 
 let router = express.Router()
 import psiService from "../services/PsicologoService.js";
@@ -37,6 +38,38 @@ router.post('/addPsicologo', async (req, res) => {
     return res.status(201).json(psicologo)
 })
 
+//rota de login do psicologo
+router.post('/psicologo/login', async(req, res) => {
+    const { email, senha } = req.body
+    
+    // Verificar se o psicologo exite no banco de dados
+    const psicologo = await psiService.getPsicologoByEmail(email)
+    if (!psicologo) {
+        return res.status(401).json({mensagem: 'Credenciais inválidas email'})
+    }
+
+    // Verifica se a senha fornecida corresponde à senha cadastrada no banco de dados
+    const senhaCorreta = await bcrypt.compare(senha, psicologo.senha)
+    if (!senhaCorreta) {
+        return res.status(401).json({ mensagem: 'Credenciais inválidas senha' })
+    }
+
+    try {
+        // Gerar token de atualização
+        const token = jwt.sign(
+            { id: psicologo.id,
+              nome: psicologo.nome,
+            },
+            'seuSegredoDoToken',
+            { expiresIn: '1h', }
+        )
+        return res.status(200).json({ token })
+    } catch (error) {
+        console.error('Erro durante o login:', error);
+        return res.status(500).json({ mensagem: 'Erro interno do servidor' });
+    }
+})
+
 router.get('/psicologos', async (req, res) => {
     const allPisicologos = await psiService.getAllPisicologos()
     return res.status(200).json(allPisicologos)
@@ -45,6 +78,11 @@ router.get('/psicologos', async (req, res) => {
 router.get('/psicologo/:id', async (req, res) => {
     const psicologo = await psiService.getPisicologoById(req.params.id)
     return res.status(200).json(psicologo)
+})
+
+router.get('/total/Psicologos', async (req, res) => {
+    const totalPsicologos = await psiService.getTotalPsi()
+    return res.status(200).json(totalPsicologos)
 })
 
 router.put('/updatePsi/:id', async (req, res) => {

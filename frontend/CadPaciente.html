@@ -50,7 +50,7 @@
     </header>
 
     <main>
-        <form id="form" class="cadPaciente">
+        <form action="procuraPsi.html" id="form" class="cadPaciente">
             <div class="cadastra_paciente">
                 <h1>EuPSICO - Cadastro Paciente</h1>
                 <label for="nome">Nome:</label>
@@ -58,10 +58,10 @@
 
                 <label for="cpf">CPF:</label>
                 <input type="number" id="cpf" placeholder="Informe o seu CPF" required>
-        
+
                 <label for="telefone">Telefone:</label>
                 <input required type="number" id="telefone" placeholder="Informe seu telefone">
-        
+
                 <label for="email">Email:</label>
                 <input required type="email" id="email" placeholder="Informe se e-mail">
 
@@ -70,7 +70,7 @@
 
                 <label for="senha-repeat">Confirme a senha:</label>
                 <input type="password" name="senha-repeat" id="senha-repeat" placeholder="Confirmar Senha" required>
-        
+
                 <button type="submit" onclick="cadPaciente()">Enviar</button>
 
                 <p class="erro">Caso já tenha, faça o login, clique <a href="./login.html">aqui</a> !</p>
@@ -78,38 +78,38 @@
         </form>
     </main>
 
-        <!-- JANELA MODAL DE CADASTRAO -->
-        <div id="id_janela_modal" class='janela_modal'>
-            <div class="modal_conteiner">
-                <h3>Olá! Bem vindo ao nosso cadastro.</h3>
-                <h5>Em qual das opções você se encaixa?</h5>
-    
-                <!-- Duas ANCORAS estao com as mesmas class -->
-                <a href="CadPaciente.html" class="janela_modal_cliente">
-                    <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg"
-                        loading="lazy" alt="" class="janela_modal_cliente_icons">
-                    <div class="janela_modal_cliente_titulo">Cliente</div>
-                    <div class="janela_modal_cliente_frase">Quero fazer sessões de terapias e ver conteúdos sobre saúde
-                        emocional</div>
-                </a>
-    
-                <a href="CadPsicologo.html" class="janela_modal_cliente">
-                    <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
-                        loading="lazy" alt="" class="janela_modal_cliente_icons">
-                    <div class="janela_modal_cliente_titulo">Profissional</div>
-                    <div class="janela_modal_cliente_frase">Quero atender pacientes online e fazer gestão da minha carreira
-                    </div>
-                </a>
-    
-                <!-- Botão fechar -->
-                <!-- 
+    <!-- JANELA MODAL DE CADASTRAO -->
+    <div id="id_janela_modal" class='janela_modal'>
+        <div class="modal_conteiner">
+            <h3>Olá! Bem vindo ao nosso cadastro.</h3>
+            <h5>Em qual das opções você se encaixa?</h5>
+
+            <!-- Duas ANCORAS estao com as mesmas class -->
+            <a href="CadPaciente.html" class="janela_modal_cliente">
+                <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg"
+                    loading="lazy" alt="" class="janela_modal_cliente_icons">
+                <div class="janela_modal_cliente_titulo">Cliente</div>
+                <div class="janela_modal_cliente_frase">Quero fazer sessões de terapias e ver conteúdos sobre saúde
+                    emocional</div>
+            </a>
+
+            <a href="CadPsicologo.html" class="janela_modal_cliente">
+                <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
+                    loading="lazy" alt="" class="janela_modal_cliente_icons">
+                <div class="janela_modal_cliente_titulo">Profissional</div>
+                <div class="janela_modal_cliente_frase">Quero atender pacientes online e fazer gestão da minha carreira
+                </div>
+            </a>
+
+            <!-- Botão fechar -->
+            <!-- 
                     <div class="modal_footer">
                         <a href="#" class="modal_footer_btn_close"> Fechar </a>
                     </div> -->
-    
-                <a href="#" class="modal_close">&times;</a>
-            </div>
+
+            <a href="#" class="modal_close">&times;</a>
         </div>
+    </div>
 
     <footer>
         <section class="f1">
@@ -136,7 +136,7 @@
     </footer>
     <script src="./js/script.js"></script>
     <script src="./js/form.js"></script>
-    <script src="./js/testes.js"></script>
+    <!-- <script src="./js/testes.js"></script> -->
 </body>
 
 </html>
