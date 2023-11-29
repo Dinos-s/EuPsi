@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 let router = express.Router();
 import pacienteService from '../services/PacienteSevice.js'
+import auth from "../middlewares/autentica.js";
 
 router.post('/addPaciente', async (req, res) => {
     const { nome, cpf, telefone, email, senha } = req.body
@@ -70,6 +71,11 @@ router.get('/total/Pacientes', async (req, res) => {
 router.get('/paciente/:id', async (req, res) => {
     const paciente = await pacienteService.getPacienteById(req.params.id)
     return res.status(200).json(paciente)
+})
+
+// rota de acesso apenas para um unico usuário 
+router.get('/paciente/:id', auth, async (req, res) => {
+    
 })
 
 router.put('/updatePaciente/:id', async (req, res) => {

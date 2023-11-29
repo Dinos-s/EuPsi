@@ -25,3 +25,14 @@ $ npm run satar / npm run dev
 
 # O comando run dev irá executar um pequeno servidor de modo que cada mudaça que vc faça no backend renicie de forma automatica; 
 ```
+
+# Dia 29/11/2023:
+# Criação da pasta de middlewares de verrificação do token:
+
+Caso você encontre a seguinte linha:
+``` bash 
+$ process.env.SECRET
+```
+Essa linha vem do arquivo .env localizada na pasta backend, esse arquivo é onde será
+armazenado as variáveis de ambiente da sua aplicação, existe um arquivo chamado .env.example,
+no mesmo diretório. Nele está uma explicaçõ de como o .env funciona, para criar o arquivo das variaveis de ambiente, basta excluir o .example do arquivo mencionado e insira o que for necessarioo.
