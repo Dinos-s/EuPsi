@@ -4,7 +4,7 @@ dotenv.config()
 
 const sequelize = new Sequelize (
     process.env.NOME_BANCO || 'eupsi',
-    'u752230642_root' || 'root',
+    process.env.USER || 'root',
     process.env.PASS_BD || '0000',
     {
         host: process.env.HOST || 'localhost',
