@@ -2,6 +2,8 @@ import express from "express";
 import bcrypt from "bcrypt";
 import multer from "multer";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config()
 
 let router = express.Router()
 import psiService from "../services/PsicologoService.js";
