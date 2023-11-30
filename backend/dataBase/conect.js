@@ -1,11 +1,13 @@
 import { Sequelize } from "sequelize";
+import dotenv from 'dotenv'
+dotenv.config()
 
 const sequelize = new Sequelize (
-    'eupsi',
-    'root',
-    '0000',
+    process.env.NOME_BANCO || 'eupsi',
+    'u752230642_root' || 'root',
+    process.env.PASS_BD || '0000',
     {
-        host: 'localhost',
+        host: process.env.HOST || 'localhost',
         dialect: 'mysql',
         port: 3306,
         define: {
