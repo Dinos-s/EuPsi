@@ -1,13 +1,13 @@
-import express from "express";
+import express from 'express';
 import bcrypt from "bcrypt";
-import multer from "multer";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+import multer from "multer";
+import dotenv from 'dotenv'
 dotenv.config()
 
-let router = express.Router()
-import psiService from "../services/PsicologoService.js";
+let router = express.Router();
 import checkToken from "../middlewares/autentica.js";
+import psiService from "../services/PsicologoService.js";
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -59,11 +59,12 @@ router.post('/psicologo/login', async(req, res) => {
 
     try {
         // Gerar token de atualização
+        const secret = process.env.SECRET || 'seuSegredoDoToken'
         const token = jwt.sign(
             { id: psicologo.id,
               nome: psicologo.nome,
             },
-            'seuSegredoDoToken',
+            secret,
             { expiresIn: '1h', }
         )
         return res.status(200).json({ token })
@@ -86,15 +87,15 @@ router.get('/psicologo/:id', async (req, res) => {
 // rota de acesso apenas para um unico usuário
 router.get('/psicologo/auth/:id', checkToken, async (req, res) => {
     try {
-        const psicologo = await psiService.getPisicologoById(req.params.id)
+        const psicologo = await psiService.getPisicologoById(req.params.id);
 
         if (!psicologo) {
-            return res.status(404).json({ mensagem: 'Psicólogo não encontrado'})
+            return res.status(404).json({ mensagem: 'Psicólogo não encontrado' })
         }
 
         return res.status(200).json(psicologo)
     } catch (error) {
-        return res.status(500).json({ mensagem: 'Erro interno no servidor'})
+        return res.status(500).json({ mensagem: 'Erro interno do servidor'})
     }
 })
 
