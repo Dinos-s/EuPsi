@@ -10,9 +10,10 @@ const containerInfos = document.querySelectorAll('.input-container');
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (validarForm()) {
-        cadPaciente()
-        cadPsi()
+    if (validarForm) {
+        cadPaciente,
+        cadPsi,
+        updatePsi
     }
 });
 
@@ -141,6 +142,9 @@ async function dadosDoPsi(id) {
         document.getElementById('crp').value = psicologo.crp;
         document.getElementById('telefone').value = psicologo.telefone;
         document.getElementById('email').value = psicologo.email;
+        document.getElementById('resumo').value = psicologo.resumo
+
+        const formData = { nome, crp, telefone, email, senha, resumo};
     } catch (error) {
         console.error('Erro ao obter dados do psicólogo:', error);
     }
@@ -150,3 +154,32 @@ const paramId = new URLSearchParams(window.location.search)
 const id = paramId.get('id');
 
 dadosDoPsi(id) // essa linha executa a função logo acima
+
+// Função para atualizar os dados do psicologo
+function updatePsi() {
+    const nome = document.getElementById('nome').value;
+    const crp = document.getElementById('crp').value;
+    const telefone = document.getElementById('telefone').value;
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+    const resumo = document.getElementById('resumo').value
+
+    const formData = { nome, crp, telefone, email, senha, resumo};
+
+    try {
+        fetch(`http://localhost:3000/psicologo/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+
+    } catch (error) {
+        console.error('Erro ao enviar dados para o servidor:', error);
+    };
+}
