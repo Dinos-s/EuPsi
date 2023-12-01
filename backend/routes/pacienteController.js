@@ -5,8 +5,9 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 let router = express.Router();
-import pacienteService from '../services/PacienteSevice.js'
 import checkToken from "../middlewares/autentica.js";
+import pacienteService from '../services/PacienteSevice.js'
+
 
 router.post('/addPaciente', async (req, res) => {
     const { nome, cpf, telefone, email, senha } = req.body
