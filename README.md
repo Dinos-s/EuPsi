@@ -35,4 +35,16 @@ $ process.env.SECRET
 ```
 Essa linha vem do arquivo .env localizada na pasta backend, esse arquivo é onde será
 armazenado as variáveis de ambiente da sua aplicação, existe um arquivo chamado .env.example,
-no mesmo diretório. Nele está uma explicaçõ de como o .env funciona, para criar o arquivo das variaveis de ambiente, basta excluir o .example do arquivo mencionado e insira o que for necessarioo.
+no mesmo diretório. Nele está uma explicaçõ de como o .env funciona, para criar o arquivo das variaveis de ambiente, basta excluir o .example do arquivo mencionado e insira o que for necessario.
+
+# Dia 30/11/2023:
+# Acresentando as variaveis nescessárias
+
+No mesmo arquivo .env.example está armazenando as variaveis de conexão ou configarações, de um banco de dados.
+Apesar de serem intuitivas o suficiente aquie está a explicação rápida de cada uma:
+``` bash 
+$ NOME_BANCO= Nome do banco de dados de sua preferecia
+$ USER= O usuario que vai usar o banco, seja apenas você ou uma empresa
+$ PASS_BD= Senha do banco de dados a ser utilizado
+$ HOST= Local onde ela está conectato seja uma url ou um ip
+```
