@@ -40,6 +40,10 @@ const psicologo = sequelize.define('psicologos', {
         allowNull: false,
         defaultValue: 'I', // por pradrão recebe um I de inativo;
     },
+    resumo: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    }
 }, {timestamps: true});
 
 export default psicologo;

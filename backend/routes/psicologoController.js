@@ -105,14 +105,15 @@ router.get('/total/Psicologos', async (req, res) => {
 })
 
 router.put('/updatePsi/:id', async (req, res) => {
-    const { nome, crp, telefone, email, senha } = req.body
+    const { nome, crp, telefone, email, senha, resumo } = req.body
 
     const PsiModel = {
         nome: nome,
         crp: crp,
         telefone: telefone,
         email: email,
-        senha: senha
+        senha: senha,
+        resumo: resumo,
     }
 
     const psicologo = await psiService.updatePsicologo(req.params.id, PsiModel)
