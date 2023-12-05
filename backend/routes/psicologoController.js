@@ -1,26 +1,11 @@
 import express from 'express';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import multer from "multer";
-import dotenv from 'dotenv'
-dotenv.config()
 
 let router = express.Router();
 import checkToken from "../middlewares/autentica.js";
+import upload from '../middlewares/multer.js'
 import psiService from "../services/PsicologoService.js";
-
-const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-        callback(null, './images')
-    },
-    filename: (req, file, callback) => {
-        const { nome } = req.body
-        const time = new Date.now()
-        callback(null, `${nome}_${time}_${file.originalname}`)
-    }
-})
-
-const upload = multer({ storage: storage }).single('file')
 
 router.post('/addPsicologo', async (req, res) => {
     const { nome, crp, telefone, email, senha } = req.body

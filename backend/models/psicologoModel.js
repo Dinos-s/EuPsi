@@ -14,7 +14,7 @@ const psicologo = sequelize.define('psicologos', {
         allowNull: false,
     },
     photo_perfil: {
-        type: DataTypes.BLOB,
+        type: DataTypes.STRING,
         allowNull: true,
     },
     crp: {

@@ -144,7 +144,7 @@ async function dadosDoPsi(id) {
         document.getElementById('email').value = psicologo.email;
         document.getElementById('resumo').value = psicologo.resumo
 
-        const formData = { nome, crp, telefone, email, senha, resumo};
+        const formData = { nome, crp, telefone, email, senha, resumo };
     } catch (error) {
         console.error('Erro ao obter dados do psicólogo:', error);
     }
@@ -164,7 +164,7 @@ function updatePsi() {
     const senha = document.getElementById('senha').value;
     const resumo = document.getElementById('resumo').value
 
-    const formData = { nome, crp, telefone, email, senha, resumo};
+    const formData = { nome, crp, telefone, email, senha, resumo };
 
     try {
         fetch(`http://localhost:3000/psicologo/${id}`, {

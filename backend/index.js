@@ -4,6 +4,7 @@ import sequelize from './dataBase/conect.js';
 import router from './routes/router.js';
 import cors from "cors";
 
+const port = process.env.PORT || 3000
 const app = express();
 const { json, urlencoded } = pkg
 
@@ -15,8 +16,8 @@ app.use("/", router);
 (async () => {
     try {
         await sequelize.sync();
-        app.listen(3000, function () {
-            console.log("Rodando na porta: 3000");
+        app.listen(port, function () {
+            console.log(`Rodando na porta: ${port}`);
         });
     } catch (err) {
         console.log(err);
