@@ -10,9 +10,23 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 45%;
+    /* width: 45%; */
     height: 530px;
     overflow-y: scroll;
+}
+
+.psicologos table,
+.pacientes table {
+    width: 100%;
+    border-collapse: collapse; /* Para evitar espaços entre as células */
+    margin-top: 10px;
+}
+
+.psicologos th,
+.psicologos td{
+    border: 1px solid #ddd; /* Adiciona uma borda de 1px para separar as células */
+    padding: 8px;
+    text-align: left;
 }
 
 .psicologos::-webkit-scrollbar,
