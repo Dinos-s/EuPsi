@@ -342,7 +342,7 @@ function horasNaTabela() {
 
 // nessa função redireciona os butões para cadPaciente
 function indoCadCliente() {
-    window.location.href = 'CadPaciente.html'
+    window.location.href = "login.php"
 }
 
 // três pontos no excesso de texto
@@ -396,3 +396,4 @@ function formation(doctor) {
                 </li>`
     }).join('');
 }
+

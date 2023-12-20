@@ -1,0 +1,125 @@
+.cadastra_psicologo {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cadastra_psicologo h1, h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.cadastra_psicologo label {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.cadastra_psicologo input,
+.cadastra_psicologo textarea,
+.cadastra_psicologo .enviarForm {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.cadastra_psicologo input,
+.cadastra_psicologo textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cadastra_psicologo input:hover {
+    border-color: #f1e208;
+}
+
+.cadastra_psicologo .enviarForm {
+    background-color: #dfd51a;
+    color: white;
+    padding: 10px;
+    border: 1px solid #f1e208;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cadastra_psicologo .enviarForm:hover {
+    border: 1px solid #f1e208;
+    background-color: white;
+    color: #dfd51a;
+    transition: 1s;
+}
+
+#btnEnviar {
+    background-color: #dfd51a;
+    color: white;
+    padding: 10px;
+    border: 1px solid #f1e208;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#btnEnviar:hover {
+    border: 1px solid #f1e208;
+    background-color: white;
+    color: #dfd51a;
+    transition: 1s;
+}
+
+.abordagem {
+    padding: 5px;
+}
+
+.abordagem > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.abordagem input[type=checkbox] {
+    margin-right: 5px;
+    margin-top: 10px;
+    width: 20px;
+}
+
+#imagem-preview{
+    max-width: 150px;
+    border-radius: 5px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.input-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    justify-content: center;
+    column-gap: 12px;
+}
+
+.input-container > input{
+    flex: 1;
+    /* margin-top: 10px; */
+}
+
+.add-more{
+    background-color: #f1e208;
+    border: 1px solid #f1e208;
+    border-radius: 5px;
+    font-size: 15pt;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.add-more:hover {
+    border: 1px solid #f1e208;
+    background-color: white;
+    color: #dfd51a;
+    transition: 1s;
+}

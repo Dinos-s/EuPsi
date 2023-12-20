@@ -1,3 +1,16 @@
+<?php
+    include_once('conect.php');
+
+    if (!empty($_GET['search'])) {
+        $data = $_GET['search'];
+        $query = "SELECT * FROM pacientes WHERE nome LIKE '%$data%' or email LIKE '%$data%' or crp LIKE '%$data%' ORDER BY id";
+    } else {
+        $query = "SELECT * FROM pacientes ORDER BY id";
+    }
+
+    $result = $conexao->query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,13 +20,13 @@
     <link rel="icon" type="image/x-icon" href="./assets/eupsi.png">
 
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/Admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <title>EuPSICO - (Protótipo)</title>
+
 </head>
 
 <body>
-
     <header>
         <!-- LOGO -->
         <a href="index.html" class="logo">
@@ -23,8 +36,8 @@
         <!-- MENU -->
         <nav>
             <ul class="menu">
-                <li><a class="active" href="./index.html">início</a></li>
-                <li><a href="./procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./index.html">início</a></li>
+                <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
             </ul>
@@ -32,7 +45,7 @@
 
         <div class="acesso">
 
-            <li><a href="./login.html">Entrar</a></li>
+            <li><a href="./login.php">Entrar</a></li>
             <!-- <li><a href="CadPaciente.html">Cadastro</a></li> -->
             <li><a href="#id_janela_modal">Cadastro</a></li>
             <!-- <li><a href="ModalCadastro.html">Cadastro</a></li> -->
@@ -52,43 +65,41 @@
         </div>
     </header>
 
-    <main id="principal">
-        <div class="img-fundo">
-            <img src="./assets/terapia-de-casal.jpg" alt="terapia-de-casal" class="consulta">
+    <main>
+        <div class="pesquisa">
+            <input type="text" id="pesquisa" placeholder="Pesquise por um usuário, nome, email, crp">
+            <button onclick="dataSearch()">Pesquisar</button>
         </div>
 
-        <div class="banner">
-            <h1>Os Melhores Profissionais</h1>
-            <h2>As Melhores Oportunidades</h2>
-            <ul>
-                <li><a href="./procuraPsi.html">Encontre um Psicólogo</a></li>
-                <li><a href="#">Encontre um Paciente</a></li>
-            </ul>
-        </div>
-
-        <div class="titulo_sobre">
-            <h2>Sobre Nós</h2>
-        </div>
-
-        <div class='sobre'>
-            <p>Eupsico é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários
-                o
-                melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo e
-                profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida relacionada
-                aos
-                serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com as diversas áreas
-                da
-                psicologia, garantindo assim a melhor terapia para você. Por trás dos nossos serviços, existem a
-                responsabilidade e a ética para oferecer os melhores resultados na recuperação de nossos clientes. Nos
-                serviços online, os profissionais fazem o melhor uso da tecnologia para oferecer a você um contato mais
-                prático e direto, o que é muito importante e produtivo para o tratamento, porém, buscando atender à sua
-                necessidade, temos os profissionais que atendem de forma presencial, num espaço pensado em você e perto
-                de
-                você. Além de todo suporte e da qualidade dos serviços prestados, nossas prioridades ainda são manter a
-                privacidade e oferecer segurança aos nossos usuários. Você é bem-vindo (a) para experimentar nosso
-                serviço
-                de terapia online e presencial, e encontrar a melhor forma de cuidar de sua saúde mental e emocional!
-            </p>
+        <div class="container">
+            <div class="psicologos">
+                <h2>Pacientes Cadastrados</h2>
+                <div id="psicologos-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>cpf</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Data de entrada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($pacientes = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>" . $pacientes['nome'] . "</td>";
+                                echo "<td>" . $pacientes['cpf'] . "</td>";
+                                echo "<td>" . $pacientes['email'] . "</td>";
+                                echo "<td>" . $pacientes['telefone'] . "</td>";
+                                echo "<td>" . $pacientes['createdAt'] . "</td>";
+                                echo "</tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -100,16 +111,14 @@
 
             <!-- Duas ANCORAS estao com as mesmas class -->
             <a href="./CadPaciente.php" class="janela_modal_cliente">
-                <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg"
-                    loading="lazy" alt="" class="janela_modal_cliente_icons">
+                <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg" loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Cliente</div>
                 <div class="janela_modal_cliente_frase">Quero fazer sessões de terapias e ver conteúdos sobre saúde
                     emocional</div>
             </a>
 
             <a href="./CadPsicologo.php" class="janela_modal_cliente">
-                <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
-                    loading="lazy" alt="" class="janela_modal_cliente_icons">
+                <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg" loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Profissional</div>
                 <div class="janela_modal_cliente_frase">Quero atender pacientes online e fazer gestão da minha carreira
                 </div>
@@ -147,7 +156,7 @@
         </section>
     </footer>
 
-    <script src="./js/script.js"></script>
+    <script src="./js/admin.js"></script>
 </body>
 
 </html>

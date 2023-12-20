@@ -1,0 +1,44 @@
+.contato {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contato h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contato label,
+.contato input,
+.contato textarea,
+.contato button {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.contato input,
+.contato textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contato button {
+    background-color: #dfd51a;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contato button:hover {
+    border: 1px solid #f1e208;
+    background-color: white;
+    color: #dfd51a;
+    transition: 1s;
+}

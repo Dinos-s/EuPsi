@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./assets/eupsi.png">
 
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/pagar.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/CadPsicologo.css">
+    <link rel="stylesheet" href="./style/Login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <title>EuPSICO - (Protótipo)</title>
+    <title>EuPSICO - Cadastro Psicologo</title>
 </head>
 
 <body>
-
     <header>
         <!-- LOGO -->
-        <a href="index.html" class="logo">
+        <a href="./index.html" class="logo">
             <img src="./assets/eupsi.png" alt="teste">
         </a>
 
@@ -25,20 +25,16 @@
         <nav>
             <ul class="menu">
                 <li><a href="./index.html">início</a></li>
-                <li><a href="./html/procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
-                <li><a href="./html/contato.html">contato</a></li>
+                <li><a href="./contato.html">contato</a></li>
             </ul>
         </nav>
 
         <div class="acesso">
-
-            <li><a href="./html/login.html">Entrar</a></li>
-            <!-- <li><a href="CadPaciente.html">Cadastro</a></li> -->
+            <li><a href="#">Entrar</a></li>
             <li><a href="#id_janela_modal">Cadastro</a></li>
-            <!-- <li><a href="ModalCadastro.html">Cadastro</a></li> -->
 
-            <!-- Icones das Redes Sociais -->
             <section class="icons_rede_sociais">
                 <!-- LINK INSTA -->
                 <a href="https://www.instagram.com/eupsi.insta/" target="_blank">
@@ -53,22 +49,20 @@
         </div>
     </header>
 
-    <main>
-        <div class="cardContainer">
-            <form id="form_Card">
-                <label for="cardNumber">Número do Cartão:</label>
-                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456">
-    
-                <label for="expiryDate">Data de Validade:</label>
-                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA">
-    
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" placeholder="123">
-    
-                <label for="cardHolder">Nome no Cartão:</label>
-                <input type="text" id="cardHolder" name="cardHolder" placeholder="Seu Nome">
-    
-                <button type="submit">Enviar</button>
+    <main id="main-login">
+        <div class="cadastra_psicologo login">
+            <form action="session.php" method="post">
+                <h1>Login</h1>
+                <label for="nome">Email:</label>
+                <input type="email" name="email"  id="email" placeholder="Informe seu email" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" placeholder="Sua Senha" required>
+
+                <!-- <button type="submit" id="btnEnviar">Entrar</button> -->
+                <input type="submit" name="submit" value="Entrar" id="btnEnviar">
+
+                <p class="erro">Caso não tenha, faça o cadastro, clique <a href="./CadPaciente.html">aqui</a> e faça sua consulta!</p>
             </form>
         </div>
     </main>
@@ -80,7 +74,7 @@
             <h5>Em qual das opções você se encaixa?</h5>
 
             <!-- Duas ANCORAS estao com as mesmas class -->
-            <a href="./CadPaciente.php" class="janela_modal_cliente">
+            <a href="./CadPaciente.html" class="janela_modal_cliente">
                 <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg"
                     loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Cliente</div>
@@ -88,7 +82,7 @@
                     emocional</div>
             </a>
 
-            <a href="./CadPsicologo.php" class="janela_modal_cliente">
+            <a href="./CadPsicologo.html" class="janela_modal_cliente">
                 <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
                     loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Profissional</div>
@@ -98,9 +92,9 @@
 
             <!-- Botão fechar -->
             <!-- 
-            <div class="modal_footer">
-                <a href="#" class="modal_footer_btn_close"> Fechar </a>
-            </div> -->
+                <div class="modal_footer">
+                    <a href="#" class="modal_footer_btn_close"> Fechar </a>
+                </div> -->
 
             <a href="#" class="modal_close">&times;</a>
         </div>
@@ -112,8 +106,11 @@
         </section>
 
         <section class="f2">
-            <p>footer 2</p>
-            <!-- <p>Eupsi é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários o melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo e profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida relacionada aos serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com as diversas áreas da psicologia, garantindo assim a melhor terapia para você.</p> -->
+            <p>Eupsico é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários
+                o melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo
+                e profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida
+                relacionada aos serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com
+                as diversas áreas da psicologia, garantindo assim a melhor terapia para você.</p>
         </section>
 
         <section class="f3">
@@ -126,7 +123,8 @@
             </ul>
         </section>
     </footer>
-    <script src="./js/form.js"></script>
+    <!-- <script src="./js/script.js"></script> -->
+    <!-- <script src="./js/form.js"></script> -->
 </body>
 
 </html>
