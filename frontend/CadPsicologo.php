@@ -59,7 +59,7 @@
         <nav>
             <ul class="menu">
                 <li><a href="./index.html">início</a></li>
-                <li><a class="active" href="./procuraPsi.html">procurar psicólogo</a></li>
+                <li><a class="active" href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
             </ul>
@@ -164,7 +164,7 @@
             <ul class="menuf">
                 <li>Menu</li>
                 <li><a href="./index.html">início</a></li>
-                <li><a href="./procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
             </ul>

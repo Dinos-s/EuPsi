@@ -53,17 +53,41 @@
         <div class="cadastra_psicologo login">
             <form action="session.php" method="post">
                 <h1>Login</h1>
+                <?php
+                    if (isset($_GET['erro']) && $_GET['erro'] == 'UserNotFound') {
+                        echo "<p class='erro'>Usuário não Cadastrado</p>";
+                    }
+
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                ?>
                 <label for="nome">Email:</label>
                 <input type="email" name="email"  id="email" placeholder="Informe seu email" required>
 
                 <label for="senha">Senha:</label>
                 <input type="password" name="senha" id="senha" placeholder="Sua Senha" required>
 
+                <label for="tipo_usuario">Tipo de usuário:</label>
+                <div class="opcoes-usuario">
+                    <input type="radio" name="tipo_usuario" id="tipo_psicologo" value="psicologo" required>
+                    <label for="tipo_psicologo">Psicólogo</label>
+
+                    <input type="radio" name="tipo_usuario" id="tipo_paciente" value="paciente" required>
+                    <label for="tipo_paciente">Paciente</label>
+                    
+                    <!-- <input type="radio" name="tipo_usuario" id="tipo_admin" value="admin" required>
+                    <label for="tipo_admin">Administrador</label> -->
+                </div>
+
                 <!-- <button type="submit" id="btnEnviar">Entrar</button> -->
                 <input type="submit" name="submit" value="Entrar" id="btnEnviar">
 
-                <p class="erro">Caso não tenha, faça o cadastro, clique <a href="./CadPaciente.html">aqui</a> e faça sua consulta!</p>
+                <!-- <p class="erro">Caso não tenha, faça o cadastro, clique <a href="./CadPaciente.html">aqui</a> e faça sua consulta!</p> -->
+                <p class="erro">Esqueceu a senha, clique <a href="./recuperar-senha.php">aqui</a> e recupere sua senha!</p>
             </form>
+            
         </div>
     </main>
 
@@ -74,7 +98,7 @@
             <h5>Em qual das opções você se encaixa?</h5>
 
             <!-- Duas ANCORAS estao com as mesmas class -->
-            <a href="./CadPaciente.html" class="janela_modal_cliente">
+            <a href="./CadPaciente.php" class="janela_modal_cliente">
                 <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg"
                     loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Cliente</div>
@@ -82,7 +106,7 @@
                     emocional</div>
             </a>
 
-            <a href="./CadPsicologo.html" class="janela_modal_cliente">
+            <a href="./CadPsicologo.php" class="janela_modal_cliente">
                 <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
                     loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Profissional</div>
@@ -117,7 +141,7 @@
             <ul class="menuf">
                 <li>Menu</li>
                 <li><a href="./index.html">início</a></li>
-                <li><a href="./procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
             </ul>

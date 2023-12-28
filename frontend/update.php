@@ -14,6 +14,7 @@
         $formacao = $_POST["formacao"];
         $telefone = $_POST['telefone'];
         $localidade = $_POST['localidade'];
+        // $abordagem = $_POST['abordagem'];
         $resumo = $_POST['resumo'];
 
         // Hora e data da atualização
@@ -46,10 +47,20 @@
 
         $valorSessao = str_replace(",", ".", $valorSessao);
 
+        // Verificar se a checkbox foi marcada
+        $abordagem = isset($_POST["abordagem"]) ? $_POST["abordagem"] : array();
+        // $abordagem = isset($_POST["id_abord"]) ? $_POST["id_abord"] : array();
+        // echo $_POST["abordagem"];
+        $abordagens = implode(";", $abordagem);
 
-        $sql = "UPDATE psicologos SET nome='$nome', email='$email', crp='$crp', resumo='$resumo', telefone='$telefone', updatedAt='$updateAt', photo_perfil='$caminho', valorsessao='$valorSessao', temposessao='$tempoSessao', localidade='$localidade', formacao='$formacao', experiencia='$experiencia', especialidade='$especialidade', abordagem='$abordagem' WHERE id='$id'";
+        $sql = "UPDATE psicologos SET nome='$nome', email='$email', crp='$crp', resumo='$resumo', telefone='$telefone', updatedAt='$updateAt', photo_perfil='$caminho', valorsessao='$valorSessao', temposessao='$tempoSessao', localidade='$localidade', formacao='$formacao', experiencia='$experiencia', especialidade='$especialidade', abordagem = '$abordagens' WHERE id='$id'";
 
         $result = $conexao -> query($sql);
+        // if ($abordagem !== null) {
+        //     for ($i=0; $i < count($abordagem); $i++) { 
+        //         echo "<p>{$abordagem[$i]}</p>";
+        //     }
+        // }
     }
     header("Location: perfilPsi.php?id=$id")
 ?>

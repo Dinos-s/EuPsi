@@ -1,9 +1,28 @@
 <?php
+    session_start();
+
     include_once('conect.php');
+
+    if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        header('Location: login.php');
+    }
+    $logado = $_SESSION['email'];
+
+    $TipoUser = "SELECT tipo_user FROM psicologos WHERE email = '$logado'";
+    $resTipo = $conexao -> query($TipoUser);
+    $user = $resTipo -> fetch_assoc();
+    $_SESSION['tipo_user'] = $user['tipo_user'];
+
+    if ($logado !== 'gabriel02ramos@gmail.com') {
+        header('Location: index.html?erro=nao_autorizado');
+        exit();
+    }
 
     if (!empty($_GET['search'])) {
         $data = $_GET['search'];
-        $query = "SELECT * FROM pacientes WHERE nome LIKE '%$data%' or email LIKE '%$data%' or crp LIKE '%$data%' ORDER BY id";
+        $query = "SELECT * FROM pacientes WHERE nome LIKE '%$data%' or email LIKE '%$data%' or cpf LIKE '%$data%' ORDER BY id";
     } else {
         $query = "SELECT * FROM pacientes ORDER BY id";
     }
@@ -40,6 +59,11 @@
                 <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
+                <?php 
+                    if($_SESSION['tipo_user'] == 'Ad'){
+                        echo '<li><a class="active" href="./admin.php">Admin</a></li>';
+                    }
+                ?>
             </ul>
         </nav>
 
@@ -67,9 +91,23 @@
 
     <main>
         <div class="pesquisa">
-            <input type="text" id="pesquisa" placeholder="Pesquise por um usuário, nome, email, crp">
+            <input type="text" id="pesquisa" placeholder="Pesquise por um usuário, nome, email, cpf">
             <button onclick="dataSearch()">Pesquisar</button>
         </div>
+
+        <nav>
+            <p>Mude sua página de visualização:</p> 
+            <ul class="menu-admim">
+                <li><a href="./admin.php">Psicologos Cadastrados</a></li>
+                <li><a class="active" href="./adminPaciente.php">Pacientes Cadastrados</a></li>
+            </ul>
+        </nav>
+
+        <!-- <input type="radio" name="pagina" value="admin.php" id="admin">
+        <label for="admin">Psicólogos Cadastrados</label>
+
+        <input type="radio" name="pagina" value="adminPaciente.php" id="adminPaciente">
+        <label for="adminPaciente">Pacientes Cadastrados</label> -->
 
         <div class="container">
             <div class="psicologos">
@@ -149,7 +187,7 @@
             <ul class="menuf">
                 <li>Menu</li>
                 <li><a href="./index.html">início</a></li>
-                <li><a href="./procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
             </ul>
@@ -157,6 +195,23 @@
     </footer>
 
     <script src="./js/admin.js"></script>
+    <script>
+        // document.addEventListener('DOMContentLoaded', function() {
+        // // Seleciona os inputs do tipo radio
+        //     var inputs = document.querySelectorAll('input[type="radio"]');
+
+        //     // Adiciona um evento de click para cada input
+        //     for (var i = 0; i < inputs.length; i++) {
+        //         inputs[i].addEventListener('click', function() {
+        //             // Obtém o valor do input selecionado
+        //             var pagina = this.value;
+
+        //             // Redireciona para a página selecionada
+        //             window.location.href = pagina;
+        //         });
+        //     }
+        // });
+    </script>
 </body>
 
 </html>

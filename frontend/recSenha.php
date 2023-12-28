@@ -1,35 +1,49 @@
 <?php 
-    if (isset($_POST['submit'])) {
-        include_once('conect.php');
+    session_start();
 
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $cpf = $_POST['cpf'];
-        $telefone = $_POST['telefone'];
-        $senha = $_POST['senha'];
-        $senhaRept = $_POST['senha-repeat'];	
+    include_once('conect.php');
 
-        if ($senha != $senhaRept) {
-            echo 'As senha são imcompativei, verifique as senhas';
-        } else {
-            // As duas linha abaixo servem para codifificar a senha antes de enviar para o banco de dados;
-            $options = ['const' => 12];
-            $senhaHash = password_hash($senha, PASSWORD_BCRYPT, $options);
+    $chave = filter_input(INPUT_GET, 'chave', FILTER_DEFAULT);
 
+    if (!empty($chave)) {
+        $query_user = "SELECT id FROM psicologos WHERE chave_recSenha = '$chave'";
+
+        $result_user = $conexao -> query($query_user);
+
+        if(($result_user) AND ($result_user -> num_rows != 0)){
+            $row_user = $result_user -> fetch_assoc();
+
+            $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+            // Hora e data da atualização
             date_default_timezone_set("America/Sao_Paulo");
-            $dataAtual = date("Y-m-d H:i:s");
+            $updateAt = date('Y-m-d H:i:s');
 
-            $result = mysqli_query($conexao, "INSERT INTO pacientes (nome, cpf, email, telefone, senha, createdAt, updatedAt) VALUES ('$nome', '$cpf', '$email', '$telefone', '$senhaHash', '$dataAtual', '$dataAtual')");
+            if(!empty($dados['novaSenha'])){
+                $options = ['const' => 12];
+                $newSenha= password_hash($dados['senha'], PASSWORD_BCRYPT, $options);
+                $recSenha = 'NULL';
 
-            if ($result) {
-                // echo "Usuário cadastrado com sucesso!";
-                header('Location: procuraPsi.html');
-            } else {
-                echo "Erro ao cadastrar usuário. Por favor, tente novamente.";
+                $res_senha = "UPDATE psicologos SET senha='$newSenha', chave_recSenha='$recSenha', updatedAt='$updateAt' WHERE id='{$row_user['id']}'";
+
+                if ($result = $conexao -> query($res_senha)) {
+                    $_SESSION['msg'] = "<p style='color: green'>Senha atualizada com sucesso!</p>";
+                    header('location: login.php');
+                } else {
+                    echo "<p style='color: red'>Tente novamente!</p>";
+                    header('location: login.php');
+                }
             }
+        } else {
+            $_SESSION['msg'] = "<p style='color: red>Erro: Link Inválido</p>";
+            header('location: login.php');
         }
+    } else {
+        $_SESSION['msg'] = "<p style='color: red>Erro: Link Inválido</p>";
+        header('location: login.php');
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -39,11 +53,11 @@
     <link rel="icon" type="image/x-icon" href="./assets/eupsi.png">
 
     <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/CadPaciente.css">
+    <link rel="stylesheet" href="./style/CadPsicologo.css">
     <link rel="stylesheet" href="./style/Login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <title>EuPSICO - Cadastro Paciente</title>
+    <title>EuPSICO - Cadastro Psicologo</title>
 </head>
 
 <body>
@@ -64,7 +78,7 @@
         </nav>
 
         <div class="acesso">
-            <li><a href="./login.html">Entrar</a></li>
+            <li><a href="#">Entrar</a></li>
             <li><a href="#id_janela_modal">Cadastro</a></li>
 
             <section class="icons_rede_sociais">
@@ -81,33 +95,32 @@
         </div>
     </header>
 
-    <main>
-        <form id="form" class="cadPaciente" method="post">
-            <div class="cadastra_paciente">
-                <h1>EuPSICO - Cadastro Paciente</h1>
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" placeholder="Nos diga seu nome" required>
+    <main id="main-login">
+        <div class="cadastra_psicologo login">
+            <form method="post">
+                <h1>Login</h1>
+                <?php
+                    if (isset($_GET['erro']) && $_GET['erro'] == 'UserNotFound') {
+                        echo "<p class='erro'>Usuário não Cadastrado</p>";
+                    }
 
-                <label for="cpf">CPF:</label>
-                <input type="number" name="cpf" id="cpf" placeholder="Informe o seu CPF" required>
+                    $senha = "";
+                    if(isset($dados['senha'])){
+                        $senha = $dados['senha'];
+                    }
+                ?>
 
-                <label for="telefone">Telefone:</label>
-                <input required type="number" name="telefone" id="telefone" placeholder="Informe seu telefone">
+                <label for="senha">Digite sua nova senha:</label>
+                <input type="password" name="senha" id="senha" placeholder="Sua Nova Senha" required>
 
-                <label for="email">Email:</label>
-                <input required type="email" name="email" id="email" placeholder="Informe se e-mail">
+                <!-- <button type="submit" id="btnEnviar">Entrar</button> -->
+                <input type="submit" name="novaSenha" value="Atualizar senha" id="btnEnviar">
 
-                <label for="senha">Crie uma senha:</label>
-                <input type="password" name="senha" id="senha" placeholder="Crie a sua Senha" required>
-
-                <label for="senha-repeat">Confirme a senha:</label>
-                <input type="password" name="senha-repeat" id="senha-repeat" placeholder="Confirmar Senha" required>
-
-                <input type="submit" name="submit"  onclick="cadPaciente()" value="Enviar">
-
-                <p class="erro">Caso já tenha, faça o login, clique <a href="./login.html">aqui</a> !</p>
-            </div>
-        </form>
+                <!-- <p class="erro">Caso não tenha, faça o cadastro, clique <a href="./CadPaciente.html">aqui</a> e faça sua consulta!</p> -->
+                <p class="erro">Esqueceu a senha, clique <a href="./recuperar-senha.php">aqui</a> e recupere sua senha!</p>
+            </form>
+            
+        </div>
     </main>
 
     <!-- JANELA MODAL DE CADASTRAO -->
@@ -117,7 +130,7 @@
             <h5>Em qual das opções você se encaixa?</h5>
 
             <!-- Duas ANCORAS estao com as mesmas class -->
-            <a href="CadPaciente.php" class="janela_modal_cliente">
+            <a href="./CadPaciente.php" class="janela_modal_cliente">
                 <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f7441846001e38b41cc31_user.svg"
                     loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Cliente</div>
@@ -125,7 +138,7 @@
                     emocional</div>
             </a>
 
-            <a href="CadPsicologo.php" class="janela_modal_cliente">
+            <a href="./CadPsicologo.php" class="janela_modal_cliente">
                 <img src="https://assets-global.website-files.com/613f7ca80295647d415b0d85/629f744100a51a93a6febb8c_certif.svg"
                     loading="lazy" alt="" class="janela_modal_cliente_icons">
                 <div class="janela_modal_cliente_titulo">Profissional</div>
@@ -135,9 +148,9 @@
 
             <!-- Botão fechar -->
             <!-- 
-                    <div class="modal_footer">
-                        <a href="#" class="modal_footer_btn_close"> Fechar </a>
-                    </div> -->
+                <div class="modal_footer">
+                    <a href="#" class="modal_footer_btn_close"> Fechar </a>
+                </div> -->
 
             <a href="#" class="modal_close">&times;</a>
         </div>
@@ -149,7 +162,7 @@
         </section>
 
         <section class="f2">
-            <p>Eupsi é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários
+            <p>Eupsico é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários
                 o melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo
                 e profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida
                 relacionada aos serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com
@@ -166,9 +179,8 @@
             </ul>
         </section>
     </footer>
-    <script src="./js/script.js"></script>
+    <!-- <script src="./js/script.js"></script> -->
     <!-- <script src="./js/form.js"></script> -->
-    <!-- <script src="./js/testes.js"></script> -->
 </body>
 
 </html>

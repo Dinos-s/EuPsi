@@ -1,9 +1,13 @@
 <?php 
+    session_start();
+    
     include_once('conect.php');
 
-    $query = "SELECT * FROM psicologos ORDER BY id";
+    $query = "SELECT * FROM psicologos WHERE status='A' ORDER BY id";
 
     $result = $conexao->query($query);
+
+    // print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +40,16 @@
                 <li><a class="active" href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
+                <?php 
+                    if($_SESSION['tipo_user'] == 'Ad'){
+                        echo '<li><a href="./admin.php">Admin</a></li>';
+                    }
+
+                    $loggedInUserId = $_SESSION['id'];
+                    if ($_SESSION['tipo_user'] == 'Co' && $_SESSION['tipo_usuario'] == 'psicologo') {
+                        echo "<li><a href='./perfilPsi.php?id=$loggedInUserId'>Perfil</a></li>";
+                    }
+                ?>
             </ul>
         </nav>
         <div class="acesso">
@@ -102,77 +116,65 @@
             </div> -->
 
             <?php while($psicologo = $result->fetch_assoc()): ?>
-                <!-- <div class="card">
+
+                <div class="card">
+                    <div class="background"></div>
                     <div class="card_superior">
                         <div class="lado1">
                             <div class="avatar"><img src="<?php echo $psicologo["photo_perfil"]?>" alt="picture"></div>
                             <div class="content">
-                                <h4 class="perfil"><?php echo $psicologo["nome"]; ?></h4>
-                                <p class="especialidade"><?php echo $psicologo["especialidade"]; ?></p>
-                                <p class="crp"><?php echo $psicologo["crp"]; ?></p>
+                                <h4 class="perfil"><?php echo $psicologo["nome"]?></h4>
+                                <p class="especialidade"><?php echo $psicologo["especialidade"]?></p>
+                                <p class="crp"><?php echo $psicologo["crp"]?> | CRP - 4° Região</p>
                                 <section class="regular">
-                                <p class="cidade"><?php echo $psicologo["localidade"]; ?></p>
-                                <p><span class="price">R$ <?php echo $psicologo["valorsessao"]; ?></span>/50 min</p>
+                                    <p class="cidade"><?php echo $psicologo["localidade"]; ?></p>
+                                    <p><span class="price">R$ <?php echo $psicologo["valorsessao"]; ?></span>/<?php echo $psicologo["temposessao"]?> min</p>
                                 </section>
                             </div>
                         </div>
-                    </div>
-                </div> -->
-                <div class="card">
-                <div class="background"></div>
-                <div class="card_superior">
-                    <div class="lado1">
-                        <div class="avatar"><img src="<?php echo $psicologo["photo_perfil"]?>" alt="picture"></div>
-                        <div class="content">
-                            <h4 class="perfil"><?php echo $psicologo["nome"]?></h4>
-                            <p class="especialidade"><?php echo $psicologo["especialidade"]?></p>
-                            <p class="crp"><?php echo $psicologo["crp"]?> | CRP - 4° Região</p>
-                            <section class="regular">
-                                <p class="cidade"><?php echo $psicologo["localidade"]; ?></p>
-                                <p><span class="price">R$ <?php echo $psicologo["valorsessao"]; ?></span>/50 min</p>
-                            </section>
-                        </div>
-                    </div>
-                    <div class="lado2">
-                        <div class="calendar">
-                            <div class="wrapper">
-                                <table id="DiasSemana">
-                                    <tr class="linhaTitulo">
-                                        <td colspan="7">Horários Disponíveis</td>
-                                    </tr>
-                                    <tr id="dayRow">
-                                        <td class="dia">dom.</td>
-                                        <td class="dia">seg.</td>
-                                        <td class="dia">ter.</td>
-                                        <td class="dia">qua.</td>
-                                        <td class="dia">qui.</td>
-                                        <td class="dia">sex.</td>
-                                        <td class="dia">sáb.</td>
-                                    </tr>
-                                </table>
-                                <div class="colunaTempo">
-                                    <table class="horas-scroll">
-                                        <tr>
-                                            <?php
-                                                // Gera 7 colunas
-                                                for ($i = 1; $i <= 7; $i++) {
-                                                echo '<td class="horaColumn' . $i . '">
-                                                    <ul class="hora-list">
-                                                    </ul>
-                                                </td>';
-                                                }
-                                            ?>                                              
+                        <div class="lado2">
+                            <div class="calendar">
+                                <div class="wrapper">
+                                    <table id="DiasSemana">
+                                        <tr class="linhaTitulo">
+                                            <td colspan="7">Horários Disponíveis</td>
+                                        </tr>
+                                        <tr id="dayRow">
+                                            <td class="dia">dom.</td>
+                                            <td class="dia">seg.</td>
+                                            <td class="dia">ter.</td>
+                                            <td class="dia">qua.</td>
+                                            <td class="dia">qui.</td>
+                                            <td class="dia">sex.</td>
+                                            <td class="dia">sáb.</td>
                                         </tr>
                                     </table>
+                                    <div class="colunaTempo">
+                                        <table class="horas-scroll">
+                                            <tr>
+                                                <?php
+                                                    // Gera 7 colunas
+                                                    for ($i = 1; $i <= 7; $i++) {
+                                                    echo '<td class="horaColumn' . $i . '">
+                                                        <ul class="hora-list">
+                                                        </ul>
+                                                    </td>';
+                                                    }
+                                                ?>                                              
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="card_inferior">
+                        <p class="resumo"><?php echo $psicologo["resumo"]?>
+                        <!-- <button class="sobreBTN" onclick="window.location.href='agendamento.html?psi=<?php echo urlencode($psicologo["nome"]) ?>' ">Saber Mais...</button> -->
+                        <button class="sobreBTN" onclick="window.location.href='agendamento.php?psi=<?php echo urlencode($psicologo["nome"]); ?>&id=<?php echo $psicologo["id"]; ?>'">Saber Mais...</button>
+                        </p>
+                    </div>
                 </div>
-                <div class="card_inferior">
-                    <p class="resumo"><?php echo $psicologo["resumo"]?><button class="sobreBTN">Saber Mais...</button></p>
-                </div>
-            </div>
             <?php endwhile; ?>
             <!-- <div class="card">
                 <div class="background"></div>
@@ -342,7 +344,7 @@
             <ul class="menuf">
                 <li>Menu</li>
                 <li><a href="./index.html">início</a></li>
-                <li><a href="./procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
             </ul>

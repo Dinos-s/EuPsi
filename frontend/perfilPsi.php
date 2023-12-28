@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     include_once('conect.php');
 
     if (!empty($_GET['id'])) {
@@ -22,20 +24,26 @@
                 $experiencia = $userData['experiencia'];
                 $especialidade = $userData['especialidade'];
                 $formacao = $userData['formacao'];
+                $aborda = $userData['abordagem'];
             }
         } else {
             header('location: CadPsicologo.php');
         }
     } 
-
+    
+    $abordagens_selecionadas = explode(';', $aborda);
+    
     $abordar = "SELECT * FROM abordagem";
     $res = $conexao -> query($abordar);
-
+    
     if($res -> num_rows > 0) {
         while ($row = $res -> fetch_assoc()){
-            $abordagem[] = $row['nome'];
+            $abordagem[] = array('id' => $row['id'], 'nome' => $row['nome']);
         }
     }
+
+    // print_r($_SESSION);
+    $loggedInUserId = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +74,15 @@
                 <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
+                <?php 
+                    if($_SESSION['tipo_user'] == 'Ad'){
+                        echo '<li><a href="./admin.php">Admin</a></li>';
+                    }
+
+                    if ($_SESSION['tipo_user'] == 'Co' && $_SESSION['tipo_usuario'] == 'psicologo') {
+                        echo "<li><a class='active' href='./perfilPsi.php?id=$loggedInUserId'>Perfil</a></li>";
+                    }
+                ?>
             </ul>
         </nav>
 
@@ -112,28 +129,36 @@
                 <label for="temposessao">Tempo da sessão:</label>
                 <input type="number" id="temposessao" name="tempoSessão" placeholder="Quanto tempo dura sua sessão (em minutos)" value="<?php echo $tempoSessao?>">
 
-                <div class="input-container">
-                    <label for="experiencia">Experiencia(s):</label>
-                    <input type="text" id="experiencia" name="experiencia" value="<?php echo $experiencia?>" placeholder="Nos diga quais as suas experiencias">
-                    <button class="add-more">+</button>
+                <div class="input-container xp">
+                    <div id="experiencia-grup">
+                        <label for="experiencia">Experiencia(s):</label>
+                        <input type="text" id="experiencia" name="experiencia[]" value="<?php echo $experiencia?>" placeholder="Nos diga quais as suas experiencias">
+                        <button class="add-more" type="button">+</button>
+                    </div>
                 </div>
 
                 <div class="input-container">
-                    <label for="especialidade">Especialidade(s):</label>
-                    <input type="text" id="especialidade" name="especialidade" value="<?php echo $especialidade?>" placeholder="Nos diga qual a sua especialidade">
-                    <button class="add-more">+</button>
+                    <div id="especialidade-grup">
+                        <label for="especialidade">Especialidade(s):</label>
+                        <input type="text" id="especialidade" name="especialidade" value="<?php echo $especialidade?>" placeholder="Nos diga qual a sua especialidade">
+                        <button class="add-more" type="button">+</button>
+                    </div>
                 </div>
 
                 <div class="input-container">
-                    <label for="formacao">Formação:</label>
-                    <input type="text" id="formacao" name="formacao" value="<?php echo $formacao?>" placeholder="Informe a sua Formação">
-                    <button class="add-more">+</button>
+                    <div id="formacao-grup">   
+                        <label for="formacao">Formação:</label>
+                        <input type="text" id="formacao" name="formacao" value="<?php echo $formacao?>" placeholder="Informe a sua Formação">
+                        <button class="add-more" type="button">+</button>
+                    </div>
                 </div>
 
                 <div class="input-container">
-                    <label for="Localidade">Localidade:</label>
-                    <input required type="text" id="Localidade" name="localidade" value="<?php echo $localidade?>" placeholder="Informe o seu local de atendimento">
-                    <button class="add-more">+</button>
+                    <div id="localidade-grup">
+                        <label for="Localidade">Localidade:</label>
+                        <input required type="text" id="Localidade" name="localidade" value="<?php echo $localidade?>" placeholder="Informe o seu local de atendimento">
+                        <button class="add-more" type="button">+</button>
+                    </div>
                 </div>
 
                 <label for="telefone">Telefone:</label>
@@ -174,19 +199,24 @@
                         <label>PSICOLOGIA ANALÍTICA</label>
                         <br>
                     </div>
-
-                    <div>
-                        <input type="checkbox" name="abordagem" value="psicologia_humanista">
-                        <label>PSICOLOGIA HUMANISTA</label>
-                    </div>
                 </div> -->
                 <div class="abordagem">
-                    <?php foreach ($abordagem as $a) { ?>
+                    <?php foreach ($abordagem as $a) { 
+                        $checked = in_array($a['id'], $abordagens_selecionadas);?>
+                        
                         <div>
-                            <input type="checkbox" name="abordagem[]" value="<?php echo $a?>">
-                            <label><?php echo $a ?></label>
+                            <!-- <?php print_r($a['id'])?> -->
+                            <input type="checkbox" name="abordagem[]" value="<?php echo $a['id']?>" <?php echo $checked ? 'checked' : '' ?>>
+                            <label><?php echo $a['nome'] ?></label>
                         </div>
                     <?php } ?>
+
+                    <!-- <?php foreach ($id_abord as $i) { ?>
+                        <div>
+                        
+                            <input type="checkbox" name="id_abord[]" value="<?php echo $i?>" >
+                        </div>
+                    <?php } ?> -->
                 </div>
 
                 <label for="resumo">Descrição Pessoal:</label>
@@ -196,8 +226,11 @@
                 <input type="hidden" name="id" value="<?php echo $id?>">
                 <input type="hidden" name="old_perfil" value="<?php echo $foto?>">
                 <input type="submit" name='update' value="Atualizar/Enviar Dados" class="enviarForm">
+
+                <p class="erro">Esqueceu a senha, clique <a href="./recuperar-senha.php">aqui</a> e recupere sua senha!</p>
             </div>
         </form>
+        
     </main>
 
     <footer>
@@ -225,6 +258,20 @@
     </footer>
     <script src="./js/form.js"></script>
     <script src="./js/script.js"></script>
+    <script>
+        const experienciaGrup = document.querySelector('.xp');
+        const addMoreButton = document.querySelector('.add-more');
+
+        addMoreButton.addEventListener('click', () => {
+            const experienciaElement = document.createElement('input');
+            experienciaElement.setAttribute('type', 'text');
+            experienciaElement.setAttribute('id', 'experiencia');
+            experienciaElement.setAttribute('name', 'experiencia[]');
+            experienciaElement.setAttribute('placeholder', 'Nos diga quais as suas experiencias');
+
+            experienciaGrup.appendChild(experienciaElement);
+        });
+    </script>
 </body>
 
 </html>

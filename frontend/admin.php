@@ -1,5 +1,25 @@
 <?php
+    session_start();
+
     include_once('conect.php');
+
+    if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        header('Location: login.php');
+    }
+    $logado = $_SESSION['email'];
+    // print_r($_SESSION);
+
+    $TipoUser = "SELECT tipo_user FROM psicologos WHERE email = '$logado'";
+    $resTipo = $conexao -> query($TipoUser);
+    $user = $resTipo -> fetch_assoc();
+    $_SESSION['tipo_user'] = $user['tipo_user'];
+
+    if ($logado !== 'gabriel02ramos@gmail.com') {
+        header('Location: index.html?erro=nao_autorizado');
+        exit();
+    }
 
     if (!empty($_GET['search'])) {
         $data = $_GET['search'];
@@ -40,6 +60,11 @@
                 <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
+                <?php 
+                    if($_SESSION['tipo_user'] == 'Ad'){
+                        echo '<li><a class="active" href="./admin.php">Admin</a></li>';
+                    }
+                ?>
             </ul>
         </nav>
 
@@ -66,10 +91,26 @@
     </header>
 
     <main>
+        
         <div class="pesquisa">
             <input type="text" id="pesquisa" placeholder="Pesquise por um usuário, nome, email, crp">
             <button onclick="dataSearch()">Pesquisar</button>
         </div>
+
+        <nav>
+            <p>Mude sua página de visualização:</p> 
+            <ul class="menu-admim">
+                <li><a class="active" href="./admin.php">Psicologos Cadastrados</a></li>
+                <li><a href="./adminPaciente.php">Pacientes Cadastrados</a></li>
+            </ul>
+        </nav>
+
+        <!-- <input type="radio" name="pagina" value="admin.php" id="admin">
+        <label for="admin">Psicólogos Cadastrados</label>
+
+        <input type="radio" name="pagina" value="adminPaciente.php" id="adminPaciente">
+        <label for="adminPaciente">Pacientes Cadastrados</label> -->
+        
 
         <div class="container">
             <div class="psicologos">
@@ -84,6 +125,7 @@
                                 <th>Telefone</th>
                                 <th>Status</th>
                                 <th>Data de entrada</th>
+                                <th>Tipo de Usuário</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,11 +135,22 @@
                                 echo "<td>" . $psicologo['crp'] . "</td>";
                                 echo "<td>" . $psicologo['email'] . "</td>";
                                 echo "<td>" . $psicologo['telefone'] . "</td>";
-                                echo "<td>" . match ($psicologo['status']) {
-                                    'I' => 'Inativo',
-                                    'A' => 'Ativo'
-                                  } . "</td>";
+                                // echo "<td><a href='#' class='change-status' data-id='" . $psicologo['id'] . "' data-status='" . $psicologo['status'] . "'>" . match ($psicologo['status']) {
+                                //     'I' => 'Inativo',
+                                //     'A' => 'Ativo'
+                                // } . "</a></td>";
+                                echo "<td>
+                                        <select class='change-status' data-id='" . $psicologo['id'] . "'>
+                                            <option value='A' " . ($psicologo['status'] === 'A' ? 'selected' : '') . ">Ativo</option>
+                                            <option value='I' " . ($psicologo['status'] === 'I' ? 'selected' : '') . ">Inativo</option>
+                                        </select>
+                                    </td>";
+
                                 echo "<td>" . $psicologo['createdAt'] . "</td>";
+                                echo "<td>" . match ($psicologo['tipo_user']) {
+                                    'Ad' => 'Admin',
+                                    'Co' => 'Comum'
+                                } . "</td>";
                                 echo "</tr>";
                             }
                             ?>
@@ -154,7 +207,7 @@
             <ul class="menuf">
                 <li>Menu</li>
                 <li><a href="./index.html">início</a></li>
-                <li><a href="./procuraPsi.html">procurar psicólogo</a></li>
+                <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
             </ul>
@@ -162,6 +215,34 @@
     </footer>
 
     <script src="./js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const changeStatusSelects = document.querySelectorAll('.change-status');
+
+changeStatusSelects.forEach(select => {
+    select.addEventListener('change', async function(event) {
+        const id = this.dataset.id;
+        const newStatus = this.value;
+
+        const response = await fetch('change_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `id=${id}&status=${newStatus}`
+        });
+
+        if (response.status === 200) {
+            // Atualiza o texto do select (opcional)
+            this.value = newStatus; // Reafirma o status selecionado
+        } else {
+            alert('Erro ao alterar o status');
+        }
+    });
+});
+});
+
+    </script>
 </body>
 
 </html>
