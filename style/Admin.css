@@ -1,0 +1,111 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.psicologos,
+.pacientes {
+    margin-top: 10%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 75%;
+    height: 530px;
+    overflow-y: scroll;
+}
+
+.psicologos table,
+.pacientes table {
+    width: 100%;
+    border-collapse: collapse; /* Para evitar espaços entre as células */
+    margin-top: 10px;
+}
+
+.psicologos thead, th{
+    background-color: #ffd700;
+}
+
+.psicologos th,
+.psicologos td{
+    border: 1px solid #000; /* Adiciona uma borda de 1px para separar as células */
+    padding: 8px;
+    /* text-align: center; */
+}
+
+.psicologos::-webkit-scrollbar,
+.pacientes::-webkit-scrollbar{
+    width: 4px;
+}
+
+.psicologos::-webkit-scrollbar-track,
+.pacientes::-webkit-scrollbar-track {
+    background: #6e6767;
+    border-radius: 2px;
+}
+
+.psicologos::-webkit-scrollbar-thumb,
+.pacientes::-webkit-scrollbar-thumb {
+    background: #ffd700;
+    border-radius: 2px;
+}
+
+.psicologos::-webkit-scrollbar-thumb:hover,
+.pacientes::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+#psicologos-list,
+#pacientes-list {
+    margin-top: 10px;
+}
+
+#total-psicologos,
+#total-pacientes{
+    margin-top: 15px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 33%;
+}
+
+.pesquisa {
+    display: flex;
+    height: 25px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.pesquisa button {
+   background-color: #ffd700;
+   border: 1px solid #000;
+}
+
+.pesquisa input {
+    width: 50%;
+}
+
+nav p {
+    text-align: center;
+}
+
+.menu-admim{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #dfd51a;
+    text-decoration: dashed;
+}
