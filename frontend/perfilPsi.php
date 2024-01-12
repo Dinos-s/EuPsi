@@ -196,6 +196,29 @@
                     <?php } ?>
                 </div>
 
+                <div class="container">
+                    <?php
+                    for ($dia = 1; $dia <= 7; $dia++) {
+                        echo "<div class='item'>";
+                        echo "<div class='day'>" . dia_da_semana($dia) . "</div>";
+                        $hora = 7;
+                        while( $hora <= 10) {
+                            $horaFormatada = (new DateTime("{$hora}:00"))->format("H:i"); 
+                            $horaFormatada2 = (new DateTime("{$hora}:30"))->format("H:i"); ?>
+                            <label>
+                                <input type='checkbox' name='horarios[]' value="<?php echo $dia . "-" . $horaFormatada ?>">
+                                <?php echo $horaFormatada?>
+                            </label>
+                            
+                            <label>
+                                <input type='checkbox' name='horarios[]' value="<?php echo $dia . "-" . $horaFormatada2 ?>">
+                                <?php echo $horaFormatada2 ?>
+                            </label>
+                        <?php $hora++; } ?>
+                        <?php echo "</div>";
+                    }?>
+                </div>
+
                 <label for="resumo">Descrição Pessoal:</label>
                 <textarea name="resumo" id="resumo" cols="30" rows="10"><?php if (!empty($resumo)) { echo $resumo; } ?></textarea>
 
