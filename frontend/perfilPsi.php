@@ -16,6 +16,7 @@
                 $nome = $userData['nome'];
                 $email = $userData['email'];
                 $crp = $userData['crp'];
+                $cpf = $userData['cpf'];
                 $telefone = $userData['telefone'];
                 $resumo = $userData['resumo'];
                 $foto = $userData['photo_perfil'];
@@ -44,7 +45,15 @@
         }
     }
 
-    // print_r($_SESSION);
+    $horas = "SELECT * FROM hora_disponivel WHERE id_psicologo = '$id'";
+    $retorno = $conexao -> query($horas);
+    if($retorno -> num_rows > 0) {
+        while ($row = $retorno -> fetch_assoc()){
+            $hora[] = array('idPsi' => $row['id_psicologo'], 'dia' => $row['dia_semana'], 'horario' => $row['horario']);
+        }
+    }
+
+    print_r($hora);
     $loggedInUserId = $_SESSION['id'];
 ?>
 
@@ -183,6 +192,7 @@
                 <label for="telefone">Telefone:</label>
                 <input required type="tel" id="telefone" placeholder="Informe seu telefone" name="telefone" value="<?php echo $telefone?>">
 
+                <!-- Listagem das abordagens -->
                 <label>Abordagem:</label>
                 <div class="abordagem">
                     <?php foreach ($abordagem as $a) { 
@@ -196,6 +206,7 @@
                     <?php } ?>
                 </div>
 
+                <!-- Listar as horas de atendimento -->
                 <div class="container">
                     <?php
                     for ($dia = 1; $dia <= 7; $dia++) {
@@ -204,14 +215,16 @@
                         $hora = 7;
                         while( $hora <= 10) {
                             $horaFormatada = (new DateTime("{$hora}:00"))->format("H:i"); 
-                            $horaFormatada2 = (new DateTime("{$hora}:30"))->format("H:i"); ?>
+                            $horaFormatada2 = (new DateTime("{$hora}:30"))->format("H:i"); 
+                            $dados = consultarDados($conexao, $id, $dia, $horaFormatada);
+                            $dados2 = consultarDados($conexao, $id, $dia, $horaFormatada2); ?>
                             <label>
-                                <input type='checkbox' name='horarios[]' value="<?php echo $dia . "-" . $horaFormatada ?>">
+                                <input type='checkbox' name='horarios[]' value="<?php echo $dia . "-" . $horaFormatada ?>" <?php if ($dados) echo "checked" ?> >
                                 <?php echo $horaFormatada?>
                             </label>
                             
                             <label>
-                                <input type='checkbox' name='horarios[]' value="<?php echo $dia . "-" . $horaFormatada2 ?>">
+                                <input type='checkbox' name='horarios[]' value="<?php echo $dia . "-" . $horaFormatada2 ?>"  <?php if ($dados2) echo "checked" ?> >
                                 <?php echo $horaFormatada2 ?>
                             </label>
                         <?php $hora++; } ?>
