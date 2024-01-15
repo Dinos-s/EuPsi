@@ -211,25 +211,25 @@
                     <?php
                     for ($dia = 1; $dia <= 7; $dia++) {
                         echo "<div class='item'>";
-                        echo "<div class='day'>" . dia_da_semana($dia) . "</div>";
-                        $hora = 7;
-                        while( $hora <= 10) {
-                            $horaFormatada = (new DateTime("{$hora}:00"))->format("H:i"); 
-                            $horaFormatada2 = (new DateTime("{$hora}:30"))->format("H:i"); 
-                            $dados = consultarDados($conexao, $id, $dia, $horaFormatada);
-                            $dados2 = consultarDados($conexao, $id, $dia, $horaFormatada2); ?>
-                            <label>
-                                <input type='checkbox' name='horarios[]' value="<?php echo $dia . "-" . $horaFormatada ?>" <?php if ($dados) echo "checked" ?> >
-                                <?php echo $horaFormatada?>
-                            </label>
+                        echo "<div class='day'>" . dia_da_semana($dia) . "</div>"; 
+                        $horaInicial = new DateTime();
+                        $horaFinal = new DateTime();
+                        
+                        $horaInicial -> setTime(7, 0);
+                        $horaFinal -> setTime(10, 0);
+
+                        while($horaInicial <= $horaFinal){
+                            $dados = consultarDados($conexao, $id, $dia, $horaInicial -> format('H:i')); ?>
                             
                             <label>
-                                <input type='checkbox' name='horarios[]' value="<?php echo $dia . "-" . $horaFormatada2 ?>"  <?php if ($dados2) echo "checked" ?> >
-                                <?php echo $horaFormatada2 ?>
+                                <input type="checkbox" name="horarios[]" value="<?php echo $dia . "-" . $horaInicial -> format('H:i') ?>"  <?php echo $dados ? "checked" : "" ?> >
+                                <?php echo $horaInicial -> format("H:i")?>
                             </label>
-                        <?php $hora++; } ?>
+
+                            <?php $horaInicial -> add(new DateInterval("PT{$tempoSessao}M"));
+                        } ?>
                         <?php echo "</div>";
-                    }?>
+                    }?> 
                 </div>
 
                 <label for="resumo">Descrição Pessoal:</label>
