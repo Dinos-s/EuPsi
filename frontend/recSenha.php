@@ -1,4 +1,4 @@
-<?php 
+<?php
     session_start();
 
     include_once('conect.php');
@@ -6,12 +6,14 @@
     $chave = filter_input(INPUT_GET, 'chave', FILTER_DEFAULT);
 
     if (!empty($chave)) {
-        $query_user = "SELECT id FROM psicologos WHERE chave_recSenha = '$chave'";
+        $query_userPsi = "SELECT id FROM psicologos WHERE chave_recSenha = '$chave'";
+        $result_userPsi = $conexao -> query($query_userPsi);
 
-        $result_user = $conexao -> query($query_user);
+        $query_userPa = "SELECT id FROM pacientes WHERE chave_recSenha = '$chave'";
+        $result_userPa = $conexao -> query($query_userPa);
 
-        if(($result_user) AND ($result_user -> num_rows != 0)){
-            $row_user = $result_user -> fetch_assoc();
+        if(($result_userPsi) AND ($result_userPsi -> num_rows != 0)){
+            $row_user = $result_userPsi -> fetch_assoc();
 
             $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -34,6 +36,32 @@
                     header('location: login.php');
                 }
             }
+
+        } else if(($result_userPa) AND ($result_userPa -> num_rows != 0)){
+            $row_user = $result_userPa -> fetch_assoc();
+
+            $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+            // Hora e data da atualização
+            date_default_timezone_set("America/Sao_Paulo");
+            $updateAt = date('Y-m-d H:i:s');
+
+            if(!empty($dados['novaSenha'])){
+                $options = ['const' => 12];
+                $newSenha= password_hash($dados['senha'], PASSWORD_BCRYPT, $options);
+                $recSenha = 'NULL';
+
+                $res_senha = "UPDATE pacientes SET senha='$newSenha', chave_recSenha='$recSenha', updatedAt='$updateAt' WHERE id='{$row_user['id']}'";
+
+                if ($result = $conexao -> query($res_senha)) {
+                    $_SESSION['msg'] = "<p style='color: green'>Senha atualizada com sucesso!</p>";
+                    header('location: login.php');
+                } else {
+                    echo "<p style='color: red'>Tente novamente!</p>";
+                    header('location: login.php');
+                }
+            }
+
         } else {
             $_SESSION['msg'] = "<p style='color: red>Erro: Link Inválido</p>";
             header('location: login.php');

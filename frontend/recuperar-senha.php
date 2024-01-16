@@ -1,4 +1,4 @@
-<?php 
+<?php
     session_start();
 
     include_once('conect.php');
@@ -8,16 +8,34 @@
         // var_dump($dados);
         $email = $dados['email'];
 
-        $query_email = "SELECT id, nome, email FROM psicologos WHERE email = '{$email}' ";
-        $result_user = $conexao -> query($query_email);
+        $query_emailPsi = "SELECT id, nome, email FROM psicologos WHERE email = '{$email}' ";
+        $result_userPsi = $conexao -> query($query_emailPsi);
 
-        if (($result_user) AND ($result_user -> num_rows != 0)) {
-            $row_user = $result_user -> fetch_assoc();
+        $query_emailPa = "SELECT id, nome, email FROM pacientes WHERE email = '{$email}' ";
+        $result_userPa = $conexao -> query($query_emailPa);
+
+        if (($result_userPsi) AND ($result_userPsi -> num_rows != 0)) {
+            $row_user = $result_userPsi -> fetch_assoc();
 
             $options = ['const' => 12];
             $chave_recSenha = password_hash($row_user['id'], PASSWORD_BCRYPT, $options);
 
             $query_up = "UPDATE psicologos SET chave_recSenha = '{$chave_recSenha}' WHERE id = '{$row_user['id']}'";
+
+            // print_r($chave_recSenha);
+
+            if ($result_up = $conexao -> query($query_up)) {
+                $link_Rec = "http://localhost/frontend/recSenha.php?chave=$chave_recSenha";
+            } else {
+                $_SESSION['msg'] = "<p style='color: red'>Erro: Tente novamente</a>";
+            }
+        } else if (($result_userPa) AND ($result_userPa -> num_rows != 0)) {
+            $row_user = $result_userPa -> fetch_assoc();
+
+            $options = ['const' => 12];
+            $chave_recSenha = password_hash($row_user['id'], PASSWORD_BCRYPT, $options);
+
+            $query_up = "UPDATE pacientes SET chave_recSenha = '{$chave_recSenha}' WHERE id = '{$row_user['id']}'";
 
             // print_r($chave_recSenha);
 
