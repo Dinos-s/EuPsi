@@ -2,7 +2,7 @@
     session_start();
 
     include_once('conect.php');
-    include ('./js/Helpers.php');
+    include('./js/Helpers.php');
 
     if (!empty($_GET['id'])) {
         $id = $_GET['id'];
@@ -19,14 +19,14 @@
                 $cpf = $userData['cpf'];
                 $telefone = $userData['telefone'];
                 $resumo = $userData['resumo'];
-                $foto = $userData['photo_perfil'];
-                $valorSessao = $userData['valorsessao'];
-                $tempoSessao = $userData['temposessao'];
-                $localidade = $userData['localidade'];
-                $experiencia = $userData['experiencia'];
-                $especialidade = $userData['especialidade'];
-                $formacao = $userData['formacao'];
-                $aborda = $userData['abordagem'];
+                // $foto = $userData['photo_perfil'];
+                // $valorSessao = $userData['valorsessao'];
+                // $tempoSessao = $userData['temposessao'];
+                // $localidade = $userData['localidade'];
+                // $experiencia = $userData['experiencia'];
+                // $especialidade = $userData['especialidade'];
+                // $formacao = $userData['formacao'];
+                // $aborda = $userData['abordagem'];
                 $typeUser = $userData['tipo_user'];
             }
         } else {
@@ -34,8 +34,8 @@
         }
     } 
     
-    $abordagens_selecionadas = explode(';', $aborda);
-    
+    // $abordagens_selecionadas = explode(';', $aborda);
+
     $abordar = "SELECT * FROM abordagem";
     $res = $conexao -> query($abordar);
     
@@ -53,7 +53,7 @@
         }
     }
 
-    print_r($hora);
+    print_r($_SESSION);
     $loggedInUserId = $_SESSION['id'];
 ?>
 
@@ -68,7 +68,7 @@
     <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./style/CadPsicologo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Perfil do Psicólogo</title>
+    <title>EuPSICO - Cadastro Psicologo</title>
     <style>
         .container {
             display: grid;
@@ -133,14 +133,14 @@
         <form action="update.php" method="post" id="form" enctype="multipart/form-data">
             <div class="cadastra_psicologo">
                 <h1>EuPSICO - Cadastro Psicologo</h1>
-                <h2>Complete ou atualize o seu cadastro</h2>
+                <h2>Complete o seu cadastro</h2>
 
                 <label for="imagem">Escolher Imagem:</label>
                 <input type="file" name='image' id="imagem" accept="image/*">
                 <img id="imagem-preview" src="<?php echo $foto ?>" alt="Imagem do psicólogo">
 
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome"value="<?php echo $nome ?>"  id="nome" placeholder="Nos diga seu nome">
+                <input type="text" name="nome" value="<?php echo $nome ?>"  id="nome" placeholder="Nos diga seu nome">
 
                 <label for="crp">CRP:</label>
                 <input type="text" name='crp' value="<?php echo $crp?>" id="crp" placeholder="Digite seu CRP">
@@ -152,15 +152,21 @@
                 <input type="email" id="email" name="email" value="<?php echo $email?>" placeholder="Digite o seu e-mail">
 
                 <label for="valorsessao">Valor da sessão:</label>
-                <input type="number" id="valorsessao" name="valorSessão" placeholder="Nos diga o valor de sua sessão" value="<?php echo $valorSessao?>">
+                <input type="number" id="valorsessao" name="valorSessão" placeholder="Nos diga o valor de sua sessão" >
 
                 <label for="temposessao">Tempo da sessão:</label>
-                <input type="number" id="temposessao" name="tempoSessão" placeholder="Quanto tempo dura sua sessão (em minutos)" value="<?php echo $tempoSessao?>">
+                <input type="number" id="temposessao" name="tempoSessão" placeholder="Quanto tempo dura sua sessão (em minutos)" >
+
+                <label for="horaInicial">Hora Inicial:</label>
+                <input type="number" id="horaInicial" name="horaInicial" placeholder="De que horas você começa o seu tempo de psicologo?" >
+
+                <label for="horaFinal">Hora Final:</label>
+                <input type="number" id="horaFinal" name="horaFinal" placeholder="De que horas você termina o seu tempo de psicologo?">
 
                 <div class="input-container xp">
                     <div id="experiencia-grup">
                         <label for="experiencia">Experiencia(s):</label>
-                        <input type="text" id="experiencia" name="experiencia" value="<?php echo $experiencia?>" placeholder="Nos diga quais as suas experiencias">
+                        <input type="text" id="experiencia" name="experiencia" placeholder="Nos diga quais as suas experiencias">
                         <button class="add-more" type="button">+</button>
                     </div>
                 </div>
@@ -168,7 +174,7 @@
                 <div class="input-container">
                     <div id="especialidade-grup">
                         <label for="especialidade">Especialidade(s):</label>
-                        <input type="text" id="especialidade" name="especialidade" value="<?php echo $especialidade?>" placeholder="Nos diga qual a sua especialidade">
+                        <input type="text" id="especialidade" name="especialidade" placeholder="Nos diga qual a sua especialidade">
                         <button class="add-more" type="button">+</button>
                     </div>
                 </div>
@@ -176,7 +182,7 @@
                 <div class="input-container">
                     <div id="formacao-grup">   
                         <label for="formacao">Formação:</label>
-                        <input type="text" id="formacao" name="formacao" value="<?php echo $formacao?>" placeholder="Informe a sua Formação">
+                        <input type="text" id="formacao" name="formacao" placeholder="Informe a sua Formação">
                         <button class="add-more" type="button">+</button>
                     </div>
                 </div>
@@ -184,7 +190,7 @@
                 <div class="input-container">
                     <div id="localidade-grup">
                         <label for="Localidade">Localidade:</label>
-                        <input required type="text" id="Localidade" name="localidade" value="<?php echo $localidade?>" placeholder="Informe o seu local de atendimento">
+                        <input required type="text" id="Localidade" name="localidade" placeholder="Informe o seu local de atendimento">
                         <button class="add-more" type="button">+</button>
                     </div>
                 </div>
@@ -195,12 +201,10 @@
                 <!-- Listagem das abordagens -->
                 <label>Abordagem:</label>
                 <div class="abordagem">
-                    <?php foreach ($abordagem as $a) { 
-                        $checked = in_array($a['id'], $abordagens_selecionadas);?>
-                        
+                    <?php foreach ($abordagem as $a) { ?>
                         <div>
                             <!-- <?php print_r($a['id'])?> -->
-                            <input type="checkbox" name="abordagem[]" value="<?php echo $a['id']?>" <?php echo $checked ? 'checked' : '' ?>>
+                            <input type="checkbox" name="abordagem[]" value="<?php echo $a['id']?>" >
                             <label><?php echo $a['nome'] ?></label>
                         </div>
                     <?php } ?>
@@ -215,14 +219,14 @@
                         $horaInicial = new DateTime();
                         $horaFinal = new DateTime();
                         
-                        $horaInicial -> setTime(7, 0);
+                        // As duas linhas abaixo colocam os numeros em horarios 7 -> 7:00;
+                        $horaInicial -> setTime(7, 0); // 1° arg: Horas; 2° arg: Minutos; 
                         $horaFinal -> setTime(10, 0);
 
-                        while($horaInicial <= $horaFinal){
-                            $dados = consultarDados($conexao, $id, $dia, $horaInicial -> format('H:i')); ?>
-                            
+                        while($horaInicial <= $horaFinal){ ?>
+
                             <label>
-                                <input type="checkbox" name="horarios[]" value="<?php echo $dia . "-" . $horaInicial -> format('H:i') ?>"  <?php echo $dados ? "checked" : "" ?> >
+                                <input type="checkbox" name="horarios[]" value="<?php echo $dia . "-" . $horaInicial -> format('H:i') ?>" >
                                 <?php echo $horaInicial -> format("H:i")?>
                             </label>
 
@@ -251,39 +255,16 @@
         </section>
 
         <section class="f2">
-            <!-- <p>Eupsico é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários
-                o melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo
-                e profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida
-                relacionada aos serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com
-                as diversas áreas da psicologia, garantindo assim a melhor terapia para você.</p> -->
+
         </section>
 
         <section class="f3">
-            <!-- <ul class="menuf">
-                <li>Menu</li>
-                <li><a href="./index.html">início</a></li>
-                <li><a href="./procuraPsi.html">procurar psicólogo</a></li>
-                <li><a href="#">plano psicologo</a></li>
-                <li><a href="./contato.html">contato</a></li>
-            </ul> -->
+
         </section>
     </footer>
     <script src="./js/form.js"></script>
     <script src="./js/script.js"></script>
-    <!-- <script>
-        const experienciaGrup = document.querySelector('.xp');
-        const addMoreButton = document.querySelector('.add-more');
-
-        addMoreButton.addEventListener('click', () => {
-            const experienciaElement = document.createElement('input');
-            experienciaElement.setAttribute('type', 'text');
-            experienciaElement.setAttribute('id', 'experiencia');
-            experienciaElement.setAttribute('name', 'experiencia[]');
-            experienciaElement.setAttribute('placeholder', 'Nos diga quais as suas experiencias');
-
-            experienciaGrup.appendChild(experienciaElement);
-        });
-    </script> -->
+    
 </body>
 
 </html>

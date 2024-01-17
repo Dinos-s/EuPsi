@@ -1,4 +1,6 @@
 <?php 
+    include ('./js/Helpers.php');
+
     if (isset($_POST['submit'])) {
         include_once('conect.php');
 
@@ -33,7 +35,7 @@
                 if ($result) {
                     // echo "Usuário cadastrado com sucesso!";
                     $id = mysqli_insert_id($conexao);
-                    header("Location: perfilPsi.php?id=$id");
+                    header("Location: CadComplementarPsi.php?id=$id");
                 } else {
                     echo "Erro ao cadastrar usuário. Por favor, tente novamente.";
                 }

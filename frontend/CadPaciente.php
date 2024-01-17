@@ -1,46 +1,5 @@
 <?php 
-    function validaCPF($cpf) {
-        if (strlen($cpf) !== 11) {
-            return false;
-        }
-
-        // 1° for = compara e soma os 9 primeiros nums do cpf
-        $soma = 0;
-        for ($i = 0; $i < 9; $i++) {
-            $soma += $cpf[$i] * (10 - $i);
-        }
-
-        // Fornece o primeiro digto
-        $resto = $soma % 11;
-        if ($resto === 0 || $resto === 1) {
-            $digito1 = 0;
-        } else {
-            $digito1 = 11 - $resto;
-        }
-
-        // 2° for = compara e soma os 10 primeiros nums do cpf
-        $soma = 0;
-        for ($i = 0; $i < 10; $i++) {
-            $soma += $cpf[$i] * (11 - $i);
-        }
-
-        // Fornece o segundo digito
-        $resto = $soma % 11;
-        if ($resto === 0 || $resto === 1) {
-            $digito2 = 0;
-        } else {
-            $digito2 = 11 - $resto;
-        }
-
-        // Valida se os dígitos verficadores com o cpf informado
-        $valido = ($cpf[9] === $digito1 && $cpf[10] === $digito2);
-
-        if ($valido) {
-            return false;
-        } else {
-            return true;
-        }    
-    }
+    include ('./js/Helpers.php');
 
     if (isset($_POST['submit'])) {
         include_once('conect.php');
