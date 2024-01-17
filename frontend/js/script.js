@@ -34,7 +34,7 @@ function criaPsiCard(psi) {
     img.alt = 'picture';
     img.addEventListener('click', () => {
         const pisicolgo = { nome: psi.nome }
-        const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
+        const url = `agendamento.php?psi=${encodeURIComponent(pisicolgo.nome)}`
         window.location.href = url
     })
 
@@ -75,7 +75,7 @@ function criaPsiCard(psi) {
     sobreBTN.className = 'sobreBTN'
     sobreBTN.addEventListener('click', () => {
         const pisicolgo = { nome: psi.nome }
-        const url = `agendamento.html?psi=${encodeURIComponent(pisicolgo.nome)}`
+        const url = `agendamento.php?psi=${encodeURIComponent(pisicolgo.nome)}`
         window.location.href = url
     })
 
@@ -273,7 +273,7 @@ function mudarSemana(semana) {
 const PrimeiroDiaSemana = new Date(dataAtual)
 PrimeiroDiaSemana.setDate(dataAtual.getDate() - dataAtual.getDay() + 1)
 atualizarDiasTela(PrimeiroDiaSemana)
-horasNaTabela()
+// horasNaTabela()
 
 function atualizarDiasTela(PrimeiroDiaSemana) {
     const linhaDia = document.getElementById('dayRow')
@@ -327,9 +327,9 @@ function horasNaTabela() {
                 const button = document.createElement('button');
                 button.textContent = horaFormatada;
                 button.className = 'hora-button'; // Adicione uma classe para o botão
-                button.addEventListener('click', indoCadCliente); // Redireciona os butões para cadPaciente
-                li.appendChild(button);
-                ul.appendChild(li);
+                // button.addEventListener('click', indoCadCliente); // Redireciona os butões para cadPaciente
+                // li.appendChild(button);
+                // ul.appendChild(li);
 
                 // Avança 30 minutos
                 horaAtual.setMinutes(horaAtual.getMinutes() + 30);
@@ -342,7 +342,8 @@ function horasNaTabela() {
 
 // nessa função redireciona os butões para cadPaciente
 function indoCadCliente() {
-    window.location.href = 'CadPaciente.html'
+    window.location.href = "login.php";
+    window.location.href = "pagamento.html"
 }
 
 // três pontos no excesso de texto
@@ -396,3 +397,6 @@ function formation(doctor) {
                 </li>`
     }).join('');
 }
+
+
+// Carrega o HTML em uma string $html = '<html><body><div class="teste">Conteúdo do elemento</div></body></html>'; // Cria um novo objeto DOMDocument $dom = new DOMDocument(); // Carrega o HTML no objeto DOMDocument $dom->loadHTML($html); // Usa a função getElementsByClassName para obter o elemento desejado $elementos = $dom->getElementsByClassName('teste'); // Verifica se o elemento foi encontrado if ($elementos->length > 0) { // Obtém o conteúdo do elemento $conteudo = $elementos->item(0)->nodeValue; echo $conteudo; } else { echo 'Elemento não encontrado'; } 

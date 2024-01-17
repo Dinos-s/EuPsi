@@ -31,74 +31,101 @@ async function totalPsicologos() {
 }
 
 // Função para criar a lista de psicólogos
-function renderPsicologos(psiData) {
-    const psicologosList = document.getElementById("psicologos-list");
-    psicologosList.innerHTML = "";
+// function renderPsicologos(psiData) {
+//     const psicologosTable = document.getElementById("psicologos-list");
+//     psicologosTable.innerHTML = ""; // Limpar o conteúdo atual
 
-    psiData.forEach((psicologo) => {
-        const psicologoDiv = document.createElement("div");
-        
-        let statusText
-        if (psicologo.status == 'I') {
-            statusText = 'Inativo'
-        } else if (psicologo.status == 'A') {
-            statusText = 'Ativo'
-        }
+//     // Criação da tabela e do cabeçalho
+//     const table = document.createElement("table");
+//     const thead = document.createElement("thead");
+//     const headerRow = document.createElement("tr");
+//     const headers = ["Nome", "CRP", "Telefone", "E-mail", "Data de entrada", "Status"];
 
-        psicologoDiv.innerHTML = `
-        <strong>${psicologo.nome}</strong><br>
-        CRP: ${psicologo.crp}<br>
-        Telefone: ${psicologo.telefone}<br>
-        E-mail: ${psicologo.email}<br>
-        Data de entrada: ${psicologo.createdAt}<br>
-        Status: ${statusText}<br><br>`;
-        psicologosList.appendChild(psicologoDiv);
-    });
-}
+//     headers.forEach((headerText) => {
+//         const th = document.createElement("th");
+//         th.appendChild(document.createTextNode(headerText));
+//         headerRow.appendChild(th);
+//     });
+
+//     thead.appendChild(headerRow);
+//     table.appendChild(thead);
+
+//     // Adiciona os dados ao tbody
+//     const tbody = document.createElement("tbody");
+//     psiData.forEach((psicologo) => {
+//         const tr = document.createElement("tr");
+
+//         // Adiciona as células com os dados do psicólogo
+//         tr.innerHTML = `
+//             <td>${psicologo.nome}</td>
+//             <td>${psicologo.crp}</td>
+//             <td>${psicologo.telefone}</td>
+//             <td>${psicologo.email}</td>
+//             <td>${psicologo.createdAt}</td>
+//             <td>${psicologo.status === 'I' ? 'Inativo' : 'Ativo'}</td>
+//         `;
+
+//         tbody.appendChild(tr);
+//     });
+
+//     table.appendChild(tbody);
+//     psicologosTable.appendChild(table);
+// }
 
 // Função para criar a lista de pacientes
-function renderPacientes(pacienteData) {
-    const pacientesList = document.getElementById("pacientes-list");
-    pacientesList.innerHTML = "";
+// function renderPacientes(pacienteData) {
+//     const pacientesList = document.getElementById("pacientes-list");
+//     pacientesList.innerHTML = "";
 
-    pacienteData.forEach((paciente) => {
-        const pacienteDiv = document.createElement("div");
-        pacienteDiv.innerHTML = `
-        <strong>${paciente.nome}</strong><br>
-        CPF: ${paciente.cpf}<br>
-        Telefone: ${paciente.telefone}<br>
-        E-mail: ${paciente.email}<br>
-        Data de entrada: ${paciente.createdAt}<br><br>`;
-        pacientesList.appendChild(pacienteDiv);
-    });
-}
+//     pacienteData.forEach((paciente) => {
+//         const pacienteDiv = document.createElement("div");
+//         pacienteDiv.innerHTML = `
+//         <strong>${paciente.nome}</strong><br>
+//         CPF: ${paciente.cpf}<br>
+//         Telefone: ${paciente.telefone}<br>
+//         E-mail: ${paciente.email}<br>
+//         Data de entrada: ${paciente.createdAt}<br><br>`;
+//         pacientesList.appendChild(pacienteDiv);
+//     });
+// }
 
-function renderTotalPacientes(total) {
-    const totalPacientes = document.getElementById('total-pacientes');
-    totalPacientes.innerHTML = "";
+// function renderTotalPacientes(total) {
+//     const totalPacientes = document.getElementById('total-pacientes');
+//     totalPacientes.innerHTML = "";
     
-    const pacientesList = document.createElement('p')
-    pacientesList.textContent = `Total de pacientes cadastrados: ${total}`
+//     const pacientesList = document.createElement('p')
+//     pacientesList.textContent = `Total de pacientes cadastrados: ${total}`
 
-    totalPacientes.appendChild(pacientesList)
-}
+//     totalPacientes.appendChild(pacientesList)
+// }
 
-function renderTotalPsicologos(total) {
-    const totalPsicologos = document.getElementById('total-psicologos');
-    totalPsicologos.innerHTML = "";
+// function renderTotalPsicologos(total) {
+//     const totalPsicologos = document.getElementById('total-psicologos');
+//     totalPsicologos.innerHTML = "";
     
-    const psicologoList = document.createElement('p')
-    psicologoList.textContent = `Total de psicólogos cadastrados: ${total}`
+//     const psicologoList = document.createElement('p')
+//     psicologoList.textContent = `Total de psicólogos cadastrados: ${total}`
 
-    totalPsicologos.appendChild(psicologoList)
+//     totalPsicologos.appendChild(psicologoList)
+// }
+
+// Filtrando pela pesquisa
+const search = document.getElementById('pesquisa')
+search.addEventListener('keydown', (event)=>{
+    if (event.key === 'Enter') {
+        dataSearch();
+    }
+})
+function dataSearch() {
+    window.location = `admin.php?search=${search.value}`;
 }
 
-// Chamando as funções para renderizar as listas
-async function obtendoDados() {
-    await pacientes()
-    await psicologos()
-    await totalPacientes()
-    await totalPsicologos()
-}
+// // Chamando as funções para renderizar as listas
+// async function obtendoDados() {
+//     // await pacientes()
+//     // await psicologos()
+//     await totalPacientes()
+//     await totalPsicologos()
+// }
 
-obtendoDados()
+// obtendoDados()

@@ -7,17 +7,16 @@
     <link rel="icon" type="image/x-icon" href="./assets/eupsi.png">
 
     <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/pagar.css">
+    <link rel="stylesheet" href="./style/CadPsicologo.css">
+    <link rel="stylesheet" href="./style/Login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <title>EuPSICO - (Protótipo)</title>
+    <title>EuPSICO - Cadastro Psicologo</title>
 </head>
-
 <body>
-
     <header>
         <!-- LOGO -->
-        <a href="index.html" class="logo">
+        <a href="./index.html" class="logo">
             <img src="./assets/eupsi.png" alt="teste">
         </a>
 
@@ -32,13 +31,9 @@
         </nav>
 
         <div class="acesso">
-
-            <li><a href="./login.login">Entrar</a></li>
-            <!-- <li><a href="CadPaciente.html">Cadastro</a></li> -->
+            <li><a href="#">Entrar</a></li>
             <li><a href="#id_janela_modal">Cadastro</a></li>
-            <!-- <li><a href="ModalCadastro.html">Cadastro</a></li> -->
 
-            <!-- Icones das Redes Sociais -->
             <section class="icons_rede_sociais">
                 <!-- LINK INSTA -->
                 <a href="https://www.instagram.com/eupsi.insta/" target="_blank">
@@ -53,25 +48,45 @@
         </div>
     </header>
 
-    <main>
-        <div class="cardContainer" style="text-align: center;">
-            <!-- <form id="form_Card">
-                <label for="cardNumber">Número do Cartão:</label>
-                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456">
-    
-                <label for="expiryDate">Data de Validade:</label>
-                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA">
-    
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" placeholder="123">
-    
-                <label for="cardHolder">Nome no Cartão:</label>
-                <input type="text" id="cardHolder" name="cardHolder" placeholder="Seu Nome">
-    
-                <button type="submit">Enviar</button>
-            </form> -->
-            <h2>Pagina de pagamento</h2>
-            <h1>AINDA EM CONSTRUÇÃO</h1>
+    <main id="main-login">
+        <div class="cadastra_psicologo login">
+            <form action="session.php" method="post">
+                <h1>Login</h1>
+                <?php
+                    if (isset($_GET['erro']) && $_GET['erro'] = 'UserNotFound') {
+                        echo "<p class='erro'>Usuário não Cadastrado</p>";
+                    }
+
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                ?>
+                <label for="nome">Email:</label>
+                <input type="email" name="email"  id="email" placeholder="Informe seu email" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" placeholder="Sua Senha" required>
+
+                <!-- <label for="tipo_usuario">Tipo de usuário:</label>
+                <div class="opcoes-usuario">
+                    <input type="radio" name="tipo_usuario" id="tipo_psicologo" value="psicologo" required>
+                    <label for="tipo_psicologo">Psicólogo</label>
+
+                    <input type="radio" name="tipo_usuario" id="tipo_paciente" value="paciente" required>
+                    <label for="tipo_paciente">Paciente</label>
+                    
+                    <!- <input type="radio" name="tipo_usuario" id="tipo_admin" value="admin" required>
+                    <label for="tipo_admin">Administrador</label> ->
+                </div> -->
+
+                <!-- <button type="submit" id="btnEnviar">Entrar</button> -->
+                <input type="submit" name="submit" value="Entrar" id="btnEnviar">
+
+                <!-- <p class="erro">Caso não tenha, faça o cadastro, clique <a href="./CadPaciente.html">aqui</a> e faça sua consulta!</p> -->
+                <p class="erro">Esqueceu a senha, clique <a href="./recuperar-senha.php">aqui</a> e recupere sua senha!</p>
+            </form>
+            
         </div>
     </main>
 
@@ -100,9 +115,9 @@
 
             <!-- Botão fechar -->
             <!-- 
-            <div class="modal_footer">
-                <a href="#" class="modal_footer_btn_close"> Fechar </a>
-            </div> -->
+                <div class="modal_footer">
+                    <a href="#" class="modal_footer_btn_close"> Fechar </a>
+                </div> -->
 
             <a href="#" class="modal_close">&times;</a>
         </div>
@@ -114,21 +129,25 @@
         </section>
 
         <section class="f2">
-            <p>footer 2</p>
-            <!-- <p>Eupsi é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários o melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo e profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida relacionada aos serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com as diversas áreas da psicologia, garantindo assim a melhor terapia para você.</p> -->
+            <!-- <p>Eupsico é um Buscador de Psicólogos e Clientes para Terapia Online e Presencial e oferece aos seus usuários
+                o melhor método para encontrar o profissional ideal para sua necessidade. Possuindo um catálogo completo
+                e profissionais experientes e certificados, seu uso será a solução ideal para qualquer dúvida
+                relacionada aos serviços de terapia. Nossos profissionais são especialistas capacitados para lidar com
+                as diversas áreas da psicologia, garantindo assim a melhor terapia para você.</p> -->
         </section>
 
         <section class="f3">
-            <ul class="menuf">
+            <!-- <ul class="menuf">
                 <li>Menu</li>
                 <li><a href="./index.html">início</a></li>
                 <li><a href="./procuraPsi.php">procurar psicólogo</a></li>
                 <li><a href="#">plano psicologo</a></li>
                 <li><a href="./contato.html">contato</a></li>
-            </ul>
+            </ul> -->
         </section>
     </footer>
-    <script src="./js/form.js"></script>
+    <!-- <script src="./js/script.js"></script> -->
+    <!-- <script src="./js/form.js"></script> -->
 </body>
 
 </html>
