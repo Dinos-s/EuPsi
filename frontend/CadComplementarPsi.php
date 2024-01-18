@@ -264,6 +264,57 @@
     </footer>
     <script src="./js/form.js"></script>
     <script src="./js/script.js"></script>
+
+    <script>
+        let horaI = document.getElementById('horaInicial')
+        let horaF = document.getElementById('horaFinal')
+        let intervalo = document.getElementById('temposessao')
+
+        function HoraTabela() {
+            const container = document.querySelector('.container');
+            container.innerHTML = ''
+            const diasDaSemana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+
+            for (let dia = 1; dia <= 7; dia++) {
+                const diaDaSemana = diasDaSemana[dia - 1];  // Obter o nome inteiro do dia
+
+                const item = document.createElement('div');
+                item.className = 'item';
+
+                const day = document.createElement('div');
+                day.textContent = diaDaSemana;  // Atribuir o nome inteiro do dia
+                day.className = 'day';
+
+                item.appendChild(day);
+
+                let horaInicial = new Date()
+                let horaFinal = new Date()
+
+                horaInicial.setHours(Number(horaI.value), 0)
+                horaFinal.setHours(Number(horaF.value), 0)
+
+                while (horaInicial <= horaFinal) {
+                    const label = document.createElement('label')
+                    const input = document.createElement('input')
+
+                    const horaFormatada = horaInicial.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+
+                    input.type = "checkbox"
+                    input.name = "horarios[]"
+                    input.value = `${dia}-${horaFormatada}`
+
+                    label.textContent = horaFormatada
+                    label.appendChild(input)
+
+                    item.appendChild(input)
+                    item.appendChild(label);
+
+                    horaInicial.setMinutes(horaInicial.getMinutes() + Number(intervalo.value))
+                }
+                container.appendChild(item)  
+            }
+        }
+    </script>
     
 </body>
 
