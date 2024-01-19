@@ -163,6 +163,8 @@
                 <label for="horaFinal">Hora Final:</label>
                 <input type="number" id="horaFinal" name="horaFinal" placeholder="De que horas você termina o seu tempo de psicologo?">
 
+                <input type="button" value="Gerar Tabela" onclick="HoraTabela()">
+
                 <div class="input-container xp">
                     <div id="experiencia-grup">
                         <label for="experiencia">Experiencia(s):</label>
@@ -230,7 +232,7 @@
                                 <?php echo $horaInicial -> format("H:i")?>
                             </label>
 
-                            <?php $horaInicial -> add(new DateInterval("PT{$tempoSessao}M"));
+                            <?php $horaInicial -> add(new DateInterval("PT30M"));
                         } ?>
                         <?php echo "</div>";
                     }?> 
@@ -266,11 +268,11 @@
     <script src="./js/script.js"></script>
 
     <script>
-        let horaI = document.getElementById('horaInicial')
-        let horaF = document.getElementById('horaFinal')
-        let intervalo = document.getElementById('temposessao')
-
         function HoraTabela() {
+            let horaI = document.getElementById('horaInicial');
+            let horaF = document.getElementById('horaFinal');
+            let intervalo = document.getElementById('temposessao')
+
             const container = document.querySelector('.container');
             container.innerHTML = ''
             const diasDaSemana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
@@ -303,8 +305,8 @@
                     input.name = "horarios[]"
                     input.value = `${dia}-${horaFormatada}`
 
-                    label.textContent = horaFormatada
                     label.appendChild(input)
+                    label.textContent = horaFormatada
 
                     item.appendChild(input)
                     item.appendChild(label);
